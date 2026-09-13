@@ -1,0 +1,9 @@
+MDK-ARM/OBJ/
+MDK-ARM/LIST/
+MDK-ARM/*.uvguix.*
+MDK-ARM/*.dep
+MDK-ARM/*.bak
+JSCOPE/
+.trae/
+*.tmp
+*.log

@@ -1,0 +1,5 @@
+# 本地/无关内容（不纳入版本库）
+**/.git/
+**/.claude/
+**/settings.local.json
+**/tmp/

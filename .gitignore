@@ -3,3 +3,8 @@
 **/.claude/
 **/settings.local.json
 **/tmp/
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/

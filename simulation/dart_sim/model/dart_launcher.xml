@@ -1,0 +1,261 @@
+<mujoco model="dart_launcher">
+  <compiler angle="radian" meshdir="meshes" inertiafromgeom="false" autolimits="true"/>
+  <option timestep="0.0005" integrator="implicitfast"/>
+  <visual>
+    <global offwidth="1600" offheight="1200" azimuth="-125" elevation="-18"/>
+    <quality shadowsize="4096"/>
+    <headlight ambient="0.42 0.42 0.42" diffuse="0.45 0.45 0.45" specular="0.05 0.05 0.05"/>
+    <map znear="0.005" zfar="80"/>
+  </visual>
+  <default><geom contype="0" conaffinity="0"/><joint solreflimit="0.002 1" solimplimit="0.99 0.999 0.0005"/></default>
+  <asset>
+    <texture name="grid" type="2d" builtin="checker" width="512" height="512" rgb1="0.80 0.82 0.84" rgb2="0.73 0.75 0.78" mark="edge" markrgb="0.58 0.6 0.63"/>
+    <material name="floor" texture="grid" texrepeat="36 40" reflectance="0.03"/>
+    <texture name="sky" type="skybox" builtin="gradient" rgb1="0.72 0.82 0.94" rgb2="0.96 0.97 1" width="256" height="256"/>
+    <mesh name="base_0" file="base_0.stl" inertia="shell"/>
+    <mesh name="base_1" file="base_1.stl" inertia="shell"/>
+    <mesh name="yaw_screw" file="yaw_screw.stl" inertia="shell"/>
+    <mesh name="yaw_slide" file="yaw_slide.stl" inertia="shell"/>
+    <mesh name="frame" file="frame.stl" inertia="shell"/>
+    <mesh name="belts" file="belts.stl" inertia="shell"/>
+    <mesh name="motor_r" file="motor_r.stl" inertia="shell"/>
+    <mesh name="motor_l" file="motor_l.stl" inertia="shell"/>
+    <mesh name="idler_r" file="idler_r.stl" inertia="shell"/>
+    <mesh name="idler_l" file="idler_l.stl" inertia="shell"/>
+    <mesh name="slider" file="slider.stl" inertia="shell"/>
+    <mesh name="shuttle" file="shuttle.stl" inertia="shell"/>
+    <mesh name="pitch_screw" file="pitch_screw.stl" inertia="shell"/>
+    <mesh name="pitch_slider" file="pitch_slider.stl" inertia="shell"/>
+    <mesh name="lock" file="lock.stl" inertia="shell"/>
+    <mesh name="claw_r" file="claw_r.stl" inertia="shell"/>
+    <mesh name="claw_l" file="claw_l.stl" inertia="shell"/>
+    <mesh name="arm" file="arm.stl" inertia="shell"/>
+    <mesh name="crank" file="crank.stl" inertia="shell"/>
+    <mesh name="rod" file="rod.stl" inertia="shell"/>
+    <mesh name="plunger" file="plunger.stl" inertia="shell"/>
+    <mesh name="dart_body" file="dart_body.stl" inertia="shell"/>
+    <mesh name="dart_fins" file="dart_fins.stl" inertia="shell"/>
+    <mesh name="dart_nose" file="dart_nose.stl" inertia="shell"/>
+    <mesh name="dart_plate" file="dart_plate.stl" inertia="shell"/>
+  </asset>
+  <worldbody>
+    <light name="sun" directional="true" pos="2 -3 6" dir="-0.3 0.5 -1" diffuse="0.55 0.55 0.55" castshadow="false"/>
+    <geom name="floor" type="plane" pos="0 14 0" size="16 18 0.1" material="floor" contype="1" conaffinity="2" friction="0.8 0.005 0.0001"/>
+    <camera name="overview" pos="1.5 -0.9 1.1" mode="targetbody" target="frame"/>
+    <camera name="side" pos="2.2 0.35 0.45" mode="targetbody" target="frame"/>
+    <geom type="box" pos="0 5 0.0005" size="4 0.012 0.0005" rgba="0.85 0.3 0.2 0.9"/>
+    <geom type="box" pos="0 10 0.0005" size="4 0.012 0.0005" rgba="0.85 0.3 0.2 0.9"/>
+    <geom type="box" pos="0 15 0.0005" size="4 0.012 0.0005" rgba="0.85 0.3 0.2 0.9"/>
+    <geom type="box" pos="0 20 0.0005" size="4 0.012 0.0005" rgba="0.85 0.3 0.2 0.9"/>
+    <geom type="box" pos="0 25 0.0005" size="4 0.012 0.0005" rgba="0.85 0.3 0.2 0.9"/>
+    <geom type="box" pos="0 30 0.0005" size="4 0.012 0.0005" rgba="0.85 0.3 0.2 0.9"/>
+    <body name="base" pos="0 0 0.3911868">
+      <inertial pos="-0.0666113 0.4995687 -0.2344762" mass="2.65484" fullinertia="0.2373097 0.1416582 0.2726196 0.009338142 -0.01404309 -0.04373126"/>
+      <geom name="base_0" type="mesh" mesh="base_0" rgba="0.78 0.79 0.81 1" group="1"/>
+      <geom name="base_1" type="mesh" mesh="base_1" rgba="0.78 0.79 0.81 1" group="1"/>
+      <body name="yaw_screw" pos="-0.0917 0.6795947 0.03081317">
+        <inertial pos="0.0795316 3.253498e-05 -4.0853e-05" mass="0.0648386" fullinertia="3.271044e-06 0.0007273966 0.0007278195 9.868065e-08 -2.001353e-07 -4.728626e-08"/>
+        <joint name="yaw_screw" type="hinge" axis="1 0 0" armature="0.0007776" damping="0.0002" frictionloss="0.005"/>
+        <geom name="yaw_screw" type="mesh" mesh="yaw_screw" rgba="0.3 0.3 0.33 1" group="1"/>
+      </body>
+      <body name="yaw_slide" pos="0 0.6795947 0.03081317">
+        <inertial pos="-0.000823678 0.0001742346 0.02417455" mass="0.307085" fullinertia="0.0004822096 0.0002689834 0.0005641706 -1.035106e-05 -6.130113e-06 -1.069205e-06"/>
+        <joint name="yaw_slide" type="slide" axis="1 0 0" range="0 0.16" damping="5" frictionloss="2"/>
+        <geom name="yaw_slide" type="mesh" mesh="yaw_slide" rgba="0.2 0.62 0.35 1" group="1"/>
+      </body>
+      <body name="frame" pos="5.000004e-12 0.07507343 -0.3141868">
+        <inertial pos="-0.0006078194 0.2164253 0.290457" mass="5.11214" fullinertia="0.540447 0.2635053 0.3749909 -0.001273622 -0.0009504375 -0.227743"/>
+        <joint name="frame" type="hinge" axis="0 0 1" damping="0.5" frictionloss="0.1"/>
+        <geom name="frame" type="mesh" mesh="frame" rgba="0.42 0.55 0.78 1" group="1"/>
+        <geom name="belts" type="mesh" mesh="belts" rgba="0.08 0.08 0.08 1" group="1"/>
+        <geom name="rail_top" type="box" pos="-5.000004e-12 0.2164838 0.3795204" quat="0.9483237 0.3173047 0 0" size="0.01 0.47 0.01000004" group="3" rgba="0.2 0.8 0.2 0.3" contype="1" conaffinity="2" friction="0.2 0.005 0.0001"/>
+        <site name="rail_exit" pos="-5.000004e-12 0.5858243 0.6703598" size="0.004"/>
+        <site name="band_roller_r" pos="0.062 0.3855435 0.45946" size="0.004" rgba="1 0.8 0.2 1"/>
+        <site name="band_roller_l" pos="-0.062 0.3855435 0.45946" size="0.004" rgba="1 0.8 0.2 1"/>
+        <site name="holder_r" pos="0.126 0.06283855 0.3338916" quat="0.6705661 0.2243683 -0.2243683 0.6705661" size="0.003" rgba="1 0 0 0.5"/>
+        <site name="holder_l" pos="-0.1259724 0.06283855 0.3338916" quat="0.6705661 0.2243683 -0.2243683 0.6705661" size="0.003" rgba="1 0 0 0.5"/>
+        <body name="motor_r" pos="0.091 -0.1047818 0.09623416">
+          <inertial pos="-0.02785612 2.175779e-05 -1.677516e-06" mass="0.0838216" fullinertia="1.669327e-05 3.744909e-05 3.747063e-05 5.117415e-08 -3.741805e-09 -1.435916e-09"/>
+          <joint name="motor_r" type="hinge" axis="-1 -0 -0" armature="0.00368763" damping="0.001" frictionloss="0.02"/>
+          <geom name="motor_r" type="mesh" mesh="motor_r" rgba="0.22 0.22 0.24 1" group="1"/>
+        </body>
+        <body name="motor_l" pos="-0.091 -0.1047818 0.09623416">
+          <inertial pos="0.02785612 1.776521e-05 5.192658e-06" mass="0.0838216" fullinertia="1.669328e-05 3.744937e-05 3.747037e-05 -4.206934e-08 -1.204878e-08 -3.306379e-09"/>
+          <joint name="motor_l" type="hinge" axis="1 0 0" armature="0.00368763" damping="0.001" frictionloss="0.02"/>
+          <geom name="motor_l" type="mesh" mesh="motor_l" rgba="0.22 0.22 0.24 1" group="1"/>
+        </body>
+        <body name="idler_r" pos="0.03 0.5761688 0.6067377">
+          <inertial pos="0.005000004 9.061092e-05 1.89943e-05" mass="0.0172891" fullinertia="3.363926e-06 2.016541e-06 2.035732e-06 -1.095196e-14 7.540673e-15 -3.616746e-09"/>
+          <joint name="idler_r" type="hinge" axis="-1 -0 -0" armature="1e-06"/>
+          <geom name="idler_r" type="mesh" mesh="idler_r" rgba="0.85 0.85 0.88 1" group="1"/>
+        </body>
+        <body name="idler_l" pos="-0.035 0.5761688 0.6067377">
+          <inertial pos="3.987246e-09 5.01598e-05 -7.781439e-05" mass="0.0172891" fullinertia="3.363925e-06 2.030857e-06 2.021414e-06 -6.481274e-15 1.585408e-14 9.102846e-09"/>
+          <joint name="idler_l" type="hinge" axis="1 0 0" armature="1e-06"/>
+          <geom name="idler_l" type="mesh" mesh="idler_l" rgba="0.85 0.85 0.88 1" group="1"/>
+        </body>
+        <body name="slider" pos="0.0002496386 0.5630543 0.6532014">
+          <inertial pos="-0.0002477017 -0.3157128 -0.274231" mass="0.0301592" fullinertia="1.851475e-05 2.829357e-05 3.191199e-05 -1.12966e-09 -9.424165e-10 -8.777687e-06"/>
+          <joint name="slider" type="slide" axis="-0 0.7986355 0.601815" range="-0.33 0.37" damping="1" frictionloss="2"/>
+          <geom name="slider" type="mesh" mesh="slider" rgba="0.1 0.7 0.4 1" group="1"/>
+        </body>
+        <body name="shuttle" pos="0.0002553351 0.2134414 0.3897491">
+          <inertial pos="-0.0002550205 -0.2620028 -0.2220307" mass="0.105169" fullinertia="0.0001768404 0.0001577845 4.641127e-05 2.770199e-10 1.158949e-09 1.351436e-05"/>
+          <joint name="shuttle" type="slide" axis="-0 0.7986355 0.601815" range="-0.008 0.5" damping="0.3" frictionloss="1"/>
+          <geom name="shuttle" type="mesh" mesh="shuttle" rgba="0.85 0.15 0.45 1" group="1"/>
+          <site name="band_hook_r" pos="0.01374466 -0.2300932 -0.2347601" size="0.004" rgba="1 0.8 0.2 1"/>
+          <site name="band_hook_l" pos="-0.01425534 -0.2300932 -0.2347601" size="0.004" rgba="1 0.8 0.2 1"/>
+          <site name="dart_seat" pos="-0.0002553351 -0.2779701 -0.1457002" quat="0.6705661 0.2243683 -0.2243683 0.6705661" size="0.003" rgba="1 0 0 0.5"/>
+        </body>
+        <body name="pitch_screw" pos="0 0.336544 0.3355129">
+          <inertial pos="-0.0001081203 -0.08357403 -0.0629927" mass="0.190205" fullinertia="0.00433547 0.001587159 0.002775469 1.779162e-06 1.305441e-06 -0.002071335"/>
+          <joint name="pitch_screw" type="hinge" axis="0 -0.7986355 -0.601815" armature="0.0007776" damping="0.0002" frictionloss="0.005"/>
+          <geom name="pitch_screw" type="mesh" mesh="pitch_screw" rgba="0.3 0.3 0.33 1" group="1"/>
+        </body>
+        <body name="pitch_slider" pos="0 -0.08625361 0.01691203">
+          <inertial pos="-0.0001530843 0.1917834 0.2241066" mass="0.327936" fullinertia="0.0004468065 0.002018831 0.001971468 3.472312e-07 -2.146189e-06 -4.754657e-05"/>
+          <joint name="pitch_slider" type="slide" axis="-0 0.7986355 0.601815" range="-0.15 0.1" damping="5" frictionloss="2"/>
+          <geom name="pitch_slider" type="mesh" mesh="pitch_slider" rgba="0.16 0.3 0.66 1" group="1"/>
+          <site name="band_anchor_r" pos="0.074 0.2297265 0.259491" size="0.004" rgba="1 0.8 0.2 1"/>
+          <site name="band_anchor_l" pos="-0.074 0.2297265 0.259491" size="0.004" rgba="1 0.8 0.2 1"/>
+        </body>
+        <body name="lock" pos="-0.0115 -0.1304016 0.01552246">
+          <inertial pos="0.007210014 0.01568211 0.02170567" mass="0.00453849" fullinertia="4.321654e-06 1.905436e-06 2.530264e-06 -2.854817e-07 -2.558132e-07 -1.754707e-06"/>
+          <joint name="lock" type="hinge" axis="-1 -0 -0" range="0 0.7853982" armature="0.0001" damping="0.01"/>
+          <geom name="lock" type="mesh" mesh="lock" rgba="0.95 0.55 0.1 1" group="1"/>
+        </body>
+        <body name="claw_r" pos="0.005470164 -0.08067695 0.09486513">
+          <inertial pos="0.003243649 0.005269734 0.009605641" mass="0.0034533" fullinertia="2.986215e-07 1.601615e-07 2.296227e-07 -3.794628e-08 -2.859458e-08 -1.211199e-07"/>
+          <joint name="claw_r" type="hinge" axis="-0 0.601815 -0.7986355" range="0 0.2617994" armature="1e-06"/>
+          <geom name="claw_r" type="mesh" mesh="claw_r" rgba="0.15 0.85 0.9 1" group="1"/>
+        </body>
+        <body name="claw_l" pos="-0.00625 -0.08912951 0.09976489">
+          <inertial pos="-0.002463813 0.01372229 0.00470588" mass="0.0034533" fullinertia="2.986215e-07 1.601615e-07 2.296227e-07 3.794627e-08 2.859457e-08 -1.211199e-07"/>
+          <joint name="claw_l" type="hinge" axis="0 -0.601815 0.7986355" range="0 0.2617994" armature="1e-06"/>
+          <geom name="claw_l" type="mesh" mesh="claw_l" rgba="0.15 0.85 0.9 1" group="1"/>
+        </body>
+        <body name="arm" pos="0 0.09180478 0.50657">
+          <inertial pos="1.14117e-05 -0.07420602 -0.01327179" mass="0.407465" fullinertia="0.00566887 0.0006784734 0.005148927 2.69352e-06 1.498951e-06 4.215717e-05"/>
+          <joint name="arm" type="hinge" axis="0 -0.601815 0.7986355" range="-1.658063 1.658063" armature="0.002" damping="0.05"/>
+          <geom name="arm" type="mesh" mesh="arm" rgba="0.95 0.6 0.15 1" group="1"/>
+          <body name="crank" pos="-5.556399e-05 -0.2667969 0.06027341">
+            <inertial pos="1.375155e-05 -0.0086145 0.01210487" mass="0.0078034" fullinertia="3.291025e-06 2.555608e-06 1.430319e-06 1.535358e-09 -2.224565e-09 1.52152e-06"/>
+            <joint name="crank" type="hinge" axis="-0 0.7986355 0.601815" range="-0.1745329 3.316126" armature="0.0001" damping="0.005"/>
+            <geom name="crank" type="mesh" mesh="crank" rgba="0.6 0.25 0.8 1" group="1"/>
+            <body name="rod" pos="5.556399e-05 -0.03388412 0.04959459">
+              <inertial pos="-3.229152e-11 0.02554507 -0.0299471" mass="0.00546745" fullinertia="4.049844e-06 2.599911e-06 1.579049e-06 8.726167e-15 -7.704481e-15 1.949534e-06"/>
+              <joint name="rod" type="hinge" axis="0 -0.7986355 -0.601815" armature="1e-06"/>
+              <geom name="rod" type="mesh" mesh="rod" rgba="0.15 0.75 0.8 1" group="1"/>
+            </body>
+          </body>
+          <body name="plunger" pos="0 -0.2342988 0.01714707">
+            <inertial pos="-3.273162e-05 0.0707224 -0.09647159" mass="0.046779" fullinertia="0.00036599 0.0002282412 0.0001411856 3.59665e-08 -9.745605e-08 0.0001743315"/>
+            <joint name="plunger" type="slide" axis="-0 0.601815 -0.7986355" range="-0.005 0.125" damping="0.5" frictionloss="0.3"/>
+            <geom name="plunger" type="mesh" mesh="plunger" rgba="0.92 0.85 0.15 1" group="1"/>
+            <site name="magnet" pos="-5.000004e-12 0.1206849 -0.1851148" quat="0.6705661 0.2243683 -0.2243683 0.6705661" size="0.003" rgba="1 0 0 0.5"/>
+            <site name="magnet_centre" pos="-5.000004e-12 0.1209648 -0.1605258" quat="0.6705661 0.2243683 -0.2243683 0.6705661" size="0.003" rgba="1 1 0 0.6"/>
+          </body>
+        </body>
+      </body>
+    </body>
+    <body name="dart0" pos="0.300 -0.6 0.05">
+      <freejoint name="dart0"/>
+      <inertial pos="0 0 0" mass="0.17798" fullinertia="5.63436e-05 0.000504652 0.000504578 2.41329e-08 -1.02473e-06 1.58599e-08"/>
+      <geom name="dart0" type="capsule" fromto="-0.10709 0 0 0.05217 0 0" size="0.02085" group="3" rgba="1 1 1 0.3" contype="2" conaffinity="1" friction="0.2 0.005 0.0001"/>
+      <geom type="mesh" mesh="dart_body" rgba="0.95 0.95 0.95 1" group="1"/>
+      <geom type="mesh" mesh="dart_fins" rgba="0.2 0.45 0.85 1" group="1"/>
+      <geom type="mesh" mesh="dart_nose" rgba="0.85 0.12 0.12 1" group="1"/>
+      <geom type="mesh" mesh="dart_plate" rgba="0.35 0.35 0.38 1" group="1"/>
+    </body>
+    <body name="dart1" pos="0.400 -0.6 0.05">
+      <freejoint name="dart1"/>
+      <inertial pos="0 0 0" mass="0.17798" fullinertia="5.63436e-05 0.000504652 0.000504578 2.41329e-08 -1.02473e-06 1.58599e-08"/>
+      <geom name="dart1" type="capsule" fromto="-0.10709 0 0 0.05217 0 0" size="0.02085" group="3" rgba="1 1 1 0.3" contype="2" conaffinity="1" friction="0.2 0.005 0.0001"/>
+      <geom type="mesh" mesh="dart_body" rgba="0.95 0.95 0.95 1" group="1"/>
+      <geom type="mesh" mesh="dart_fins" rgba="0.2 0.45 0.85 1" group="1"/>
+      <geom type="mesh" mesh="dart_nose" rgba="0.85 0.12 0.12 1" group="1"/>
+      <geom type="mesh" mesh="dart_plate" rgba="0.35 0.35 0.38 1" group="1"/>
+    </body>
+    <body name="dart2" pos="0.500 -0.6 0.05">
+      <freejoint name="dart2"/>
+      <inertial pos="0 0 0" mass="0.17798" fullinertia="5.63436e-05 0.000504652 0.000504578 2.41329e-08 -1.02473e-06 1.58599e-08"/>
+      <geom name="dart2" type="capsule" fromto="-0.10709 0 0 0.05217 0 0" size="0.02085" group="3" rgba="1 1 1 0.3" contype="2" conaffinity="1" friction="0.2 0.005 0.0001"/>
+      <geom type="mesh" mesh="dart_body" rgba="0.95 0.95 0.95 1" group="1"/>
+      <geom type="mesh" mesh="dart_fins" rgba="0.2 0.45 0.85 1" group="1"/>
+      <geom type="mesh" mesh="dart_nose" rgba="0.85 0.12 0.12 1" group="1"/>
+      <geom type="mesh" mesh="dart_plate" rgba="0.35 0.35 0.38 1" group="1"/>
+    </body>
+    <body name="dart3" pos="0.600 -0.6 0.05">
+      <freejoint name="dart3"/>
+      <inertial pos="0 0 0" mass="0.17798" fullinertia="5.63436e-05 0.000504652 0.000504578 2.41329e-08 -1.02473e-06 1.58599e-08"/>
+      <geom name="dart3" type="capsule" fromto="-0.10709 0 0 0.05217 0 0" size="0.02085" group="3" rgba="1 1 1 0.3" contype="2" conaffinity="1" friction="0.2 0.005 0.0001"/>
+      <geom type="mesh" mesh="dart_body" rgba="0.95 0.95 0.95 1" group="1"/>
+      <geom type="mesh" mesh="dart_fins" rgba="0.2 0.45 0.85 1" group="1"/>
+      <geom type="mesh" mesh="dart_nose" rgba="0.85 0.12 0.12 1" group="1"/>
+      <geom type="mesh" mesh="dart_plate" rgba="0.35 0.35 0.38 1" group="1"/>
+    </body>
+  </worldbody>
+  <equality>
+    <tendon name="c_yaw_screw" tendon1="t_yaw_screw" solref="0.001 1" solimp="0.95 0.99 0.001"/>
+    <tendon name="c_pitch_screw" tendon1="t_pitch_screw" solref="0.001 1" solimp="0.95 0.99 0.001"/>
+    <tendon name="c_belt_r" tendon1="t_belt_r" solref="0.001 1" solimp="0.95 0.99 0.001"/>
+    <tendon name="c_belt_l" tendon1="t_belt_l" solref="0.001 1" solimp="0.95 0.99 0.001"/>
+    <joint name="c_yaw_pin" joint1="frame" joint2="yaw_slide" polycoef="-1.62919584e-07 -1.654131788 -0.003507384192 -0.69439277 -0.4098385972" solref="0.001 1" solimp="0.9999 0.9999 0.001"/>
+    <joint name="c_idler_r" joint1="idler_r" joint2="slider" polycoef="0 52.35602094 0 0 0" solref="0.001 1" solimp="0.9999 0.9999 0.001"/>
+    <joint name="c_idler_l" joint1="idler_l" joint2="slider" polycoef="0 -52.35602094 0 0 0" solref="0.001 1" solimp="0.9999 0.9999 0.001"/>
+    <joint name="c_claw_r" joint1="claw_r" joint2="lock" polycoef="0 0.3333333333 0 0 0" solref="0.001 1" solimp="0.9999 0.9999 0.001"/>
+    <joint name="c_claw_l" joint1="claw_l" joint2="lock" polycoef="0 0.3333333333 0 0 0" solref="0.001 1" solimp="0.9999 0.9999 0.001"/>
+    <connect name="c_rod" body1="rod" body2="plunger" anchor="0 0.06638214 -0.09272093" solref="0.001 1" solimp="0.9999 0.9999 0.001"/>
+    <weld name="dart0_shuttle" body1="shuttle" body2="dart0" active="false" solref="0.002 1" solimp="0.95 0.99 0.001"/>
+    <weld name="dart0_plunger" body1="plunger" body2="dart0" active="false" solref="0.002 1" solimp="0.95 0.99 0.001"/>
+    <weld name="dart0_frame" body1="frame" body2="dart0" active="false" solref="0.002 1" solimp="0.95 0.99 0.001"/>
+    <weld name="dart1_shuttle" body1="shuttle" body2="dart1" active="false" solref="0.002 1" solimp="0.95 0.99 0.001"/>
+    <weld name="dart1_plunger" body1="plunger" body2="dart1" active="false" solref="0.002 1" solimp="0.95 0.99 0.001"/>
+    <weld name="dart1_frame" body1="frame" body2="dart1" active="false" solref="0.002 1" solimp="0.95 0.99 0.001"/>
+    <weld name="dart2_shuttle" body1="shuttle" body2="dart2" active="false" solref="0.002 1" solimp="0.95 0.99 0.001"/>
+    <weld name="dart2_plunger" body1="plunger" body2="dart2" active="false" solref="0.002 1" solimp="0.95 0.99 0.001"/>
+    <weld name="dart2_frame" body1="frame" body2="dart2" active="false" solref="0.002 1" solimp="0.95 0.99 0.001"/>
+    <weld name="dart3_shuttle" body1="shuttle" body2="dart3" active="false" solref="0.002 1" solimp="0.95 0.99 0.001"/>
+    <weld name="dart3_plunger" body1="plunger" body2="dart3" active="false" solref="0.002 1" solimp="0.95 0.99 0.001"/>
+    <weld name="dart3_frame" body1="frame" body2="dart3" active="false" solref="0.002 1" solimp="0.95 0.99 0.001"/>
+  </equality>
+  <tendon>
+    <fixed name="t_yaw_screw">
+      <joint joint="yaw_slide" coef="1"/>
+      <joint joint="yaw_screw" coef="0.0006366197724"/>
+    </fixed>
+    <fixed name="t_pitch_screw">
+      <joint joint="pitch_slider" coef="1"/>
+      <joint joint="pitch_screw" coef="-0.0006366197724"/>
+    </fixed>
+    <fixed name="t_belt_r">
+      <joint joint="slider" coef="1"/>
+      <joint joint="motor_r" coef="-0.0191"/>
+    </fixed>
+    <fixed name="t_belt_l">
+      <joint joint="slider" coef="1"/>
+      <joint joint="motor_l" coef="0.0191"/>
+    </fixed>
+    <spatial name="band" stiffness="90.0" damping="0.2" springlength="0 0.8" width="0.0025" rgba="0.95 0.72 0.15 1">
+      <site site="band_anchor_l"/>
+      <site site="band_roller_l"/>
+      <site site="band_hook_l"/>
+      <site site="band_hook_r"/>
+      <site site="band_roller_r"/>
+      <site site="band_anchor_r"/>
+    </spatial>
+    <fixed name="push" range="-0.317054 10" solreflimit="0.002 1" solimplimit="0.99 0.999 0.0005">
+      <joint joint="slider" coef="1"/>
+      <joint joint="shuttle" coef="-1"/>
+    </fixed>
+  </tendon>
+  <actuator>
+    <motor name="motor_r" joint="motor_r" ctrlrange="-6 6"/>
+    <motor name="motor_l" joint="motor_l" ctrlrange="-6 6"/>
+    <motor name="yaw" joint="yaw_screw" ctrlrange="-1.8 1.8"/>
+    <motor name="pitch" joint="pitch_screw" ctrlrange="-1.8 1.8"/>
+    <position name="lock" joint="lock" kp="2" kv="0.03" ctrlrange="0 0.78540" forcerange="-0.6 0.6"/>
+    <position name="arm" joint="arm" kp="40" kv="2" ctrlrange="-1.65806 1.65806" forcerange="-5 5"/>
+    <position name="crank" joint="crank" kp="6" kv="0.12" ctrlrange="0 3.14159" forcerange="-1.2 1.2"/>
+  </actuator>
+</mujoco>

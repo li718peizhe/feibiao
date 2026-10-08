@@ -3,7 +3,7 @@
 四发的初始位置（按实物）：发射机构上 1 发、装弹机构磁吸 1 发（摆臂待命角）、左右镖座各 1 发。
 飞镖都沿导轨方向放：镖体下面的长条凸起卡进推板/镖座的凹槽，更低的凸块顶在推板前沿。
 摆臂转动时磁吸的飞镖保持和导轨平行（假设磁铁头能随动转动，否则从 ±45° 镖座取来的镖装不进推板）。
-装填：发射机构停在磁铁竖直正下方，磁铁断电，飞镖竖直落进推板。
+装填和取镖相反：发射机构停在磁铁正下方，推杆下放把飞镖送进推板凹槽，磁铁断电，推杆收起。
 启用飞镖时：夹持/装填用 weld 约束表示，出膛后飞镖是自由刚体，受重力、简化气动和导轨/地面接触。
 不启用飞镖（默认）时：飞镖隐藏、不参与动力学，只记“哪一发在哪”，装弹机构和发射流程照常动作，
 每次发射记录发射机构的峰值速度。
@@ -61,13 +61,12 @@ class Darts:
         self.mag_axis = m.jnt_axis[m.joint("arm").id].copy()
         self.seat_rel = site("dart_seat")                 # 相对发射机构
         self.q_load = lay["q_load"] * 1e-3                # 装填时发射机构的位置
-        self.fall_time = math.sqrt(2 * lay["fall_height"] * 1e-3 / G)
+        self.seat_crank = pl.crank_for_drop(lay["seat_drop"] * 1e-3)   # 放镖时曲柄下放的角度
         self.holder = {}
         for k, v in lay["holders"].items():
             side = int(k)
             self.holder[side] = dict(arm=math.radians(v["arm_deg"]), crank=pl.crank_for_drop(v["drop"] * 1e-3),
                                      rel=site(f"holder_{'r' if side > 0 else 'l'}"))
-        self.falling = None
         self._geoms = [g for b in self.body for g in range(m.body_geomadr[b], m.body_geomadr[b] + m.body_geomnum[b])]
         self._look = {g: (float(m.geom_rgba[g, 3]), int(m.geom_contype[g]), int(m.geom_conaffinity[g])) for g in self._geoms}
         self.apply_enabled()
@@ -119,7 +118,7 @@ class Darts:
         """调用前机架、发射机构、摆臂已经摆到初始构型。"""
         self.state = ["seated", "held", "holder", "holder"]
         self.side = {2: 1, 3: -1}                   # 镖座上的飞镖 -> 哪一侧
-        self.flight, self.shots, self.falling = {}, [], None
+        self.flight, self.shots = {}, []
         self.held_side = None                       # 吸着的那发是从哪一侧镖座取的（开机那发为 None）
         self.pl.d.xfrc_applied[:] = 0
         if not self.enabled:                         # 隐藏的飞镖统一挂在机架上，不影响发射机构和装弹机构
@@ -152,11 +151,14 @@ class Darts:
         tol = math.radians(tol_deg)
         return abs(self.pl.q("arm") - arm) < tol and abs(self.pl.q("crank") - crank) < tol
 
-    def at_load_position(self):
-        """装填条件：发射机构停在磁铁正下方、摆臂 0°、推杆收起。"""
+    def shuttle_at_load(self):
+        """发射机构停在磁铁正下方。"""
         pl = self.pl
-        return (abs(pl.q("shuttle") - self.q_load) < 2e-3 and abs(pl.qd("shuttle")) < 0.01
-                and self._loader_at(0.0, 0.0, tol_deg=2.5))
+        return abs(pl.q("shuttle") - self.q_load) < 2e-3 and abs(pl.qd("shuttle")) < 0.01
+
+    def at_load_position(self):
+        """放镖条件：发射机构在磁铁正下方，摆臂 0°，推杆已经下放到推板上。"""
+        return self.shuttle_at_load() and self._loader_at(0.0, self.seat_crank)
 
     def grip(self):
         """磁铁通电：磁吸面下方正好有一发（镖座上）就吸住。"""
@@ -176,7 +178,7 @@ class Darts:
         return False
 
     def release(self):
-        """磁铁断电：发射机构正好在正下方就让飞镖竖直落进推板，否则掉下去。"""
+        """磁铁断电：推杆已经把飞镖送到推板上就装好，否则掉下去。"""
         i = self.find("held")
         if i is None:
             return None
@@ -189,24 +191,9 @@ class Darts:
             self.detach(i)
             self.state[i] = "free"
             return "dropped"
-        start = rel_pose(*self.pose(self.carrier["shuttle"]), *self.pose(self.body[i]))
-        self.attach(i, "shuttle", start)
-        self.falling = dict(i=i, start=start[0], t0=float(self.pl.d.time))
-        self.state[i] = "falling"
-        return "falling"
-
-    def _fall(self, t):
-        """飞镖从磁铁竖直落进推板：按自由落体的时间把 weld 目标从起点移到落位。"""
-        f = self.falling
-        if f is None:
-            return
-        k = min(1.0, ((t - f["t0"]) / self.fall_time) ** 2)
-        e = self._weld(f["i"], "shuttle")
-        self.pl.m.eq_data[e, 3:6] = f["start"] + k * (self.seat_rel[0] - f["start"])
-        self.pl.m.eq_data[e, 6:10] = self.seat_rel[1]
-        if k >= 1.0:
-            self.state[f["i"]] = "seated"
-            self.falling = None
+        self.attach(i, "shuttle", self.seat_rel)
+        self.state[i] = "seated"
+        return "seated"
 
     # ---- 每个物理步调用 ----
     def step(self, t):
@@ -214,7 +201,6 @@ class Darts:
         if self.enabled and i is not None:                 # 磁铁头随摆臂反转，飞镖保持和导轨平行
             e = self._weld(i, "plunger")
             self.pl.m.eq_data[e, 3:6], self.pl.m.eq_data[e, 6:10] = self.held_rel()
-        self._fall(t)
         self._separate(t)
         self._aero()
         self._land(t)

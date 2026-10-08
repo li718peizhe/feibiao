@@ -45,8 +45,8 @@ class Sequencer:
             self._fail("磁铁下面没有飞镖")
 
     def _release(self):
-        if self.sim.darts.release() not in ("seated", "falling"):
-            self._fail("磁铁断电时发射机构不在正下方，飞镖掉了")
+        if self.sim.darts.release() != "seated":
+            self._fail("磁铁断电时飞镖没有放到推板上，掉了")
 
     # ---- 动作组 ----
     def cock_steps(self):
@@ -69,8 +69,8 @@ class Sequencer:
         return math.radians(sb[str(side)] if str(side) in sb else 0.0)
 
     def load_steps(self):
-        """装填（按实物）：滑块把发射机构带下去，再带着它慢慢抬升到磁铁正下方，磁铁断电，飞镖落进推板凹槽；
-        然后压下锁止、滑块回位。要求磁铁上已经吸着一发。"""
+        """装填（按实物，和取镖相反）：滑块把发射机构带下去，再带着它慢慢抬升到磁铁正下方；
+        推杆下放把飞镖送进推板凹槽，磁铁断电，推杆收起；然后压下锁止、滑块回位。要求磁铁上已经吸着一发。"""
         pl, c, d, p = self.sim.plant, self.sim.ctrl, self.sim.darts, self.sim.plant.p
         gap = pl.meta["push_gap_mm"] * 1e-3
         bottom = -0.003 - gap
@@ -79,8 +79,10 @@ class Sequencer:
                 Step("装填：滑块把发射机构带下去", lambda: c.set_slider(bottom), lambda: pl.q("shuttle") < -0.002, 8),
                 Step("装填：张开夹爪", lambda: self._servo("lock", p.lock_open_deg),
                      lambda: self._servo_at("lock") and not pl.latched, 2),
-                Step("装填：慢慢抬升到磁铁正下方", lambda: c.ramp_slider(d.q_load - gap, p.load_rise_speed), d.at_load_position, 8),
-                Step("装填：磁铁断电", self._release, lambda: d.find("seated") is not None, 1),
+                Step("装填：慢慢抬升到磁铁正下方", lambda: c.ramp_slider(d.q_load - gap, p.load_rise_speed), d.shuttle_at_load, 8),
+                self._move("装填：推杆下放", "crank", d.seat_crank, 2),
+                Step("装填：磁铁断电", self._release, lambda: self._elapsed() > 0.15, 1),
+                self._move("装填：推杆收起", "crank", 0.0, 2),
                 Step("装填：压下锁止", lambda: c.set_slider(bottom), lambda: pl.q("shuttle") < -0.002, 6),
                 Step("装填：锁止", lambda: self._servo("lock", 0), lambda: pl.latched and self._servo_at("lock"), 2),
                 Step("装填：滑块回位", lambda: c.set_slider(p.slider_park),

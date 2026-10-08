@@ -110,9 +110,10 @@ class TestMechanism(unittest.TestCase):
         s.seq.cmd_fire()
         s.run(2.0, until=lambda: not s.seq.busy())
         s.seq.cmd_load()
-        q_at_release = []
-        s.run(15.0, until=lambda: (d.falling is not None and not q_at_release) and not q_at_release.append(pl.q("shuttle")))
-        self.assertAlmostEqual(q_at_release[0], d.q_load, delta=2e-3)    # 磁铁断电时发射机构在磁铁正下方
+        at_release = []
+        s.run(15.0, until=lambda: s.seq.label == "装填：磁铁断电" and not at_release.append((pl.q("shuttle"), pl.q("crank"))))
+        self.assertAlmostEqual(at_release[0][0], d.q_load, delta=2e-3)     # 发射机构在磁铁正下方
+        self.assertAlmostEqual(at_release[0][1], d.seat_crank, delta=0.03)  # 推杆先下放到推板上，再断电
         s.run(15.0, until=lambda: not s.seq.busy())
         self.assertIsNone(s.seq.fault)
         self.assertTrue(pl.latched)

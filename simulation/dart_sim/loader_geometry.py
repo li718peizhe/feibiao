@@ -2,7 +2,8 @@
 
 - 磁吸：推杆末端磁铁座（part_433）下表面贴住飞镖铁片顶面，摆臂 0°、曲柄上止点（CAD 构型）
 - 发射机构：镖体下面的长条凸起卡进推板（part_347）中间的凹槽，镖腹贴推板顶面，更低的凸块顶在推板前沿
-- 装填：发射机构被滑块带到“磁铁正下方”（竖直方向）的位置 q_load，磁铁断电，飞镖竖直落下卡进推板
+- 装填（和取镖相反）：滑块把发射机构带到磁铁正下方（沿导轨法向）的位置 q_load，推杆下放把飞镖送进推板凹槽，
+  磁铁断电，推杆收起
 - 两侧镖座：凸起卡进镖座顶板（part_490 / part_482）的凹槽，飞镖沿导轨方向，镖尾架在后面的 ∧ 形支撑上；
   沿槽方向取不碰机架、又离磁铁最近的位置（CAD 里顶板没给凸块让位，凸块会压进顶板）
 """
@@ -72,13 +73,10 @@ def layout(ex, dart_tris, dart_info, body_tris, frame_tris):
     held = np.array([0.0, mu - plate_x, face - plate_top])
     push = rail(ex.triangles([PUSH_PLATE]))
     seat = np.array([0.0, push[:, 1].max() - feat["lug_rear_x"], push[:, 2].max() + feat["belly"]])
-    up = np.array([0.0, 0.0, 1.0]) @ R.T                     # 竖直向上在导轨坐标里的分量
-    fall_n = held[2] - seat[2]
-    land_u = held[1] - fall_n * up[1] / up[2]                # 竖直落下，沿导轨也会往下走一段
     piv = rail(ex.joint_origin("旋转_joint"))[0]
     radius = piv[1] - mu
     out = {"magnet_face_n": float(face), "magnet_u": float(mu), "held_com": held.tolist(), "features": feat,
-           "seat_com_q0": seat.tolist(), "q_load": float(land_u - seat[1]), "fall_height": float(fall_n / up[2]),
+           "seat_com_q0": seat.tolist(), "q_load": float(held[1] - seat[1]), "seat_drop": float(held[2] - seat[2]),
            "holders": {}}
     d = np.concatenate([_sample(t) for t in dart_tris])
     d_rail = np.stack([-d[:, 1], d[:, 0], d[:, 2]], -1)

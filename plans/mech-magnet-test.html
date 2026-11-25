@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>电磁铁测试计划</title>
+<style>
+/* 布局：单栏测试单，和实车数据单（mech-data-form.html）同一套样式。顶部吸附进度条（10 格对应 10 条，点格子跳过去），
+   先是测试前要准备的和安全，再是四组测试，每条用图纸气泡编号，写为什么测、步骤和合格标准，最后是汇总区。
+   配色：铝型材灰底 + 划线蓝（机加工划线涂料）做强调；状态色单独一套。 */
+:root {
+  --bg: #edf0f3; --surface: #ffffff; --field: #f6f8fa; --ink: #18222c; --muted: #5a6774; --rule: #d3dae1;
+  --accent: #2747b8; --on-accent: #ffffff;
+  --ok: #1f7a4d; --ok-soft: #e1f1e8; --warn: #9a5b00; --warn-soft: #fbeed6; --na: #66717c; --na-soft: #e7eaed;
+  --font-body: "PingFang SC", "Microsoft YaHei", "Noto Sans SC", system-ui, sans-serif;
+  --font-display: Bahnschrift, "DIN Alternate", "Arial Narrow", "Microsoft YaHei", sans-serif;
+  --font-mono: ui-monospace, Consolas, "Cascadia Mono", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0e1419; --surface: #151e25; --field: #10181e; --ink: #e2e8ee; --muted: #94a2af; --rule: #2a3845;
+    --accent: #8aa2ff; --on-accent: #0e1419;
+    --ok: #5cc892; --ok-soft: #12301f; --warn: #e8b05a; --warn-soft: #36270e; --na: #9ba5af; --na-soft: #222b33;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0e1419; --surface: #151e25; --field: #10181e; --ink: #e2e8ee; --muted: #94a2af; --rule: #2a3845;
+  --accent: #8aa2ff; --on-accent: #0e1419;
+  --ok: #5cc892; --ok-soft: #12301f; --warn: #e8b05a; --warn-soft: #36270e; --na: #9ba5af; --na-soft: #222b33;
+  color-scheme: dark;
+}
+*, *::before, *::after { box-sizing: border-box; }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.6 var(--font-body); padding-inline: 16px; }
+h1, h2, h3, p { margin: 0; }
+h1, h2, h3 { text-wrap: balance; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; margin-inline: -16px; padding: .6rem 16px; background: var(--surface); border-bottom: 1px solid var(--rule); }
+.top-in { max-width: 52rem; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; gap: .4rem 1rem; }
+.top-name { font-weight: 700; }
+.counts { font-size: .85rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+.top-in .btn { margin-left: auto; }
+.strip { flex: 1 1 100%; display: grid; grid-template-columns: repeat(10, 1fr); gap: 3px; }
+.strip a { height: 10px; border-radius: 2px; background: var(--rule); }
+.strip a.ok { background: var(--ok); }
+.strip a.measure { background: var(--warn); }
+.strip a.na { background: var(--na); }
+.btn { font: inherit; font-size: .9rem; padding: .35rem .9rem; border: 1px solid var(--accent); border-radius: 3px; background: var(--accent); color: var(--on-accent); cursor: pointer; }
+.btn.ghost { background: transparent; color: var(--accent); }
+a.btn { display: inline-block; text-decoration: none; }
+.btn:hover { filter: brightness(1.08); }
+.btn.armed { background: var(--warn); border-color: var(--warn); color: var(--surface); }
+.wrap { max-width: 52rem; margin: 0 auto; padding-block: 1.75rem 4rem; display: grid; gap: 1.5rem; }
+#secs { display: grid; gap: 1.5rem; min-width: 0; }
+.eyebrow { font: 500 .75rem/1.5 var(--font-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+h1 { font-size: 1.8rem; line-height: 1.3; margin-top: .35rem; }
+.lede { color: var(--muted); max-width: 40rem; margin-top: .6rem; }
+.lede strong { color: var(--ink); font-weight: 500; }
+.meta { display: flex; flex-wrap: wrap; gap: .75rem 1rem; margin-top: 1.1rem; max-width: 34rem; }
+.meta label { flex: 1 1 12rem; }
+.legend { display: flex; flex-wrap: wrap; gap: .4rem 1.1rem; margin-top: .9rem; font-size: .85rem; color: var(--muted); }
+.legend span { display: inline-flex; align-items: center; gap: .4rem; }
+.legend i { width: .85rem; height: .85rem; border-radius: 50%; border: 1.5px solid var(--ink); }
+.legend i.ok, .item.ok .bubble { background: var(--ok); border-color: var(--ok); }
+.legend i.measure, .item.measure .bubble { background: var(--warn); border-color: var(--warn); }
+.legend i.na, .item.na .bubble { background: var(--na); border-color: var(--na); }
+.sec { background: var(--surface); border: 1px solid var(--rule); border-radius: 4px; min-width: 0; }
+.sec-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: .2rem .9rem; padding: 1rem 1.1rem .85rem; border-bottom: 1px solid var(--rule); }
+.sec-head h2 { font-size: 1.15rem; }
+.sec-head p { font-size: .88rem; color: var(--muted); }
+.item, #out { scroll-margin-top: 7rem; }
+.item { display: grid; grid-template-columns: 2.3rem minmax(0, 1fr); gap: .25rem .9rem; padding: 1rem 1.1rem 1.2rem; }
+.item + .item { border-top: 1px solid var(--rule); }
+.bubble { width: 2.3rem; height: 2.3rem; border-radius: 50%; border: 1.5px solid var(--ink); display: grid; place-items: center; font: 600 1.15rem/1 var(--font-display); font-variant-numeric: tabular-nums; }
+.item.ok .bubble, .item.measure .bubble, .item.na .bubble { color: var(--surface); }
+.body { display: grid; gap: .65rem; min-width: 0; }
+.q { display: flex; flex-wrap: wrap; align-items: flex-start; gap: .4rem .8rem; }
+.q h3 { flex: 1 1 18rem; font-size: 1rem; line-height: 1.55; padding-top: .3rem; }
+.chips { display: flex; gap: .35rem; padding-top: .2rem; }
+.chip { font: inherit; font-size: .8rem; line-height: 1.5; padding: .1rem .6rem; border: 1px solid var(--rule); border-radius: 999px; background: transparent; color: var(--muted); cursor: pointer; }
+.chip:hover { border-color: var(--muted); }
+.chip.measure[aria-pressed="true"] { background: var(--warn-soft); border-color: var(--warn); color: var(--warn); }
+.chip.na[aria-pressed="true"] { background: var(--na-soft); border-color: var(--na); color: var(--na); }
+.why { font-size: .88rem; color: var(--muted); }
+.why .flag { color: var(--warn); font-weight: 700; margin-right: .4rem; }
+.ref { font-size: .88rem; padding: .5rem .75rem; background: var(--field); border: 1px dashed var(--rule); border-radius: 3px; }
+.fields { display: grid; grid-template-columns: repeat(auto-fill, minmax(13.5rem, 1fr)); gap: .65rem .9rem; }
+.fields .wide { grid-column: 1 / -1; }
+.sub { grid-column: 1 / -1; font: 600 .95rem/1.3 var(--font-display); letter-spacing: .03em; color: var(--accent); padding-top: .25rem; }
+label.f { display: grid; gap: .2rem; align-content: start; font-size: .85rem; color: var(--muted); min-width: 0; }
+.inp { display: flex; align-items: center; min-width: 0; background: var(--field); border: 1px solid var(--rule); border-radius: 3px; }
+.inp:focus-within { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+.inp input, .inp select, .inp textarea { flex: 1; min-width: 0; width: 100%; font: inherit; font-size: .95rem; color: var(--ink); background: transparent; border: 0; padding: .42rem .6rem; outline: none; }
+.inp textarea { resize: vertical; min-height: 4.3rem; }
+.inp .unit { font: .8rem var(--font-mono); color: var(--muted); padding-right: .6rem; white-space: nowrap; }
+::placeholder { color: var(--muted); opacity: .8; }
+.pairs { grid-column: 1 / -1; display: grid; grid-template-columns: 1.4rem minmax(0, 1fr) minmax(0, 1fr); gap: .35rem .6rem; align-items: center; max-width: 30rem; font-size: .85rem; color: var(--muted); }
+.pn { font: 500 .85rem var(--font-mono); text-align: right; }
+.out-body { display: grid; gap: .75rem; padding: 1rem 1.1rem 1.2rem; }
+.out-body textarea { width: 100%; min-height: 18rem; font: .84rem/1.6 var(--font-mono); color: var(--ink); background: var(--field); border: 1px solid var(--rule); border-radius: 3px; padding: .75rem; resize: vertical; }
+.out-actions { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem; }
+.msg { font-size: .85rem; color: var(--ok); }
+.pre { display: grid; gap: .5rem; padding: 1rem 1.1rem 1.2rem; }
+.pre h3 { font-size: 1rem; }
+.pre ul { margin: 0 0 .5rem; padding-left: 1.2rem; display: grid; gap: .25rem; font-size: .92rem; }
+.steps { margin: 0; padding-left: 1.3rem; display: grid; gap: .25rem; font-size: .92rem; }
+.pass { font-size: .88rem; padding: .45rem .75rem; background: var(--ok-soft); border-radius: 3px; }
+.pass span { font-weight: 700; color: var(--ok); margin-right: .5rem; }
+@media (max-width: 30rem) {
+  h1 { font-size: 1.5rem; }
+  .sec-head, .item, .out-body, .pre { padding-inline: .85rem; }
+  .item { grid-template-columns: 1.9rem minmax(0, 1fr); gap: .25rem .6rem; }
+  .bubble { width: 1.9rem; height: 1.9rem; font-size: 1rem; }
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="top-in">
+    <span class="counts" id="counts">已填 0 · 待测 0 · 不适用 0 · 未填 10</span>
+    <a class="btn" href="#out">去复制汇总</a>
+    <nav class="strip" id="strip" aria-label="按编号跳转"></nav>
+  </div>
+</header>
+<main class="wrap">
+  <section aria-labelledby="title">
+    <p class="eyebrow">换弹电磁铁 CNMYE1-P25/29K · DC 24 V · 3.2 W · 2026-11-11 更新</p>
+    <h1 id="title">电磁铁测试计划</h1>
+    <p class="lede">用户提供当前电磁铁为 CNMYE1-P25/29K，通电消磁、断电吸持，通电限制和接线极性待确认。<strong>先填写已有资料，测试前按任务 3l 确认额定条件、支承方式和对应阶段授权。</strong>旧 ELE-P20/15 的数据不适用于当前型号；本表使用新的本地记录，旧表数据仍留在浏览器中。未测项目点“待测”，最后复制汇总。</p>
+    <div class="meta">
+      <label class="f" for="who"><span>填写人</span><div class="inp"><input id="who" type="text" autocomplete="off"></div></label>
+      <label class="f" for="date"><span>填写日期</span><div class="inp"><input id="date" type="text" autocomplete="off" placeholder="如 10 月 12 日"></div></label>
+    </div>
+    <div class="legend" aria-hidden="true"><span><i></i>未填</span><span><i class="ok"></i>已填</span><span><i class="measure"></i>待测</span><span><i class="na"></i>不适用</span></div>
+  </section>
+  <section class="sec" aria-labelledby="h-pre">
+    <div class="sec-head"><h2 id="h-pre">测试前</h2><p>要准备的东西和安全</p></div>
+    <div class="pre">
+      <h3>要准备的</h3>
+      <ul>
+        <li>当前电磁铁规格书；电源与限流按已确认的额定条件准备。</li>
+        <li>手提行李秤或弹簧秤，量程 5~10 kg。</li>
+        <li>能拍 240 帧慢动作的手机。</li>
+        <li>温度计或测温枪；没有就用手摸。</li>
+        <li>0.5 mm、1 mm 的垫片，塑料片、纸片叠起来都行。</li>
+        <li>一发带触发装置的整镖，和镖上铁片的样片。</li>
+      </ul>
+      <h3>安全</h3>
+      <ul>
+        <li>接线、拆线之前先关掉电源输出（或拔掉适配器），接好再开。</li>
+        <li>电磁铁两根线的金属头不要碰在一起。</li>
+        <li>未知允许通电时间时不做持续通电发热测试；每个带电阶段须单独确认。</li>
+        <li>电磁铁烫手就断电。</li>
+        <li>第四组要装皮筋发射：由电控按发射架的操作流程操作，发射方向和靶附近不能有人；有人靠近发射架以前先切无力，确认没上膛。</li>
+      </ul>
+    </div>
+  </section>
+  <div id="secs"></div>
+  <section class="sec" id="out" aria-labelledby="h-out">
+    <div class="sec-head"><h2 id="h-out">汇总</h2><p>边填边更新，复制后整段发回</p></div>
+    <div class="out-body">
+      <textarea id="summary" readonly aria-label="汇总内容"></textarea>
+      <div class="out-actions">
+        <button class="btn" type="button" id="copy">复制汇总</button>
+        <button class="btn ghost" type="button" id="clear">清空重填</button>
+        <span class="msg" id="msg" aria-live="polite"></span>
+      </div>
+      <p class="why">填的内容只存在这台设备的浏览器里，换设备或清缓存就没了，填完尽快复制发出。</p>
+    </div>
+  </section>
+</main>
+<script>
+// 条目：n 编号（机械按编号回复），q 测试名，why 为什么测，steps 步骤，pass 合格标准，flag 醒目前缀，ref 参考说明
+// 字段 [id, 标签, 选项]：u 单位，ph 灰字（CAD 或仿真现用值），a 多行，w 占整行，s 下拉选项，sub 小标题，pairs 成对表格行数
+const SLIP = ["没动", "滑了一点（写在备注）", "掉了"];
+const S = [
+  { id: "prep", t: "一、确认型号和额定条件", d: "带电前先核对资料", items: [
+    { n: 1, q: "记录磁铁规格", why: "实际供电、电流、接线极性和允许通电时间由当前型号决定。",
+      steps: ["记录型号、额定电压和电流、极性及允许连续通电时间或占空要求。", "记录已有的断电吸持和通电释放结果。"],
+      f: [["spec", "型号和额定参数", { a: 1, w: 1 }], ["amp", "已有通电电流", { u: "A" }],
+        ["hold1", "已有断电吸持结果", { s: ["能", "不能"] }], ["note1", "备注", { w: 1 }]] }] },
+  { id: "bench", t: "二、桌上测试", d: "确认规格和阶段授权后进行", items: [
+    { n: 2, q: "垂直拉开的吸力", why: "吸力取决于实际铁片的材料、尺寸、涂层和间隙。",
+      steps: ["按当前磁铁的断电吸持状态，记录实际铁片垂直拉开的结果。", "如需重复测量，先确认测试阶段及支承方式。"],
+      pass: "建议至少是镖重的 3 倍（镖最重 391.5 g，3 倍约 1.2 kg）：摆臂急停、发射冲击时镖还要额外受力。",
+      f: [["plate", "铁片：材料、厚度、尺寸，有没有漆或镀层", { w: 1, ph: "例如 Q235 冷板 1.5 mm，20×20 mm，镀锌" }],
+        ["p1", "第 1 次", { u: "kg" }], ["p2", "第 2 次", { u: "kg" }], ["p3", "第 3 次", { u: "kg" }], ["p4", "第 4 次", { u: "kg" }], ["p5", "第 5 次", { u: "kg" }],
+        ["pref", "厚钢板对照", { u: "kg", ph: "没有就空着" }]] },
+    { n: 3, q: "顺着吸合面拉的力", why: "镖要是贴在磁铁侧面，或者摆动时顺着吸合面滑，靠的只是摩擦，一般比垂直拉开小很多。",
+      steps: ["在断电吸持状态记录铁片沿吸合面开始滑动时的读数。"],
+      f: [["s1", "第 1 次", { u: "kg" }], ["s2", "第 2 次", { u: "kg" }], ["s3", "第 3 次", { u: "kg" }]] },
+    { n: 4, q: "偏心和间隙", why: "摆臂和推杆到位都有误差。电控程序现在认为摆臂角差 1.5° 以内就算到位，摆臂按 15 cm 估，吸合面会偏约 4 mm；推杆下探要是没压到铁片，就要靠磁铁隔着间隙把镖吸上来。",
+      steps: ["确认测试阶段后，在断电吸持状态记录偏心和间隙对吸力的影响。"],
+      f: [["o2", "偏 2 mm 的拉力", { u: "kg" }], ["o4", "偏 4 mm 的拉力", { u: "kg" }],
+        ["g05", "垫 0.5 mm", { s: ["能吸上来", "吸不上来"] }], ["g05f", "垫 0.5 mm 吸上来后的拉力", { u: "kg" }],
+        ["g1", "垫 1 mm", { s: ["能吸上来", "吸不上来"] }], ["g1f", "垫 1 mm 吸上来后的拉力", { u: "kg" }]] },
+    { n: 5, q: "通电释放和断电吸持时间", why: "现有 0.15 s 是占位值，须分别记录通电释放和断电后吸持建立的时间；恢复断电时镖的位置和支承也须确认。",
+      steps: ["先确认额定通电限制、铁片支承和带电阶段授权。", "记录通电命令到释放的时间，以及断电后恢复吸持的时间和现象。"],
+      f: [["t1", "第 1 次", { u: "ms" }], ["t2", "第 2 次", { u: "ms" }], ["t3", "第 3 次", { u: "ms" }], ["t4", "第 4 次", { u: "ms" }], ["t5", "第 5 次", { u: "ms" }],
+        ["grip_time", "断电后吸持建立时间", { u: "ms" }], ["rem", "断电后吸持现象", { w: 1 }], ["video", "视频文件名", { w: 1 }]] },
+    { n: 6, q: "通电限制和温升", why: "释放通电时间不得超出当前型号的允许值。",
+      steps: ["先记录规格书的通电限制；需要温升测试时另行确认测试阶段。", "只记录允许范围内的时间、温度和现象。"],
+      f: [["limit", "允许连续通电时间或占空要求", { w: 1 }], ["heat", "已测时间、温度和现象", { a: 1, w: 1 }]] }] },
+  { id: "arm", t: "三、装上摆臂以后", d: "机构运动须另行确认", items: [
+    { n: 7, q: "吸住整镖，各个位置静止", why: "要知道镖在磁铁上是怎么受力的；摆臂长度电控标定角度也要用。",
+      steps: ["摆臂电机不上电，用手转摆臂。", "吸住一发整镖，在左取镖、右取镖、待命、放镖几个位置各停 1 分钟，看镖有没有滑动或转动。"],
+      f: [["arm_len", "摆臂长度（转轴到吸合面中心）", { u: "mm" }], ["mass", "这发镖的重量", { u: "g" }],
+        ["face", "吸合面朝向", { s: ["镖挂在磁铁下面", "镖贴在磁铁侧面", "其他（写在备注）"] }],
+        ["locate", "有没有定位销、凹槽之类防滑的结构", { w: 1, ph: "没有就写没有" }],
+        ["still", "各个位置有没有滑", { s: SLIP }], ["note7", "备注", { a: 1, w: 1 }]] },
+    { n: 8, q: "手推快速摆动、急停", why: "摆臂在取镖位和待命位之间要摆得快，急停时镖还要额外受一把惯性力。",
+      steps: ["手推摆臂在取镖位和待命位之间快速来回 10 次，每次都猛地停住。", "看镖有没有滑、掉、转。"],
+      f: [["swing", "结果", { s: SLIP }], ["note8", "备注", { a: 1, w: 1 }]] }] },
+  { id: "car", t: "四、换弹装车以后", d: "台架通过后逐次确认联调和发射", items: [
+    { n: 9, q: "发射冲击", why: "发射时整架会震一下，这时磁铁可能正吸着下一发镖。继电器的触点可能被震得跳开一下，所以上车打算换成 MOS 模块。这条看两种开关下镖会不会被震动或震掉。",
+      steps: ["继电器和 MOS 模块要接到电路板上，由懂接线的同学接好。", "吸着一发镖停在待命位，发射一次。发射由电控按发射架的操作流程操作。", "先用继电器做 3 次，再换 MOS 模块做 3 次（MOS 模块到了再做）。", "每次看待命位的镖动没动；能的话用手机慢动作对着它拍。"],
+      f: [["relay3", "用继电器，3 次", { s: ["都没动", "动了（写在备注）", "掉了"] }], ["mos3", "用 MOS 模块，3 次", { s: ["都没动", "动了（写在备注）", "掉了"] }],
+        ["note9", "备注", { a: 1, w: 1 }]] },
+    { n: 10, q: "电机按实际速度摆动", why: "第 8 条是手推，速度和急停都比不上电机。摆臂的程序调好以后，用电机按换弹流程的速度再来一遍。",
+      steps: ["电控让摆臂在取镖位和待命位之间来回 10 次。", "看镖有没有滑、掉、转。"],
+      f: [["motor", "结果", { s: SLIP }], ["note10", "备注", { a: 1, w: 1 }]] }] }
+];
+const ITEMS = S.flatMap(s => s.items), KEY = "mech-magnet-test-v2";
+const LABEL = { ok: "已填", measure: "待测", na: "不适用", "": "未填" };
+const $ = s => document.querySelector(s);
+const esc = t => String(t).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
+let st = { v: {}, s: {}, who: "", date: "" };
+try { const raw = localStorage.getItem(KEY); if (raw) st = Object.assign(st, JSON.parse(raw)); } catch (e) {}
+const save = () => { try { localStorage.setItem(KEY, JSON.stringify(st)); } catch (e) {} };
+const val = k => String(st.v[k] || "").trim();
+const pairKeys = (id, n) => Array.from({ length: n }, (_, i) => [id + (i + 1) + "x", id + (i + 1) + "f"]);
+const keysOf = it => it.f.flatMap(([id, , o = {}]) => o.sub ? [] : o.pairs ? pairKeys(id, o.pairs).flat() : [id]);
+const stateOf = it => st.s[it.n] || (keysOf(it).some(val) ? "ok" : "");
+const counts = c => `已填 ${c.ok} · 待测 ${c.measure} · 不适用 ${c.na} · 未填 ${c[""]}`;
+const withUnit = (v, u) => u && /^[约~±+\-–\d.\s]+$/.test(v) ? `${v} ${u}` : v;
+
+function control(id, o) {
+  const a = `id="f-${id}" data-k="${id}"`;
+  if (o.s) return `<select ${a}><option value="">请选择</option>${o.s.map(x => `<option>${esc(x)}</option>`).join("")}</select>`;
+  if (o.a) return `<textarea ${a} rows="3" placeholder="${esc(o.ph || "")}"></textarea>`;
+  return `<input ${a} type="text" autocomplete="off" placeholder="${esc(o.ph || "")}">`;
+}
+function field([id, label, o = {}]) {
+  if (o.sub) return `<p class="sub">${esc(label)}</p>`;
+  if (o.pairs) return `<div class="pairs"><span></span><span>伸长量</span><span>拉力</span>${pairKeys(id, o.pairs).map((ks, i) => `<span class="pn">${i + 1}</span>` + ks.map((k, j) =>
+    `<div class="inp"><input id="f-${k}" data-k="${k}" type="text" autocomplete="off" aria-label="第 ${i + 1} 点${j ? "拉力" : "伸长量"}" placeholder="${i || j ? "" : "0 刚绷紧"}"><span class="unit">${j ? "N" : "mm"}</span></div>`).join("")).join("")}</div>`;
+  return `<label class="f${o.w ? " wide" : ""}"><span>${esc(label)}</span><div class="inp">${control(id, o)}${o.u ? `<span class="unit">${esc(o.u)}</span>` : ""}</div></label>`;
+}
+function item(it) {
+  const chip = (s, t) => `<button type="button" class="chip ${s}" id="s-${it.n}-${s}" data-n="${it.n}" data-s="${s}" aria-pressed="false">${t}</button>`;
+  return `<article class="item" id="q${it.n}"><span class="bubble">${it.n}</span><div class="body">
+    <div class="q"><h3>${esc(it.q)}</h3><div class="chips">${chip("measure", "待测")}${chip("na", "不适用")}</div></div>
+    ${it.why ? `<p class="why">${it.flag ? `<span class="flag">${esc(it.flag)}</span>` : ""}${esc(it.why)}</p>` : ""}${it.ref ? `<p class="ref">${esc(it.ref)}</p>` : ""}
+    ${it.steps ? `<ol class="steps">${it.steps.map(x => `<li>${esc(x)}</li>`).join("")}</ol>` : ""}${it.pass ? `<p class="pass"><span>合格</span>${esc(it.pass)}</p>` : ""}
+    <div class="fields">${it.f.map(field).join("")}</div></div></article>`;
+}
+function summary(c) {
+  const L = ["电磁铁测试结果（机械回填）",`填写人：${String(st.who).trim() || "（未填）"}　日期：${String(st.date).trim() || "（未填）"}`, counts(c)];
+  for (const sec of S) {
+    L.push("", sec.t);
+    for (const it of sec.items) {
+      const k = stateOf(it); let sub = "";
+      L.push(`${it.n}. ${it.q}${k === "ok" ? "" : `【${LABEL[k]}】`}`);
+      for (const [id, label, o = {}] of it.f) {
+        if (o.sub) { sub = label + " · "; continue; }
+        if (o.pairs) {
+          const p = pairKeys(id, o.pairs).filter(([x, f]) => val(x) || val(f)).map(([x, f]) => `${val(x) || "?"} mm → ${val(f) || "?"} N`);
+          if (p.length) L.push(`   伸长量 → 拉力：${p.join("；")}`);
+          continue;
+        }
+        if (val(id)) L.push(`   ${sub}${label}：${withUnit(val(id), o.u).replace(/\n/g, "\n      ")}`);
+      }
+    }
+  }
+  return L.join("\n");
+}
+function refresh() {
+  const c = { ok: 0, measure: 0, na: 0, "": 0 };
+  for (const it of ITEMS) {
+    const k = stateOf(it); c[k]++;
+    document.getElementById("q" + it.n).className = "item" + (k ? " " + k : "");
+    for (const s of ["measure", "na"]) document.getElementById(`s-${it.n}-${s}`).setAttribute("aria-pressed", String(st.s[it.n] === s));
+    const j = document.getElementById("j" + it.n);
+    j.className = k;
+    j.setAttribute("aria-label", `第 ${it.n} 条，${LABEL[k]}：${it.q}`);
+  }
+  $("#counts").textContent = counts(c);
+  $("#summary").value = summary(c);
+}
+$("#secs").innerHTML = S.map(s => `<section class="sec" aria-labelledby="h-${s.id}"><div class="sec-head"><h2 id="h-${s.id}">${esc(s.t)}</h2><p>${esc(s.d)}</p></div>${s.items.map(item).join("")}</section>`).join("");
+$("#strip").innerHTML = ITEMS.map(it => `<a id="j${it.n}" href="#q${it.n}" title="${it.n}. ${esc(it.q)}"></a>`).join("");
+const fill = () => {
+  document.querySelectorAll("[data-k]").forEach(el => { el.value = st.v[el.dataset.k] || ""; });
+  $("#who").value = st.who || ""; $("#date").value = st.date || "";
+};
+fill(); refresh();
+
+document.addEventListener("input", e => {
+  const el = e.target;
+  if (el.dataset && el.dataset.k) st.v[el.dataset.k] = el.value;
+  else if (el.id === "who" || el.id === "date") st[el.id] = el.value;
+  else return;
+  save(); refresh();
+});
+document.addEventListener("click", e => {
+  const b = e.target.closest(".chip");
+  if (!b) return;
+  st.s[b.dataset.n] = st.s[b.dataset.n] === b.dataset.s ? "" : b.dataset.s;
+  save(); refresh();
+});
+$("#copy").addEventListener("click", () => {
+  const ta = $("#summary"), msg = $("#msg");
+  const fallback = () => {
+    ta.focus(); ta.select();
+    let ok = false;
+    try { ok = document.execCommand("copy"); } catch (e) {}
+    msg.textContent = ok ? "已复制，可以直接粘贴发送" : "没能自动复制：内容已全选，按 Ctrl+C 复制（手机长按选“复制”）";
+  };
+  if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(ta.value).then(() => { msg.textContent = "已复制，可以直接粘贴发送"; }, fallback);
+  else fallback();
+});
+let armed = 0;
+$("#clear").addEventListener("click", e => {
+  const b = e.currentTarget, reset = () => { armed = 0; b.textContent = "清空重填"; b.classList.remove("armed"); };
+  if (!armed) { armed = setTimeout(reset, 4000); b.textContent = "再点一次，清空全部"; b.classList.add("armed"); return; }
+  clearTimeout(armed); reset();
+  st = { v: {}, s: {}, who: "", date: "" }; save(); fill(); refresh();
+  $("#msg").textContent = "已清空";
+});
+</script>
+</body>
+</html>

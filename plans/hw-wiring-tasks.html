@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>硬件接线任务</title>
+<style>
+/* 布局：单栏测试单，和实车数据单、电磁铁测试计划同一套样式。顶部吸附进度条（7 格对应 7 条，点格子跳过去），
+   先是要准备的和安全，再是两组接线任务，每条用图纸气泡编号，写为什么做、步骤和要注意的，最后是汇总区。
+   配色：铝型材灰底 + 划线蓝（机加工划线涂料）做强调；状态色单独一套。 */
+:root {
+  --bg: #edf0f3; --surface: #ffffff; --field: #f6f8fa; --ink: #18222c; --muted: #5a6774; --rule: #d3dae1;
+  --accent: #2747b8; --on-accent: #ffffff;
+  --ok: #1f7a4d; --ok-soft: #e1f1e8; --warn: #9a5b00; --warn-soft: #fbeed6; --na: #66717c; --na-soft: #e7eaed;
+  --font-body: "PingFang SC", "Microsoft YaHei", "Noto Sans SC", system-ui, sans-serif;
+  --font-display: Bahnschrift, "DIN Alternate", "Arial Narrow", "Microsoft YaHei", sans-serif;
+  --font-mono: ui-monospace, Consolas, "Cascadia Mono", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0e1419; --surface: #151e25; --field: #10181e; --ink: #e2e8ee; --muted: #94a2af; --rule: #2a3845;
+    --accent: #8aa2ff; --on-accent: #0e1419;
+    --ok: #5cc892; --ok-soft: #12301f; --warn: #e8b05a; --warn-soft: #36270e; --na: #9ba5af; --na-soft: #222b33;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0e1419; --surface: #151e25; --field: #10181e; --ink: #e2e8ee; --muted: #94a2af; --rule: #2a3845;
+  --accent: #8aa2ff; --on-accent: #0e1419;
+  --ok: #5cc892; --ok-soft: #12301f; --warn: #e8b05a; --warn-soft: #36270e; --na: #9ba5af; --na-soft: #222b33;
+  color-scheme: dark;
+}
+*, *::before, *::after { box-sizing: border-box; }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.6 var(--font-body); padding-inline: 16px; }
+h1, h2, h3, p { margin: 0; }
+h1, h2, h3 { text-wrap: balance; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; margin-inline: -16px; padding: .6rem 16px; background: var(--surface); border-bottom: 1px solid var(--rule); }
+.top-in { max-width: 52rem; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; gap: .4rem 1rem; }
+.top-name { font-weight: 700; }
+.counts { font-size: .85rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+.top-in .btn { margin-left: auto; }
+.strip { flex: 1 1 100%; display: grid; grid-template-columns: repeat(7, 1fr); gap: 3px; }
+.strip a { height: 10px; border-radius: 2px; background: var(--rule); }
+.strip a.ok { background: var(--ok); }
+.strip a.measure { background: var(--warn); }
+.strip a.na { background: var(--na); }
+.btn { font: inherit; font-size: .9rem; padding: .35rem .9rem; border: 1px solid var(--accent); border-radius: 3px; background: var(--accent); color: var(--on-accent); cursor: pointer; }
+.btn.ghost { background: transparent; color: var(--accent); }
+a.btn { display: inline-block; text-decoration: none; }
+.btn:hover { filter: brightness(1.08); }
+.btn.armed { background: var(--warn); border-color: var(--warn); color: var(--surface); }
+.wrap { max-width: 52rem; margin: 0 auto; padding-block: 1.75rem 4rem; display: grid; gap: 1.5rem; }
+#secs { display: grid; gap: 1.5rem; min-width: 0; }
+.eyebrow { font: 500 .75rem/1.5 var(--font-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+h1 { font-size: 1.8rem; line-height: 1.3; margin-top: .35rem; }
+.lede { color: var(--muted); max-width: 40rem; margin-top: .6rem; }
+.lede strong { color: var(--ink); font-weight: 500; }
+.meta { display: flex; flex-wrap: wrap; gap: .75rem 1rem; margin-top: 1.1rem; max-width: 34rem; }
+.meta label { flex: 1 1 12rem; }
+.legend { display: flex; flex-wrap: wrap; gap: .4rem 1.1rem; margin-top: .9rem; font-size: .85rem; color: var(--muted); }
+.legend span { display: inline-flex; align-items: center; gap: .4rem; }
+.legend i { width: .85rem; height: .85rem; border-radius: 50%; border: 1.5px solid var(--ink); }
+.legend i.ok, .item.ok .bubble { background: var(--ok); border-color: var(--ok); }
+.legend i.measure, .item.measure .bubble { background: var(--warn); border-color: var(--warn); }
+.legend i.na, .item.na .bubble { background: var(--na); border-color: var(--na); }
+.sec { background: var(--surface); border: 1px solid var(--rule); border-radius: 4px; min-width: 0; }
+.sec-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: .2rem .9rem; padding: 1rem 1.1rem .85rem; border-bottom: 1px solid var(--rule); }
+.sec-head h2 { font-size: 1.15rem; }
+.sec-head p { font-size: .88rem; color: var(--muted); }
+.item, #out { scroll-margin-top: 7rem; }
+.item { display: grid; grid-template-columns: 2.3rem minmax(0, 1fr); gap: .25rem .9rem; padding: 1rem 1.1rem 1.2rem; }
+.item + .item { border-top: 1px solid var(--rule); }
+.bubble { width: 2.3rem; height: 2.3rem; border-radius: 50%; border: 1.5px solid var(--ink); display: grid; place-items: center; font: 600 1.15rem/1 var(--font-display); font-variant-numeric: tabular-nums; }
+.item.ok .bubble, .item.measure .bubble, .item.na .bubble { color: var(--surface); }
+.body { display: grid; gap: .65rem; min-width: 0; }
+.q { display: flex; flex-wrap: wrap; align-items: flex-start; gap: .4rem .8rem; }
+.q h3 { flex: 1 1 18rem; font-size: 1rem; line-height: 1.55; padding-top: .3rem; }
+.chips { display: flex; gap: .35rem; padding-top: .2rem; }
+.chip { font: inherit; font-size: .8rem; line-height: 1.5; padding: .1rem .6rem; border: 1px solid var(--rule); border-radius: 999px; background: transparent; color: var(--muted); cursor: pointer; }
+.chip:hover { border-color: var(--muted); }
+.chip.measure[aria-pressed="true"] { background: var(--warn-soft); border-color: var(--warn); color: var(--warn); }
+.chip.na[aria-pressed="true"] { background: var(--na-soft); border-color: var(--na); color: var(--na); }
+.why { font-size: .88rem; color: var(--muted); }
+.why .flag { color: var(--warn); font-weight: 700; margin-right: .4rem; }
+.ref { font-size: .88rem; padding: .5rem .75rem; background: var(--field); border: 1px dashed var(--rule); border-radius: 3px; }
+.fields { display: grid; grid-template-columns: repeat(auto-fill, minmax(13.5rem, 1fr)); gap: .65rem .9rem; }
+.fields .wide { grid-column: 1 / -1; }
+.sub { grid-column: 1 / -1; font: 600 .95rem/1.3 var(--font-display); letter-spacing: .03em; color: var(--accent); padding-top: .25rem; }
+label.f { display: grid; gap: .2rem; align-content: start; font-size: .85rem; color: var(--muted); min-width: 0; }
+.inp { display: flex; align-items: center; min-width: 0; background: var(--field); border: 1px solid var(--rule); border-radius: 3px; }
+.inp:focus-within { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+.inp input, .inp select, .inp textarea { flex: 1; min-width: 0; width: 100%; font: inherit; font-size: .95rem; color: var(--ink); background: transparent; border: 0; padding: .42rem .6rem; outline: none; }
+.inp textarea { resize: vertical; min-height: 4.3rem; }
+.inp .unit { font: .8rem var(--font-mono); color: var(--muted); padding-right: .6rem; white-space: nowrap; }
+::placeholder { color: var(--muted); opacity: .8; }
+.pairs { grid-column: 1 / -1; display: grid; grid-template-columns: 1.4rem minmax(0, 1fr) minmax(0, 1fr); gap: .35rem .6rem; align-items: center; max-width: 30rem; font-size: .85rem; color: var(--muted); }
+.pn { font: 500 .85rem var(--font-mono); text-align: right; }
+.out-body { display: grid; gap: .75rem; padding: 1rem 1.1rem 1.2rem; }
+.out-body textarea { width: 100%; min-height: 18rem; font: .84rem/1.6 var(--font-mono); color: var(--ink); background: var(--field); border: 1px solid var(--rule); border-radius: 3px; padding: .75rem; resize: vertical; }
+.out-actions { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem; }
+.msg { font-size: .85rem; color: var(--ok); }
+.pre { display: grid; gap: .5rem; padding: 1rem 1.1rem 1.2rem; }
+.pre h3 { font-size: 1rem; }
+.pre ul { margin: 0 0 .5rem; padding-left: 1.2rem; display: grid; gap: .25rem; font-size: .92rem; }
+.steps { margin: 0; padding-left: 1.3rem; display: grid; gap: .25rem; font-size: .92rem; }
+.pass { font-size: .88rem; padding: .45rem .75rem; background: var(--ok-soft); border-radius: 3px; }
+.pass span { font-weight: 700; color: var(--ok); margin-right: .5rem; }
+@media (max-width: 30rem) {
+  h1 { font-size: 1.5rem; }
+  .sec-head, .item, .out-body, .pre { padding-inline: .85rem; }
+  .item { grid-template-columns: 1.9rem minmax(0, 1fr); gap: .25rem .6rem; }
+  .bubble { width: 1.9rem; height: 1.9rem; font-size: 1rem; }
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="top-in">
+    <span class="counts" id="counts">已填 0 · 待测 0 · 不适用 0 · 未填 7</span>
+    <a class="btn" href="#out">去复制汇总</a>
+    <nav class="strip" id="strip" aria-label="按编号跳转"></nav>
+  </div>
+</header>
+<main class="wrap">
+  <section aria-labelledby="title">
+    <p class="eyebrow">飞镖发射架 · C 板（RoboMaster 开发板 C 型） · 2026-10-31 发出</p>
+    <h1 id="title">硬件接线任务</h1>
+    <p class="lede">写给队里做硬件的同学。拉力传感器仍按 HX711 条目记录；继电器接线已完成。用户提供的当前磁铁型号为 CNMYE1-P25/29K，DC 24 V、3.2 W，通电消磁、断电吸持。<strong>磁铁极性、允许通电时间、继电器实际触发档位和复位表现尚待确认；旧型号的参数及旧表填报不能直接套用。</strong>先填写已有资料；烧录、通电和机构运动各阶段须取得用户当次确认。未测项目点“待测”，最后复制汇总。</p>
+    <div class="meta">
+      <label class="f" for="who"><span>填写人</span><div class="inp"><input id="who" type="text" autocomplete="off"></div></label>
+      <label class="f" for="date"><span>填写日期</span><div class="inp"><input id="date" type="text" autocomplete="off" placeholder="如 10 月 12 日"></div></label>
+    </div>
+    <div class="legend" aria-hidden="true"><span><i></i>未填</span><span><i class="ok"></i>已填</span><span><i class="measure"></i>待测</span><span><i class="na"></i>不适用</span></div>
+  </section>
+  <section class="sec" aria-labelledby="h-pre">
+    <div class="sec-head"><h2 id="h-pre">开始前</h2><p>要准备的东西和安全</p></div>
+    <div class="pre">
+      <h3>要准备的</h3>
+      <ul>
+        <li>HX711 模块（带金属屏蔽罩的，买了 3 块，用 1 块）、两个 PBCL-03 拉力传感器（线上标着 E+、E−、S+、S−，另有一根单独的屏蔽线）。</li>
+        <li>排针、母对母杜邦线、热缩管、扎带；不想焊的话，可以用称重传感器接线盒代替并线。</li>
+        <li>当前电磁铁、继电器模块的型号、规格书和实际接线记录。</li>
+        <li>万用表、可调直流电源；需要 3.3 V、5 V 时也可以用 USB 转 TTL 上的 3.3 V、5 V 脚。</li>
+      </ul>
+      <h3>安全</h3>
+      <ul>
+        <li>焊接、接线前断开电池。C 板只插 USB 时，8 针口有 3.3 V，PWM 排针没有 5 V。</li>
+        <li>HX711 只接 3.3 V。接 5 V 以上会烧模块，VCC、GND 接反也会烧，24 V 还可能倒灌进 C 板。</li>
+        <li>24 V 不能碰到 C 板的任何排针。C 板只有 XT30 输入口，没有 24 V 输出口。</li>
+        <li>线圈保护器件及其极性必须按当前型号和实际接线核对。</li>
+        <li>C 板一上电锁止舵机就会转动，上电前手离开夹爪；发射架上着膛的时候不要去接线。</li>
+        <li>当前磁铁断电仍可能吸住物体；复位时触点和磁铁电压尚未实测。</li>
+      </ul>
+    </div>
+  </section>
+  <div id="secs"></div>
+  <section class="sec" id="out" aria-labelledby="h-out">
+    <div class="sec-head"><h2 id="h-out">汇总</h2><p>边填边更新，复制后整段发回</p></div>
+    <div class="out-body">
+      <textarea id="summary" readonly aria-label="汇总内容"></textarea>
+      <div class="out-actions">
+        <button class="btn" type="button" id="copy">复制汇总</button>
+        <button class="btn ghost" type="button" id="clear">清空重填</button>
+        <span class="msg" id="msg" aria-live="polite"></span>
+      </div>
+      <p class="why">填的内容只存在这台设备的浏览器里，换设备或清缓存就没了，填完尽快复制发出。</p>
+    </div>
+  </section>
+</main>
+<script>
+// 条目：n 编号（机械按编号回复），q 测试名，why 为什么测，steps 步骤，pass 合格标准，flag 醒目前缀，ref 参考说明
+// 字段 [id, 标签, 选项]：u 单位，ph 灰字（CAD 或仿真现用值），a 多行，w 占整行，s 下拉选项，sub 小标题，pairs 成对表格行数
+const DIR = ["变大", "变小", "不变"];
+const S = [
+  { id: "cell", t: "一、拉力传感器（HX711）", d: "两个拉力传感器并在一起，接一块 HX711，再接到 C 板", items: [
+    { n: 1, q: "HX711 模块焊排针", why: "模块上只焊排针，所有线都用杜邦线插，不往模块上直接焊线；两个传感器的线在模块外面并好（第 2 条）。",
+      steps: ["4 针那排（GND、DT、SCK、VCC）和 6 针那排（E+、E−、A−、A+、B−、B+）都焊上排针。", "焊完用万用表通断档查相邻两针不通，尤其是 VCC 和 GND。", "模块上要是有 VCC、VDD 两个电源脚：两个都接 3.3 V，在模块这头用一小段线把这两根排针连上。"],
+      f: [["pins4", "4 针那排印的字（按顺序）", { w: 1, ph: "例如 GND DT SCK VCC" }], ["pins6", "6 针那排印的字（按顺序）", { w: 1, ph: "例如 E+ E- A- A+ B- B+" }],
+        ["vdd", "有没有单独的 VDD 脚", { s: ["没有", "有，已和 VCC 连上"] }]] },
+    { n: 2, q: "两个传感器并线", why: "两个传感器装在皮筋两端，并在一起读的是两个合起来的拉力。标签相同的线接在一起；屏蔽线先不接，线短，读数不稳再说。",
+      steps: ["一根母对母杜邦线剪成两半，取一半，剥开剪断的那头。", "两个传感器标签相同的两根线（比如两根 E+）和这半根杜邦线拧在一起，焊上，套热缩管。E+、E−、S+、S− 各做一股，做完是 4 根带母头的线。也可以用称重传感器接线盒，螺丝拧上不用焊。", "两根单独的屏蔽线（地线）先不接，线头用热缩管或胶布包好，别碰到别的东西。", "插到模块上：E+ 插 E+，E− 插 E−，S+ 插 A+，S− 插 A−。B+、B− 空着。"],
+      f: [["join", "怎么并的", { s: ["焊接加热缩管", "接线盒", "其他（写在备注）"] }], ["note2", "备注", { w: 1 }]] },
+    { n: 3, q: "接到 C 板的 8 针口", why: "HX711 用 3.3 V 供电，信号电平才和 C 板对得上。这两个脚现在的固件里是普通 IO，接上不会出事；读数的固件之后再写。",
+      steps: ["断开电池，C 板只插 USB。", "8 针牛角座是标准 2×4 编号：一排是 1、3、5、7，另一排是 2、4、6、8。用万用表直流电压档在偶数那排找：读数是 +3.3 V 时，黑表笔下面是第 2 针（GND），红表笔下面是第 4 针（3.3 V），第 6、8 针接着往下数。", "4 根母对母杜邦线：模块 VCC 接第 4 针，GND 接第 2 针，DT（有的标 DOUT）接第 6 针，SCK（有的标 PD_SCK）接第 8 针。", "上电摸一下模块，发烫就拔 USB。线用扎带固定，别让杜邦头吃劲。"],
+      pass: "VCC 只接第 4 针的 3.3 V，不接 5 V；PWM 排针和电池上的线都不碰这块模块。",
+      f: [["v34", "第 4 针对第 2 针", { u: "V", ph: "约 3.3" }], ["hot", "上电后模块", { s: ["不热", "发热，已断电"] }], ["photo3", "接线照片文件名", { w: 1 }]] },
+    { n: 4, q: "用万用表查一遍（能做就做）", why: "读数的固件还没写，先确认模块和传感器是通的、两个传感器方向一致，省得固件写好才发现线反了。",
+      steps: ["C 板只插 USB，量模块 E+ 对 E−，应该约 3 V。", "万用表 mV 档（200 mV 档）量 A+ 对 A−，记下不受力时的读数。", "用手拉第一个传感器，看读数往哪边变，再拉第二个。两个应该往同一个方向变；方向相反，就把那一个传感器的 S+、S− 对调。"],
+      f: [["ve", "E+ 对 E−", { u: "V", ph: "约 3" }], ["vz", "A+ 对 A−，不受力", { u: "mV" }],
+        ["d1", "拉第 1 个传感器", { s: DIR }], ["d2", "拉第 2 个传感器", { s: DIR }]] }] },
+  { id: "mag", t: "二、电磁铁驱动", d: "接线已完成，先记录实际情况", items: [
+    { n: 5, q: "继电器模块和输入", why: "用户提供继电器为 SRD-03VDC-SL-C，3.3 V，模块支持高低电平自选；当前档位及实际输入与磁铁通断的对应关系待确认。",
+      steps: ["记录继电器型号、供电和触发方式，以及已有的高、低、悬空输入结果。", "单独通电测试应先取得当次确认，并按任务 3l 分阶段进行。"],
+      f: [["relay", "继电器和模块型号", { w: 1 }], ["relay_supply_3l", "模块供电电压", { u: "V" }], ["trigger_3l", "触发电平及 3.3 V 可靠性", { w: 1 }],
+        ["input_states_3l", "输入高、低、悬空时的已有实测", { a: 1, w: 1 }]] },
+    { n: 6, q: "现有接线与电磁铁", why: "用户报告 COM 接 NO，继电器失电时磁铁断电；DC+ 接 8 针口第 4 针、DC− 接 A3、IN 接 C3。磁铁极性、允许通电时间和保护器件仍待确认。",
+      f: [["mag_spec_3l", "磁铁型号、电压、电流、极性及允许通电时间", { a: 1, w: 1 }], ["contact_3l", "COM–NO 或 COM–NC、继电器失电时磁铁通断", { w: 1 }],
+        ["control_3l", "C 板控制引脚、共地和线圈保护器件", { w: 1 }], ["reset_3l", "复位时信号、磁铁电压及吸持情况", { a: 1, w: 1 }],
+        ["photo6", "接线照片文件名", { w: 1 }], ["note6", "备注", { w: 1 }]] },
+    { n: 7, q: "后续驱动模块", why: "如以后更换驱动，应重新核对当前磁铁的额定条件、触发和复位状态；本任务使用已接好的继电器。",
+      f: [["mos", "后续驱动型号或链接", { w: 1 }], ["mtest", "已有单独测试结果", { s: ["3.3 V 能触发", "不能触发", "还没到"] }]] }] }
+];
+const ITEMS = S.flatMap(s => s.items), KEY = "hw-wiring-tasks-v1";
+const LABEL = { ok: "已填", measure: "待测", na: "不适用", "": "未填" };
+const $ = s => document.querySelector(s);
+const esc = t => String(t).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
+let st = { v: {}, s: {}, who: "", date: "" };
+try { const raw = localStorage.getItem(KEY); if (raw) st = Object.assign(st, JSON.parse(raw)); } catch (e) {}
+const save = () => { try { localStorage.setItem(KEY, JSON.stringify(st)); } catch (e) {} };
+const val = k => String(st.v[k] || "").trim();
+const pairKeys = (id, n) => Array.from({ length: n }, (_, i) => [id + (i + 1) + "x", id + (i + 1) + "f"]);
+const keysOf = it => it.f.flatMap(([id, , o = {}]) => o.sub ? [] : o.pairs ? pairKeys(id, o.pairs).flat() : [id]);
+const stateOf = it => st.s[it.n] || (keysOf(it).some(val) ? "ok" : "");
+const counts = c => `已填 ${c.ok} · 待测 ${c.measure} · 不适用 ${c.na} · 未填 ${c[""]}`;
+const withUnit = (v, u) => u && /^[约~±+\-–\d.\s]+$/.test(v) ? `${v} ${u}` : v;
+
+function control(id, o) {
+  const a = `id="f-${id}" data-k="${id}"`;
+  if (o.s) return `<select ${a}><option value="">请选择</option>${o.s.map(x => `<option>${esc(x)}</option>`).join("")}</select>`;
+  if (o.a) return `<textarea ${a} rows="3" placeholder="${esc(o.ph || "")}"></textarea>`;
+  return `<input ${a} type="text" autocomplete="off" placeholder="${esc(o.ph || "")}">`;
+}
+function field([id, label, o = {}]) {
+  if (o.sub) return `<p class="sub">${esc(label)}</p>`;
+  if (o.pairs) return `<div class="pairs"><span></span><span>伸长量</span><span>拉力</span>${pairKeys(id, o.pairs).map((ks, i) => `<span class="pn">${i + 1}</span>` + ks.map((k, j) =>
+    `<div class="inp"><input id="f-${k}" data-k="${k}" type="text" autocomplete="off" aria-label="第 ${i + 1} 点${j ? "拉力" : "伸长量"}" placeholder="${i || j ? "" : "0 刚绷紧"}"><span class="unit">${j ? "N" : "mm"}</span></div>`).join("")).join("")}</div>`;
+  return `<label class="f${o.w ? " wide" : ""}"><span>${esc(label)}</span><div class="inp">${control(id, o)}${o.u ? `<span class="unit">${esc(o.u)}</span>` : ""}</div></label>`;
+}
+function item(it) {
+  const chip = (s, t) => `<button type="button" class="chip ${s}" id="s-${it.n}-${s}" data-n="${it.n}" data-s="${s}" aria-pressed="false">${t}</button>`;
+  return `<article class="item" id="q${it.n}"><span class="bubble">${it.n}</span><div class="body">
+    <div class="q"><h3>${esc(it.q)}</h3><div class="chips">${chip("measure", "待测")}${chip("na", "不适用")}</div></div>
+    ${it.why ? `<p class="why">${it.flag ? `<span class="flag">${esc(it.flag)}</span>` : ""}${esc(it.why)}</p>` : ""}${it.ref ? `<p class="ref">${esc(it.ref)}</p>` : ""}
+    ${it.steps ? `<ol class="steps">${it.steps.map(x => `<li>${esc(x)}</li>`).join("")}</ol>` : ""}${it.pass ? `<p class="pass"><span>合格</span>${esc(it.pass)}</p>` : ""}
+    <div class="fields">${it.f.map(field).join("")}</div></div></article>`;
+}
+function summary(c) {
+  const L = ["硬件接线结果（硬件回填）",`填写人：${String(st.who).trim() || "（未填）"}　日期：${String(st.date).trim() || "（未填）"}`, counts(c)];
+  for (const sec of S) {
+    L.push("", sec.t);
+    for (const it of sec.items) {
+      const k = stateOf(it); let sub = "";
+      L.push(`${it.n}. ${it.q}${k === "ok" ? "" : `【${LABEL[k]}】`}`);
+      for (const [id, label, o = {}] of it.f) {
+        if (o.sub) { sub = label + " · "; continue; }
+        if (o.pairs) {
+          const p = pairKeys(id, o.pairs).filter(([x, f]) => val(x) || val(f)).map(([x, f]) => `${val(x) || "?"} mm → ${val(f) || "?"} N`);
+          if (p.length) L.push(`   伸长量 → 拉力：${p.join("；")}`);
+          continue;
+        }
+        if (val(id)) L.push(`   ${sub}${label}：${withUnit(val(id), o.u).replace(/\n/g, "\n      ")}`);
+      }
+    }
+  }
+  return L.join("\n");
+}
+function refresh() {
+  const c = { ok: 0, measure: 0, na: 0, "": 0 };
+  for (const it of ITEMS) {
+    const k = stateOf(it); c[k]++;
+    document.getElementById("q" + it.n).className = "item" + (k ? " " + k : "");
+    for (const s of ["measure", "na"]) document.getElementById(`s-${it.n}-${s}`).setAttribute("aria-pressed", String(st.s[it.n] === s));
+    const j = document.getElementById("j" + it.n);
+    j.className = k;
+    j.setAttribute("aria-label", `第 ${it.n} 条，${LABEL[k]}：${it.q}`);
+  }
+  $("#counts").textContent = counts(c);
+  $("#summary").value = summary(c);
+}
+$("#secs").innerHTML = S.map(s => `<section class="sec" aria-labelledby="h-${s.id}"><div class="sec-head"><h2 id="h-${s.id}">${esc(s.t)}</h2><p>${esc(s.d)}</p></div>${s.items.map(item).join("")}</section>`).join("");
+$("#strip").innerHTML = ITEMS.map(it => `<a id="j${it.n}" href="#q${it.n}" title="${it.n}. ${esc(it.q)}"></a>`).join("");
+const fill = () => {
+  document.querySelectorAll("[data-k]").forEach(el => { el.value = st.v[el.dataset.k] || ""; });
+  $("#who").value = st.who || ""; $("#date").value = st.date || "";
+};
+fill(); refresh();
+
+document.addEventListener("input", e => {
+  const el = e.target;
+  if (el.dataset && el.dataset.k) st.v[el.dataset.k] = el.value;
+  else if (el.id === "who" || el.id === "date") st[el.id] = el.value;
+  else return;
+  save(); refresh();
+});
+document.addEventListener("click", e => {
+  const b = e.target.closest(".chip");
+  if (!b) return;
+  st.s[b.dataset.n] = st.s[b.dataset.n] === b.dataset.s ? "" : b.dataset.s;
+  save(); refresh();
+});
+$("#copy").addEventListener("click", () => {
+  const ta = $("#summary"), msg = $("#msg");
+  const fallback = () => {
+    ta.focus(); ta.select();
+    let ok = false;
+    try { ok = document.execCommand("copy"); } catch (e) {}
+    msg.textContent = ok ? "已复制，可以直接粘贴发送" : "没能自动复制：内容已全选，按 Ctrl+C 复制（手机长按选“复制”）";
+  };
+  if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(ta.value).then(() => { msg.textContent = "已复制，可以直接粘贴发送"; }, fallback);
+  else fallback();
+});
+let armed = 0;
+$("#clear").addEventListener("click", e => {
+  const b = e.currentTarget, reset = () => { armed = 0; b.textContent = "清空重填"; b.classList.remove("armed"); };
+  if (!armed) { armed = setTimeout(reset, 4000); b.textContent = "再点一次，清空全部"; b.classList.add("armed"); return; }
+  clearTimeout(armed); reset();
+  st = { v: {}, s: {}, who: "", date: "" }; save(); fill(); refresh();
+  $("#msg").textContent = "已清空";
+});
+</script>
+</body>
+</html>

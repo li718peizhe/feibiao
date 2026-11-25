@@ -1,0 +1,1967 @@
+<< Dart mode=0 fault=遥控器离线 darts=1 home=0 latch=0
+Dart step=空闲
+Dart remote ok=76478 clr=0 bad=0
+Dart sw R=D L=D sticks 0.00 0.00 0.00 0.00 wheel 0.00
+
+[19:09:12] << D
+[19:09:12] << art mode=0 fault=遥控器离线 darts=1 home=0 latch=0
+
+[19:09:12] << D
+[19:09:12] << art step=空闲
+
+[19:09:12] << D
+[19:09:12] << art remote ok
+[19:09:12] << =76478 clr=0 bad=0
+
+[19:09:12] << D
+[19:09:12] << art sw R=D L=D sticks 0.00 0.00 0.00 0.00 wheel 0.00
+
+[19:09:13] << Dart online=1/1/1/0/1 home=0/0/0/0/1 sl=2.99/3.58mm I=0 pi=0.04mm pI=0 yaw=0.00deg[X]
+
+[19:09:13] << D
+[19:09:13] << art arm=1.53 raw=1977 lock=0.00deg/1500 crank=1590[R] mag=0 tick 252/332us late=0
+
+[19:09:13] << Dart pitc
+[19:09:13] << h cmd=0 act=-74 rpm=0
+
+[19:09:13] << D
+[19:09:13] << art arm cmd=0 act=-11 rpm=0 tmp=29 stall=0 bus=5586367
+
+[19:09:13] << Dart ref seen=0 stage=-1 rem=0 gate=0 launch=0 tgt=0 cd=0 hit=0/0 rc=1 est=0 ovr=0 try=0
+
+[19:09:14] << D
+[19:09:14] << art mode=0 fault=遥控器离线 darts=1 home=0 latch=0
+
+[19:09:14] << D
+[19:09:14] << art step=空闲
+
+[19:09:14] << D
+[19:09:14] << art remo
+[19:09:14] << te ok=76478 clr=0 bad=0
+
+[19:09:14] << D
+[19:09:14] << art sw R=D L=D sticks 0.00 0.00 0.00 0.00 wheel 0.00
+
+[19:09:14] << D
+[19:09:14] << art online=1/1/1/0/1 home=0/0/0/0/1 sl=2.99/3.58mm I=0 pi=0.04mm pI=0 yaw=0.00deg[X]
+
+[19:09:14] << D
+[19:09:14] << art arm=1.53 raw=1977 lock=0.00deg/1500 crank=1590[R] mag=0 tick 252/349us late=0
+
+[19:09:14] << D
+[19:09:14] << art
+[19:09:14] <<  pitch cmd=0 act=-1 rpm=0
+
+[19:09:14] << D
+[19:09:14] << art arm cmd=0 act=-11 rpm=0 tmp=29 stall=0 bus=5587526
+
+[19:09:14] << D
+[19:09:14] << art ref seen=0 stage=-1 rem=0 gate=0 launch=0 tgt=0 cd=0 hit=0/0 rc=1 est=0 ovr=0 try=0
+
+[19:09:15] << D
+[19:09:15] << art mode=0 fault=遥控器离线 darts=1 home=0 latch=0
+
+[19:09:15] << D
+[19:09:15] << art step=空闲
+
+[19:09:15] << D
+[19:09:15] << art 
+[19:09:15] << remote ok=76478 clr=0 bad=0
+
+[19:09:15] << D
+[19:09:15] << art sw R=D L=D sticks 0.00 0.00 0.00 0.00 wheel 0.00
+
+[19:09:15] << Dart online=1/1/1/0/1 home=0/0/0/0/1 sl=2.99/3.58mm I=0 pi=0.04mm pI=0 yaw=0.00deg[X]
+
+[19:09:15] << D
+[19:09:15] << art arm=1.53 raw=1977 lock=0.00deg/1500 crank=1590[R] mag=0 tick 249/342us late=0
+
+[19:09:15] << D
+[19:09:15] << art pitch cmd=0 act=-1 rpm=0
+
+[19:09:15] << D
+[19:09:15] << art arm cmd=0 act=14 rpm=0 tmp=29 stall=0 bus=5588686
+
+[19:09:15] << D
+[19:09:15] << art ref seen=0 stage=-1 rem=0 gate=0 launch=0 tgt=0 cd=0 hit=0/0 rc=1 est=0 ovr=0 try=0
+
+[19:09:16] << D
+[19:09:16] << art mode=0 fault=遥控器离线 darts=1 home=0 latch=0
+
+[19:09:16] << D
+[19:09:16] << art step=空闲
+
+[19:09:16] << D
+[19:09:16] << a
+[19:09:16] << rt remote ok=76478 clr=0 bad=0
+
+[19:09:16] << D
+[19:09:16] << art sw R=D L=D sticks 0.00 0.00 0.00 0.00 wheel 0.00
+
+[19:09:16] << D
+[19:09:16] << art online=1/1/1/0/1 home=0/0/0/0/1 sl=2.99/3.58mm I=0 pi=0.04mm pI=0 yaw=0.00deg[X]
+
+[19:09:16] << Dart arm=1.53 raw=1977 lock=0.00deg/1500 crank=1590[R] mag=0 tick 245/337us late=
+[19:09:16] << 0
+
+[19:09:16] << D
+[19:09:16] << art pitch cmd=0 act=14 rpm=0
+
+[19:09:16] << D
+[19:09:16] << art arm cmd=0 act=-3 rpm=0 tmp=29 stall=0 bus=5589846
+
+[19:09:16] << Dart ref seen=0 stage=-1 rem=0 gate=0 launch=0 tgt=0 cd=0 hit=0/0 rc=1 est=0 ovr=0 try=0
+
+[19:09:17] << D
+[19:09:17] << art mode=0 fault=遥控器离线 darts=1 home=0 latch=0
+
+[19:09:17] << D
+[19:09:17] << art step=空闲
+
+[19:09:17] << 
+
+[19:09:17] << D
+[19:09:17] << art remote ok=76478 clr=0 bad=0
+
+[19:09:17] << D
+[19:09:17] << art sw R=D L=D sticks 0.00 0.00 0.00 0.00 wheel 0.00
+
+[19:09:17] << D
+[19:09:17] << art online=1/1/1/0/1 home=0/0/0/0/1 sl=2.99/3.58mm I=0 pi=0.04mm pI=0 yaw=0.00deg[X]
+
+[19:09:17] << D
+[19:09:17] << art arm=1.53 raw=1977 lock=0.00deg/1500 crank=1590[R] mag=0 tick 245/350us la
+[19:09:17] << te=0
+
+[19:09:17] << D
+[19:09:17] << art pitch cmd=0 act=73 rpm=0
+
+[19:09:17] << D
+[19:09:17] << art arm cmd=0 act=-3 rpm=0 tmp=29 stall=0 bus=5591006
+
+[19:09:17] << Dart ref seen=0 stage=-1 rem=0 gate=0 launch=0 tgt=0 cd=0 hit=0/0 rc=1 est=0 ovr=0 try=0
+
+[19:09:18] << D
+[19:09:18] << art mode=0 fault=遥控器离线 darts=1 home=0 latch=0
+
+[19:09:18] << D
+[19:09:18] << art step=空�
+[19:09:18] << ��
+
+[19:09:18] << D
+[19:09:18] << art remote ok=76478 clr=0 bad=0
+
+[19:09:18] << D
+[19:09:18] << art sw R=D L=D sticks 0.00 0.00 0.00 0.00 wheel 0.00
+
+[19:09:18] << D
+[19:09:18] << art online=1/1/1/0/1 home=0/0/0/0/1 sl=2.99/3.58mm I=0 pi=0.04mm pI=0 yaw=0.00deg[X]
+
+[19:09:18] << D
+[19:09:18] << art arm=0.97 raw=1964 lock=0.00deg/1500 crank=1590[R] mag=0 tick 245/349us
+[19:09:18] <<  late=0
+
+[19:09:18] << D
+[19:09:18] << art pitch cmd=0 act=-221 rpm=0
+
+[19:09:18] << D
+[19:09:18] << art arm cmd=0 act=1 rpm=-1 tmp=29 stall=0 bus=5592166
+
+[19:09:18] << D
+[19:09:18] << art ref seen=0 stage=-1 rem=0 gate=0 launch=0 tgt=0 cd=0 hit=0/0 rc=1 est=0 ovr=0 try=0
+
+[19:09:19] << D
+[19:09:19] << art mode=0 fault=遥控器离线 darts=1 home=0 latch=0
+
+[19:09:19] << D
+[19:09:19] << art step
+[19:09:19] << =空闲
+
+[19:09:19] << D
+[19:09:19] << art remote ok=76478 clr=0 bad=0
+
+[19:09:19] << D
+[19:09:19] << art sw R=D L=D sticks 0.00 0.00 0.00 0.00 wheel 0.00
+
+[19:09:19] << D
+[19:09:19] << art online=1/1/1/0/1 home=0/0/0/0/1 sl=2.99/3.58mm I=0 pi=0.04mm pI=0 yaw=0.00deg[X]
+
+[19:09:19] << D
+[19:09:20] << art arm=-28.70 raw=1289 lock=0.00deg/1500 crank=1590[R] mag=0 tick 24
+[19:09:20] << 5/347us late=0
+
+[19:09:20] << D
+[19:09:20] << art pitch cmd=0 act=43 rpm=0
+
+[19:09:20] << D
+[19:09:20] << art arm cmd=0 act=-2 rpm=-5 tmp=29 stall=0 bus=5593326
+
+[19:09:20] << D
+[19:09:20] << art ref seen=0 stage=-1 rem=0 gate=0 launch=0 tgt=0 cd=0 hit=0/0 rc=1 est=0 ovr=0 try=0
+
+[19:09:21] << D
+[19:09:21] << art mode=0 fault=遥控器离线 darts=1 home=0 latch=0
+
+[19:09:21] << D
+[19:09:21] << ar
+[19:09:21] << t step=空闲
+
+[19:09:21] << D
+[19:09:21] << art remote ok=76478 clr=0 bad=0
+
+[19:09:21] << D
+[19:09:21] << art sw R=D L=D sticks 0.00 0.00 0.00 0.00 wheel 0.00
+
+[19:09:21] << D
+[19:09:21] << art online=1/1/1/0/1 home=0/0/0/0/1 sl=2.99/3.58mm I=0 pi=0.04mm pI=0 yaw=0.00deg[X]
+
+[19:09:21] << D
+[19:09:21] << art arm=-42.27 raw=980 lock=0.00deg/1500 crank=1590[R] mag=0 ti
+[19:09:21] << ck 245/349us late=0
+
+[19:09:21] << D
+[19:09:21] << art pitch cmd=0 act=43 rpm=0
+
+[19:09:21] << D
+[19:09:21] << art arm cmd=0 act=4 rpm=0 tmp=29 stall=0 bus=5594486
+
+[19:09:21] << D
+[19:09:21] << art ref seen=0 stage=-1 rem=0 gate=0 launch=0 tgt=0 cd=0 hit=0/0 rc=1 est=0 ovr=0 try=0
+
+[19:09:22] << D
+[19:09:22] << art mode=0 fault=遥控器离线 darts=1 home=0 latch=0
+
+[19:09:22] << D
+[19:09:22] << art step=空闲
+
+[19:09:22] << D
+[19:09:22] << art remote ok=76478 clr=0 bad=0
+
+[19:09:22] << D
+[19:09:22] << art sw R=D L=D sticks 0.00 0.00 0.00 0.00 wheel 0.00
+
+[19:09:22] << D
+[19:09:22] << art online=1/1/1/0/1 home=0/0/0/0/1 sl=2.99/3.58mm I=0 pi=0.04mm pI=0 yaw=0.00deg[X]
+
+[19:09:22] << D
+[19:09:22] << art arm=-45.83 raw=899 lock=0.00deg/1500 crank=1590[R] mag=0
+[19:09:22] <<  tick 244/348us late=0
+
+[19:09:22] << D
+[19:09:22] << art pitch cmd=0 act=102 rpm=0
+
+[19:09:22] << D
+[19:09:22] << art arm cmd=0 act=4 rpm=0 tmp=29 stall=0 bus=5595646
+
+[19:09:22] << Dart ref seen=0 stage=-1 rem=0 gate=0 launch=0 tgt=0 cd=0 hit=0/0 rc=1 est=0 ovr=0 try=0
+
+[19:09:23] << Dart mode=0 fault=遥控器离线 darts=1 home=0 latch
+[19:09:23] << =0
+
+[19:09:23] << D
+[19:09:23] << art step=空闲
+
+[19:09:23] << D
+[19:09:23] << art remote ok=76478 clr=0 bad=0
+
+[19:09:23] << D
+[19:09:23] << art sw R=D L=D sticks 0.00 0.00 0.00 0.00 wheel 0.00
+
+[19:09:23] << D
+[19:09:23] << art online=1/1/1/0/1 home=0/0/0/0/1 sl=2.99/3.58mm I=0 pi=0.04mm pI=0 yaw=0.00deg[X]
+
+[19:09:23] << D
+[19:09:23] << art arm=-43.50 raw=952 lock=0.00deg/1500 crank=1590[R] m
+[19:09:23] << ag=0 tick 245/340us late=0
+
+[19:09:23] << D
+[19:09:23] << art pitch cmd=0 act=-30 rpm=0
+
+[19:09:23] << D
+[19:09:23] << art arm cmd=0 act=-8 rpm=0 tmp=29 stall=0 bus=5596806
+
+[19:09:23] << D
+[19:09:23] << art ref seen=0 stage=-1 rem=0 gate=0 launch=0 tgt=0 cd=0 hit=0/0 rc=1 est=0 ovr=0 try=0
+
+[19:09:24] << D
+[19:09:24] << art mode=0 fault=遥控器离线 darts=1 home=0 
+[19:09:24] << latch=0
+
+[19:09:24] << D
+[19:09:24] << art step=空闲
+
+[19:09:24] << Dart remote ok=76478 clr=0 bad=0
+
+[19:09:24] << D
+[19:09:24] << art sw R=D L=D sticks 0.00 0.00 0.00 0.00 wheel 0.00
+
+[19:09:24] << D
+[19:09:24] << art online=1/1/1/0/1 home=0/0/0/0/1 sl=2.99/3.58mm I=0 pi=0.04mm pI=0 yaw=0.00deg[X]
+
+[19:09:24] << D
+[19:09:24] << art arm=-42.70 raw=970 lock=0.00deg/1500 crank=1590
+[19:09:24] << [R] mag=0 tick 245/347us late=0
+
+[19:09:24] << D
+[19:09:24] << art pitch cmd=0 act=-74 rpm=0
+
+[19:09:24] << D
+[19:09:24] << art arm cmd=0 act=-11 rpm=0 tmp=29 stall=0 bus=5597966
+
+[19:09:24] << D
+[19:09:24] << art ref seen=0 stage=-1 rem=0 gate=0 launch=0 tgt=0 cd=0 hit=0/0 rc=1 est=0 ovr=0 try=0
+
+[19:09:25] << D
+[19:09:25] << art mode=0 fault=遥控器离线 darts=1 h
+[19:09:25] << ome=0 latch=0
+
+[19:09:25] << D
+[19:09:25] << art step=空闲
+
+[19:09:25] << D
+[19:09:25] << art remote ok=76478 clr=0 bad=0
+
+[19:09:25] << D
+[19:09:25] << art sw R=D L=D sticks 0.00 0.00 0.00 0.00 wheel 0.00
+
+[19:09:25] << D
+[19:09:25] << art online=1/1/1/0/1 home=0/0/0/0/1 sl=2.99/3.58mm I=0 pi=0.04mm pI=0 yaw=0.00deg[X]
+
+[19:09:25] << D
+[19:09:25] << art arm=-42.36 raw=978 lock=0.00deg/1500 cran
+[19:09:25] << k=1590[R] mag=0 tick 245/348us late=0
+
+[19:09:25] << D
+[19:09:25] << art pitch cmd=0 act=144 rpm=0
+
+[19:09:25] << D
+[19:09:25] << art arm cmd=0 act=8 rpm=0 tmp=29 stall=0 bus=5599126
+
+[19:09:25] << D
+[19:09:25] << art ref seen=0 stage=-1 rem=0 gate=0 launch=0 tgt=0 cd=0 hit=0/0 rc=1 est=0 ovr=0 try=0
+
+[19:09:26] << D
+[19:09:26] << art mode=0 fault=遥控器离线 darts
+[19:09:26] << =1 home=0 latch=0
+
+[19:09:26] << D
+[19:09:26] << art step=空闲
+
+[19:09:26] << D
+[19:09:26] << art remote ok=76478 clr=0 bad=0
+
+[19:09:26] << D
+[19:09:26] << art sw R=D L=D sticks 0.00 0.00 0.00 0.00 wheel 0.00
+
+[19:09:26] << D
+[19:09:26] << art online=1/1/1/0/1 home=0/0/0/0/1 sl=2.99/3.58mm I=0 pi=0.04mm pI=0 yaw=0.00deg[X]
+
+[19:09:26] << D
+[19:09:26] << art arm=-41.34 raw=1001 lock=0.00deg/1500
+[19:09:26] <<  crank=1590[R] mag=0 tick 244/347us late=0
+
+[19:09:26] << D
+[19:09:26] << art pitch cmd=0 act=-1 rpm=0
+
+[19:09:26] << D
+[19:09:27] << art arm cmd=0 act=9 rpm=0 tmp=29 stall=0 bus=5600286
+
+[19:09:27] << D
+[19:09:27] << art ref seen=0 stage=-1 rem=0 gate=0 launch=0 tgt=0 cd=0 hit=0/0 rc=1 est=0 ovr=0 try=0
+
+[19:09:28] << D
+[19:09:28] << art mode=0 fault=遥控器离线 d
+[19:09:28] << arts=1 home=0 latch=0
+
+[19:09:28] << D
+[19:09:28] << art step=空闲
+
+[19:09:28] << D
+[19:09:28] << art remote ok=76478 clr=0 bad=0
+
+[19:09:28] << D
+[19:09:28] << art sw R=D L=D sticks 0.00 0.00 0.00 0.00 wheel 0.00
+
+[19:09:28] << D
+[19:09:28] << art online=1/1/1/0/1 home=0/0/0/0/1 sl=2.99/3.58mm I=0 pi=0.04mm pI=0 yaw=0.00deg[X]
+
+[19:09:28] << D
+[19:09:28] << art arm=-40.65 raw=1017 lock=0.00deg/
+[19:09:28] << 1500 crank=1590[R] mag=0 tick 245/350us late=0
+
+[19:09:28] << D
+[19:09:28] << art pitch cmd=0 act=-30 rpm=0
+
+[19:09:28] << Dart arm cmd=0 act=1 rpm=0 tmp=29 stall=0 bus=5601446
+
+[19:09:28] << D
+[19:09:28] << art ref seen=0 stage=-1 rem=0 gate=0 launch=0 tgt=0 cd=0 hit=0/0 rc=1 est=0 ovr=0 try=0
+
+[19:09:29] << D
+[19:09:29] << art mode=0 fault=遥控器离
+[19:09:29] << 线 darts=1 home=0 latch=0
+
+[19:09:29] << D
+[19:09:29] << art step=空闲
+
+[19:09:29] << D
+[19:09:29] << art remote ok=76478 clr=0 bad=0
+
+[19:09:29] << D
+[19:09:29] << art sw R=D L=D sticks 0.00 0.00 0.00 0.00 wheel 0.00
+
+[19:09:29] << D
+[19:09:29] << art online=1/1/1/0/1 home=0/0/0/0/1 sl=2.99/3.58mm I=0 pi=0.04mm pI=0 yaw=0.00deg[X]
+
+[19:09:29] << D
+[19:09:29] << art arm=-40.74 raw=1015 lock=0.0
+[19:09:29] << 0deg/1500 crank=1590[R] mag=0 tick 245/348us late=0
+
+[19:09:29] << D
+[19:09:29] << art pitch cmd=0 act=-74 rpm=0
+
+[19:09:29] << D
+[19:09:29] << art arm cmd=0 act=1 rpm=0 tmp=29 stall=0 bus=5602606
+
+[19:09:29] << Dart ref seen=0 stage=-1 rem=0 gate=0 launch=0 tgt=0 cd=0 hit=0/0 rc=1 est=0 ovr=0 try=0
+
+[19:09:30] << Dart mode=0 fault=遥控�
+[19:09:30] << ��离线 darts=1 home=0 latch=0
+
+[19:09:30] << D
+[19:09:30] << art step=空闲
+
+[19:09:30] << D
+[19:09:30] << art remote ok=76478 clr=0 bad=0
+
+[19:09:30] << D
+[19:09:30] << art sw R=D L=D sticks 0.00 0.00 0.00 0.00 wheel 0.00
+
+[19:09:30] << D
+[19:09:30] << art online=1/1/1/0/1 home=0/0/0/0/1 sl=2.99/3.58mm I=0 pi=0.04mm pI=0 yaw=0.00deg[X]
+
+[19:09:30] << D
+[19:09:30] << art arm=-40.56 raw=1019 loc
+[19:09:30] << k=0.00deg/1500 crank=1590[R] mag=0 tick 245/348us late=0
+
+[19:09:30] << Dart pitch cmd=0 act=131 rpm=0
+
+[19:09:30] << D
+[19:09:30] << art arm cmd=0 act=10 rpm=0 tmp=29 stall=0 bus=5603766
+
+[19:09:30] << D
+[19:09:30] << art ref seen=0 stage=-1 rem=0 gate=0 launch=0 tgt=0 cd=0 hit=0/0 rc=1 est=0 ovr=0 try=0
+
+[19:09:31] << D
+[19:09:31] << art mode=0 fault=�
+[19:09:31] << ��控器离线 darts=1 home=0 latch=0
+
+[19:09:31] << D
+[19:09:31] << art step=空闲
+
+[19:09:31] << D
+[19:09:31] << art remote ok=76478 clr=0 bad=0
+
+[19:09:31] << D
+[19:09:31] << art sw R=D L=D sticks 0.00 0.00 0.00 0.00 wheel 0.00
+
+[19:09:31] << D
+[19:09:31] << art online=1/1/1/0/1 home=0/0/0/0/1 sl=2.99/3.58mm I=0 pi=0.04mm pI=0 yaw=0.00deg[X]
+
+[19:09:31] << D
+[19:09:31] << art arm=-40.11 raw=10
+[19:09:31] << 29 lock=0.00deg/1500 crank=1590[R] mag=0 tick 245/341us late=0
+
+[19:09:31] << D
+[19:09:31] << art pitch cmd=0 act=73 rpm=0
+
+[19:09:31] << D
+[19:09:31] << art arm cmd=0 act=-19 rpm=0 tmp=29 stall=0 bus=5604926
+
+[19:09:31] << D
+[19:09:31] << art ref seen=0 stage=-1 rem=0 gate=0 launch=0 tgt=0 cd=0 hit=0/0 rc=1 est=0 ovr=0 try=0
+
+[19:09:32] << D
+[19:09:32] << art mode=0 f
+[19:09:32] << ault=遥控器离线 darts=1 home=0 latch=0
+
+[19:09:32] << Dart step=空闲
+
+[19:09:32] << D
+[19:09:32] << art remote ok=76478 clr=0 bad=0
+
+[19:09:32] << D
+[19:09:32] << art sw R=D L=D sticks 0.00 0.00 0.00 0.00 wheel 0.00
+
+[19:09:32] << Dart online=1/1/1/0/1 home=0/0/0/0/1 sl=2.99/3.58mm I=0 pi=0.04mm pI=0 yaw=0.00deg[X]
+
+[19:09:32] << Dart arm=-40.02 
+[19:09:32] << raw=1031 lock=0.00deg/1500 crank=1590[R] mag=0 tick 245/348us late=0
+
+[19:09:32] << Dart pitch cmd=0 act=-1 rpm=0
+
+[19:09:32] << D
+[19:09:32] << art arm cmd=0 act=-19 rpm=0 tmp=29 stall=0 bus=5606086
+
+[19:09:32] << D
+[19:09:32] << art ref seen=0 stage=-1 rem=0 gate=0 launch=0 tgt=0 cd=0 hit=0/0 rc=1 est=0 ovr=0 try=0
+
+[19:09:33] << Dart mo
+[19:09:33] << de=0 fault=遥控器离线 darts=1 home=0 latch=0
+
+[19:09:33] << D
+[19:09:33] << art step=空闲
+
+[19:09:33] << D
+[19:09:33] << art remote ok=76478 clr=0 bad=0
+
+[19:09:33] << D
+[19:09:33] << art sw R=D L=D sticks 0.00 0.00 0.00 0.00 wheel 0.00
+
+[19:09:33] << D
+[19:09:33] << art online=1/1/1/0/1 home=0/0/0/0/1 sl=2.99/3.58mm I=0 pi=0.04mm pI=0 yaw=0.00deg[X]
+
+[19:09:33] << D
+[19:09:33] << art arm=-
+[19:09:33] << 40.11 raw=1029 lock=0.00deg/1500 crank=1590[R] mag=0 tick 245/342us late=0
+
+[19:09:33] << Dart pitch cmd=0 act=-1 rpm=0
+
+[19:09:33] << D
+[19:09:33] << art arm cmd=0 act=19 rpm=0 tmp=29 stall=0 bus=5607246
+
+[19:09:33] << D
+[19:09:33] << art ref seen=0 stage=-1 rem=0 gate=0 launch=0 tgt=0 cd=0 hit=0/0 rc=1 est=0 ovr=0 try=0
+
+[19:09:34] << D
+[19:09:34] << a
+[19:09:34] << rt mode=1 fault=无故障 darts=1 home=0 latch=0
+
+[19:09:34] << D
+[19:09:35] << art step=空闲
+
+[19:09:35] << D
+[19:09:35] << art remote ok=76537 clr=0 bad=0
+
+[19:09:35] << D
+[19:09:35] << art sw R=M L=D sticks 0.00 0.00 0.00 0.00 wheel 0.00
+
+[19:09:35] << D
+[19:09:35] << art online=1/1/1/0/1 home=0/0/0/0/1 sl=2.99/3.58mm I=0 pi=0.04mm pI=0 yaw=0.00deg[X]
+
+[19:09:35] << D
+[19:09:35] << art arm=-4
+[19:09:35] << 0.11 raw=1029 lock=0.00deg/1500 crank=1590[R] mag=0 tick 247/349us late=0
+
+[19:09:35] << Dart pitch cmd=0 act=-1 rpm=0
+
+[19:09:35] << D
+[19:09:35] << art arm cmd=-4 act=-27 rpm=0 tmp=29 stall=0 bus=5608406
+
+[19:09:35] << D
+[19:09:35] << art ref seen=0 stage=-1 rem=0 gate=0 launch=0 tgt=0 cd=0 hit=0/0 rc=1 est=0 ovr=0 try=0
+
+[19:09:36] << D
+[19:09:36] << art mode=1 fault=无故障 darts=1 home=0 latch=0
+
+[19:09:36] << Dart step=空闲
+
+[19:09:36] << D
+[19:09:36] << art remote ok=76619 clr=0 bad=0
+
+[19:09:36] << Dart sw R=M L=D sticks 0.00 1.00 0.00 0.00 wheel 0.00
+
+[19:09:36] << D
+[19:09:36] << art online=1/1/1/0/1 home=0/0/0/0/1 sl=2.99/3.58mm I=0 pi=0.04mm pI=0 yaw=0.00deg[X]
+
+[19:09:36] << D
+[19:09:36] << art arm=-
+[19:09:36] << 40.47 raw=1021 lock=0.00deg/1500 crank=1771[R] mag=0 tick 339/494us late=0
+
+[19:09:36] << Dart pitch cmd=0 act=102 rpm=0
+
+[19:09:36] << D
+[19:09:36] << art arm cmd=90 act=83 rpm=0 tmp=29 stall=0 bus=5609566
+
+[19:09:36] << D
+[19:09:36] << art ref seen=0 stage=-1 rem=0 gate=0 launch=0 tgt=0 cd=0 hit=0/0 rc=1 est=0 ovr=0 try=0
+
+[19:09:37] << D
+[19:09:37] << art mode=1 fault=无故障 darts=1 home=0 latch=0
+
+[19:09:37] << D
+[19:09:37] << art step=空闲
+
+[19:09:37] << D
+[19:09:37] << art remote ok=76702 clr=0 bad=0
+
+[19:09:37] << D
+[19:09:37] << art sw R=M L=D sticks 0.00 1.00 0.00 0.00 wheel 0.00
+
+[19:09:37] << D
+[19:09:37] << art online=1/1/1/0/1 home=0/0/0/0/1 sl=2.99/3.58mm I=0 pi=0.04mm pI=0 yaw=0.00deg[X]
+
+[19:09:37] << D
+[19:09:37] << art arm=
+[19:09:37] << -41.09 raw=1007 lock=0.00deg/1500 crank=2003[R] mag=0 tick 351/502us late=0
+
+[19:09:37] << Dart pitch cmd=0 act=73 rpm=0
+
+[19:09:37] << D
+[19:09:37] << art arm cmd=716 act=705 rpm=0 tmp=29 stall=0 bus=5610726
+
+[19:09:37] << D
+[19:09:37] << art ref seen=0 stage=-1 rem=0 gate=0 launch=0 tgt=0 cd=0 hit=0/0 rc=1 est=0 ovr=0 try=0
+[19:09:37] << 
+
+[19:09:38] << D
+[19:09:38] << art mode=1 fault=无故障 darts=1 home=0 latch=0
+
+[19:09:38] << D
+[19:09:38] << art step=空闲
+
+[19:09:38] << D
+[19:09:38] << art remote ok=76785 clr=0 bad=0
+
+[19:09:38] << D
+[19:09:38] << art sw R=M L=D sticks 0.00 0.00 0.00 0.00 wheel 0.00
+
+[19:09:38] << D
+[19:09:38] << art online=1/1/1/0/1 home=0/0/0/0/1 sl=2.99/3.58mm I=0 pi=0.04mm pI=0 yaw=0.00deg[X]
+
+[19:09:38] << Dart ar
+[19:09:38] << m=-42.36 raw=978 lock=0.00deg/1500 crank=2089[R] mag=0 tick 354/490us late=0
+
+[19:09:38] << D
+[19:09:38] << art pitch cmd=0 act=-30 rpm=0
+
+[19:09:38] << D
+[19:09:38] << art arm cmd=1958 act=1974 rpm=0 tmp=29 stall=0 bus=5611886
+
+[19:09:38] << D
+[19:09:38] << art ref seen=0 stage=-1 rem=0 gate=0 launch=0 tgt=0 cd=0 hit=0/0 rc=1 est=0 ovr=0 t
+[19:09:38] << ry=0
+
+[19:09:39] << D
+[19:09:39] << art mode=1 fault=无故障 darts=1 home=0 latch=0
+
+[19:09:39] << D
+[19:09:39] << art step=空闲
+
+[19:09:39] << D
+[19:09:39] << art remote ok=76868 clr=0 bad=0
+
+[19:09:39] << D
+[19:09:39] << art sw R=M L=D sticks 0.00 0.00 0.00 0.00 wheel 0.00
+
+[19:09:39] << Dart online=1/1/1/0/1 home=0/0/0/0/1 sl=2.99/3.58mm I=0 pi=0.04mm pI=0 yaw=0.00deg[X]
+
+[19:09:39] << D
+[19:09:39] << ar
+[19:09:39] << t arm=-42.09 raw=984 lock=0.00deg/1500 crank=2129[R] mag=0 tick 356/491us late=0
+
+[19:09:39] << Dart pitch cmd=0 act=-1 rpm=0
+
+[19:09:39] << D
+[19:09:39] << art arm cmd=2767 act=2747 rpm=0 tmp=29 stall=0 bus=5613046
+
+[19:09:39] << D
+[19:09:39] << art ref seen=0 stage=-1 rem=0 gate=0 launch=0 tgt=0 cd=0 hit=0/0 rc=1 est=0 ovr=
+[19:09:39] << 0 try=0
+
+[19:09:40] << D
+[19:09:40] << art mode=1 fault=无故障 darts=1 home=0 latch=0
+
+[19:09:40] << D
+[19:09:40] << art step=空闲
+
+[19:09:40] << D
+[19:09:40] << art remote ok=76951 clr=0 bad=0
+
+[19:09:40] << D
+[19:09:40] << art sw R=M L=D sticks -0.08 0.46 0.00 0.00 wheel 0.00
+
+[19:09:40] << Dart online=1/1/1/0/1 home=0/0/0/0/1 sl=2.99/3.58mm I=0 pi=0.04mm pI=0 yaw=0.00deg[X]
+
+[19:09:40] << 
+
+[19:09:40] << D
+[19:09:40] << art arm=-41.65 raw=994 lock=0.00deg/1500 crank=2171[R] mag=0 tick 356/489us late=0
+
+[19:09:40] << Dart pitch cmd=0 act=-1 rpm=0
+
+[19:09:40] << D
+[19:09:40] << art arm cmd=3846 act=3838 rpm=0 tmp=29 stall=0 bus=5614206
+
+[19:09:40] << D
+[19:09:40] << art ref seen=0 stage=-1 rem=0 gate=0 launch=0 tgt=0 cd=0 hit=0/0 rc=1 est=0 
+[19:09:40] << ovr=0 try=0
+
+[19:09:41] << D
+[19:09:41] << art mode=1 fault=无故障 darts=1 home=0 latch=0
+
+[19:09:41] << D
+[19:09:41] << art step=空闲
+
+[19:09:41] << D
+[19:09:41] << art remote ok=77034 clr=0 bad=0
+
+[19:09:41] << D
+[19:09:42] << art sw R=M L=D sticks 0.00 0.00 0.00 0.00 wheel 0.00
+
+[19:09:42] << D
+[19:09:42] << art online=1/1/1/0/1 home=0/0/0/0/1 sl=2.99/3.58mm I=0 pi=0.04mm pI=0 yaw=0.00deg[
+[19:09:42] << X]
+
+[19:09:42] << Dart arm=-42.88 raw=966 lock=0.00deg/1500 crank=2190[R] mag=0 tick 357/516us late=0
+
+[19:09:42] << D
+[19:09:42] << art pitch cmd=0 act=28 rpm=0
+
+[19:09:42] << D
+[19:09:42] << art arm cmd=5508 act=5516 rpm=0 tmp=29 stall=0 bus=5615366
+
+[19:09:42] << Dart ref seen=0 stage=-1 rem=0 gate=0 launch=0 tgt=0 cd=0 hit=0/0 rc=1 est
+[19:09:42] << =0 ovr=0 try=0
+
+[19:09:43] << D
+[19:09:43] << art mode=1 fault=无故障 darts=1 home=0 latch=0
+
+[19:09:43] << Dart step=空闲
+
+[19:09:43] << D
+[19:09:43] << art remote ok=77117 clr=0 bad=0
+
+[19:09:43] << D
+[19:09:43] << art sw R=M L=D sticks -0.08 0.37 0.00 0.00 wheel 0.00
+
+[19:09:43] << Dart online=1/1/1/0/1 home=0/0/0/0/1 sl=2.99/3.58mm I=0 pi=0.04mm pI=0 yaw=0.00
+[19:09:43] << deg[X]
+
+[19:09:43] << Dart arm=-41.25 raw=1003 lock=0.00deg/1500 crank=2197[R] mag=0 tick 357/492us late=0
+
+[19:09:43] << D
+[19:09:43] << art pitch cmd=0 act=-30 rpm=0
+
+[19:09:43] << D
+[19:09:43] << art arm cmd=6656 act=6660 rpm=0 tmp=29 stall=0 bus=5616526
+
+[19:09:43] << D
+[19:09:43] << art ref seen=0 stage=-1 rem=0 gate=0 launch=0 tgt=0 cd=0 hit=0/0 rc
+[19:09:43] << =1 est=0 ovr=0 try=0
+
+[19:09:43] << [33mW [5617963](./Modules/local/DartLauncher/src/hw/launcher_hw.cpp:307) 摆臂堵转，电流限到 0.85 A[m
+
+[19:09:44] << D
+[19:09:44] << art mode=1 fault=无故障 darts=1 home=0 latch=0
+
+[19:09:44] << Dart step=空闲
+
+[19:09:44] << D
+[19:09:44] << art remote ok=77199 clr=0 bad=0
+
+[19:09:44] << Dart sw R=M L=D 
+[19:09:44] << sticks 0.00 0.00 0.00 0.00 wheel 0.00
+
+[19:09:44] << D
+[19:09:44] << art online=1/1/1/0/1 home=0/0/0/0/1 sl=2.99/3.58mm I=0 pi=0.04mm pI=0 yaw=0.00deg[X]
+
+[19:09:44] << Dart arm=-40.65 raw=1017 lock=0.00deg/1500 crank=2246[R] mag=0 tick 358/519us late=0
+
+[19:09:44] << D
+[19:09:44] << art pitch cmd=0 act=-1 rpm=0
+
+[19:09:44] << Dart arm cmd
+[19:09:44] << =4642 act=4647 rpm=0 tmp=29 stall=1 bus=5617686
+
+[19:09:44] << D
+[19:09:44] << art ref seen=0 stage=-1 rem=0 gate=0 launch=0 tgt=0 cd=0 hit=0/0 rc=1 est=0 ovr=0 try=0
+
+[19:09:45] << D
+[19:09:45] << art mode=1 fault=无故障 darts=1 home=0 latch=0
+
+[19:09:45] << D
+[19:09:45] << art step=空闲
+
+[19:09:45] << Dart remote ok=77282 clr=0 bad=0
+
+[19:09:45] << D
+[19:09:45] << art sw R=M 
+[19:09:45] << L=D sticks 0.00 -1.00 0.00 0.00 wheel 0.00
+
+[19:09:45] << Dart online=1/1/1/0/1 home=0/0/0/0/1 sl=2.99/3.58mm I=0 pi=0.04mm pI=0 yaw=0.00deg[X]
+
+[19:09:45] << Dart arm=-39.41 raw=1045 lock=0.00deg/1500 crank=2115[R] mag=0 tick 355/484us late=0
+
+[19:09:45] << D
+[19:09:45] << art pitch cmd=0 act=-74 rpm=0
+
+[19:09:45] << Dart a
+[19:09:45] << rm cmd=4642 act=4640 rpm=0 tmp=29 stall=1 bus=5618846
+
+[19:09:45] << Dart ref seen=0 stage=-1 rem=0 gate=0 launch=0 tgt=0 cd=0 hit=0/0 rc=1 est=0 ovr=0 try=0
+
+[19:09:46] << 
+[19:09:46] << [36mI [5621037](./Modules/local/DartLauncher/src/hw/launcher_hw.cpp:309) 摆臂电流限制解除[m
+Dart mo
+[19:09:46] << de=1 fault=无故障 darts=1 home=0 latch=0
+
+[19:09:46] << Dart step=空闲
+
+[19:09:46] << Dart remote ok=77365 clr=0 bad=0
+
+[19:09:46] << D
+[19:09:46] << art sw R=M L=D sticks 0.00 -1.00 0.00 0.00 wheel 0.00
+
+[19:09:46] << Dart online=1/1/1/0/1 home=0/0/0/0/1 sl=2.99/3.58mm I=0 pi=0.04mm pI=0 yaw=0.00deg[X]
+
+[19:09:46] << D
+[19:09:46] << art arm=-36.61
+[19:09:46] <<  raw=1109 lock=0.00deg/1500 crank=1883[R] mag=0 tick 352/496us late=0
+
+[19:09:46] << Dart pitch cmd=0 act=-1 rpm=0
+
+[19:09:46] << Dart arm cmd=4641 act=4643 rpm=0 tmp=30 stall=0 bus=5620006
+
+[19:09:46] << D
+[19:09:46] << art ref seen=0 stage=-1 rem=0 gate=0 launch=0 tgt=0 cd=0 hit=0/0 rc=1 est=0 ovr=0 try=0
+
+[19:09:47] << Da
+[19:09:47] << rt mode=1 fault=无故障 darts=1 home=0 latch=0
+
+[19:09:47] << Dart step=空闲
+
+[19:09:47] << Dart remote ok=77448 clr=0 bad=0
+
+[19:09:47] << D
+[19:09:47] << art sw R=M L=D sticks 0.00 -1.00 0.00 0.00 wheel 0.00
+
+[19:09:47] << Dart online=1/1/1/0/1 home=0/0/0/0/1 sl=2.99/3.58mm I=0 pi=0.04mm pI=0 yaw=0.00deg[X]
+
+[19:09:47] << Dart arm=-
+[19:09:47] << 37.04 raw=1099 lock=0.00deg/1500 crank=1651[R] mag=0 tick 351/497us late=0
+
+[19:09:47] << Dart pitch cmd=0 act=-1 rpm=0
+
+[19:09:47] << Dart arm cmd=2618 act=2618 rpm=0 tmp=30 stall=0 bus=5621165
+
+[19:09:47] << D
+[19:09:47] << art ref seen=0 stage=-1 rem=0 gate=0 launch=0 tgt=0 cd=0 hit=0/0 rc=1 est=0 ovr=0 try=
+[19:09:47] << 0
+
+[19:09:48] << D
+[19:09:48] << art mode=1 fault=无故障 darts=1 home=0 latch=0
+
+[19:09:48] << Dart step=空闲
+
+[19:09:48] << D
+[19:09:48] << art remote ok=77531 clr=0 bad=0
+
+[19:09:48] << Dart sw R=M L=D sticks 0.00 0.00 0.00 0.00 wheel 0.00
+
+[19:09:48] << D
+[19:09:48] << art online=1/1/1/0/1 home=0/0/0/0/1 sl=2.99/3.58mm I=0 pi=0.04mm pI=0 yaw=0.00deg[X]
+
+[19:09:48] << Dart a
+[19:09:49] << rm=-29.79 raw=1264 lock=0.00deg/1500 crank=1468[R] mag=0 tick 351/501us late=0
+
+[19:09:49] << Dart pitch cmd=0 act=28 rpm=0
+
+[19:09:49] << D
+[19:09:49] << art arm cmd=-2558 act=-2433 rpm=2 tmp=30 stall=0 bus=5622325
+
+[19:09:49] << Dart ref seen=0 stage=-1 rem=0 gate=0 launch=0 tgt=0 cd=0 hit=0/0 rc=1 est=0 ovr=
+[19:09:49] << 0 try=0
+
+[19:09:50] << D
+[19:09:50] << art mode=1 fault=无故障 darts=1 home=0 latch=0
+
+[19:09:50] << Dart step=空闲
+
+[19:09:50] << D
+[19:09:50] << art remote ok=77614 clr=0 bad=0
+
+[19:09:50] << Dart sw R=M L=D sticks 0.00 0.00 0.00 0.00 wheel 0.00
+
+[19:09:50] << Dart online=1/1/1/0/1 home=0/0/0/0/1 sl=2.99/3.58mm I=0 pi=0.04mm pI=0 yaw=0.00deg[X]
+
+[19:09:50] << Dart arm=-35.15 raw=1142 lock=0.00deg/1500 crank=1468[R] mag=0 tick 351/484us late=0
+
+[19:09:50] << Dart pitch cmd=0 act=73 rpm=0
+
+[19:09:50] << Dart arm cmd=-7208 act=-7389 rpm=-5 tmp=30 stall=0 bus=5623485
+
+[19:09:50] << Dart ref seen=0 stage=-1 rem=0 gate=0 launch=0 tgt=0 cd=0 hit=0/0 rc=1 est
+[19:09:50] << =0 ovr=0 try=0
+
+[19:09:51] << D
+[19:09:51] << art mode=1 fault=无故障 darts=1 home=0 latch=0
+
+[19:09:51] << Dart step=空闲
+
+[19:09:51] << Dart remote ok=77697 clr=0 bad=0
+
+[19:09:51] << D
+[19:09:51] << art sw R=M L=D sticks 0.00 0.00 -1.00 0.00 wheel 0.00
+
+[19:09:51] << Dart online=1/1/1/0/1 home=0/0/0/0/1 sl=2.99/3.58mm I=0 pi=0.04mm pI=0 yaw=0.00
+[19:09:51] << deg[X]
+
+[19:09:51] << Dart arm=-41.65 raw=994 lock=0.00deg/1500 crank=1468[R] mag=0 tick 351/494us late=0
+
+[19:09:51] << Dart pitch cmd=0 act=-147 rpm=0
+
+[19:09:51] << D
+[19:09:51] << art arm cmd=-8132 act=-7986 rpm=-1 tmp=30 stall=0 bus=5624645
+
+[19:09:51] << Dart ref seen=0 stage=-1 rem=0 gate=0 launch=0 tgt=0 cd=0 hit=0/0
+[19:09:51] <<  rc=1 est=0 ovr=0 try=0
+
+[19:09:52] << D
+[19:09:52] << art mode=1 fault=无故障 darts=1 home=0 latch=0
+
+[19:09:52] << D
+[19:09:52] << art step=空闲
+
+[19:09:52] << D
+[19:09:52] << art remote ok=77779 clr=0 bad=0
+
+[19:09:52] << D
+[19:09:52] << art sw R=M L=D sticks 0.00 0.00 -1.00 0.00 wheel 0.00
+
+[19:09:52] << D
+[19:09:52] << art online=1/1/1/0/1 home=0/0/0/0/1 sl=2.99/3.58mm I=0 pi=0.04mm pI=0
+[19:09:52] <<  yaw=0.00deg[X]
+
+[19:09:52] << Dart arm=-35.59 raw=1132 lock=0.00deg/1500 crank=1468[R] mag=0 tick 350/494us late=0
+
+[19:09:52] << D
+[19:09:52] << art pitch cmd=0 act=-30 rpm=0
+
+[19:09:52] << D
+[19:09:52] << art arm cmd=-4503 act=-4528 rpm=0 tmp=30 stall=0 bus=5625805
+
+[19:09:52] << D
+[19:09:52] << art ref seen=0 stage=-1 rem=0 gate=0 launch=0 tgt=0 cd=0
+[19:09:52] <<  hit=0/0 rc=1 est=0 ovr=0 try=0
+
+[19:09:53] << D
+[19:09:53] << art mode=1 fault=无故障 darts=1 home=0 latch=0
+
+[19:09:53] << Dart step=空闲
+
+[19:09:53] << D
+[19:09:53] << art remote ok=77862 clr=0 bad=0
+
+[19:09:53] << D
+[19:09:53] << art sw R=M L=D sticks 0.00 0.00 0.18 0.03 wheel 0.00
+
+[19:09:53] << Dart online=1/1/1/0/1 home=0/0/0/0/1 sl=2.99/3.58mm I=0 pi=0.04
+[19:09:53] << mm pI=0 yaw=0.00deg[X]
+
+[19:09:53] << Dart arm=-0.87 raw=1922 lock=0.00deg/1500 crank=1468[R] mag=0 tick 350/499us late=0
+
+[19:09:53] << D
+[19:09:53] << art pitch cmd=0 act=-1 rpm=0
+
+[19:09:53] << Dart arm cmd=2111 act=2126 rpm=4 tmp=31 stall=0 bus=5626965
+
+[19:09:53] << D
+[19:09:53] << art ref seen=0 stage=-1 rem=0 gate=0 launch=0 tgt=0 c
+[19:09:53] << d=0 hit=0/0 rc=1 est=0 ovr=0 try=0
+
+[19:09:54] << D
+[19:09:54] << art mode=1 fault=无故障 darts=1 home=0 latch=0
+
+[19:09:54] << Dart step=空闲
+
+[19:09:54] << D
+[19:09:54] << art remote ok=77945 clr=0 bad=0
+
+[19:09:54] << Dart sw R=M L=D sticks 0.00 0.00 0.00 0.00 wheel -1.00
+
+[19:09:54] << Dart online=1/1/1/0/1 home=0/0/0/0/1 sl=2.99/3.58mm I=0 pi=
+[19:09:54] << 0.04mm pI=0 yaw=0.00deg[X]
+
+[19:09:54] << Dart arm=-1.98 raw=1897 lock=0.00deg/1500 crank=1468[R] mag=0 tick 350/504us late=0
+
+[19:09:54] << D
+[19:09:54] << art pitch cmd=0 act=-1 rpm=0
+
+[19:09:54] << Dart arm cmd=1099 act=1099 rpm=0 tmp=31 stall=0 bus=5628125
+
+[19:09:54] << D
+[19:09:54] << art ref seen=0 stage=-1 rem=0 gate=0 launch=0 tgt
+[19:09:54] << =0 cd=0 hit=0/0 rc=1 est=0 ovr=0 try=0
+
+[19:09:55] << D
+[19:09:55] << art mode=1 fault=无故障 darts=1 home=0 latch=0
+
+[19:09:55] << Dart step=空闲
+
+[19:09:55] << D
+[19:09:55] << art remote ok=78028 clr=0 bad=0
+
+[19:09:55] << D
+[19:09:55] << art sw R=M L=D sticks 0.00 0.00 0.00 0.00 wheel -1.00
+
+[19:09:55] << Dart online=1/1/1/0/1 home=0/0/0/0/1 sl=2.99/3.58mm I=0
+[19:09:55] <<  pi=0.04mm pI=0 yaw=0.00deg[X]
+
+[19:09:55] << Dart arm=-1.85 raw=1900 lock=0.00deg/1500 crank=1468[R] mag=0 tick 350/499us late=0
+
+[19:09:55] << D
+[19:09:55] << art pitch cmd=0 act=-74 rpm=0
+
+[19:09:55] << Dart arm cmd=1813 act=1879 rpm=0 tmp=31 stall=0 bus=5629285
+
+[19:09:56] << D
+[19:09:56] << art ref seen=0 stage=-1 rem=0 gate=0 launch=
+[19:09:56] << 0 tgt=0 cd=0 hit=0/0 rc=1 est=0 ovr=0 try=0
+
+[19:09:56] << 
+[19:09:56] << [36mI [5631008](./Modules/local/DartLauncher/src/hw/launcher_hw.cpp:257) 电磁铁通电消磁命令[m
+
+[19:09:57] << D
+[19:09:57] << art mode=1 fault=无故障 darts=1 home=0 latch=0
+
+[19:09:57] << Dart step=空闲
+
+[19:09:57] << D
+[19:09:57] << art remote ok=78111 clr=0 bad=0
+
+[19:09:57] << Dart sw R=M L=D sticks 0.00 0.00 0.00 0.00 wheel 0.00
+
+[19:09:57] << Dart online=1/1/1/0/1 home=0/0/0/0/1 sl=2.98/3.41mm I=0 pi=0.04mm pI=0 yaw=0.00deg[X]
+
+[19:09:57] << Dart arm=-1.58 raw=1906 lock=0.00deg/1500 crank=1468[R] mag=1 tick 349/492us late=0
+
+[19:09:57] << Dart pitch cmd=0 act=-1 rpm=
+[19:09:57] << 0
+
+[19:09:57] << Dart arm cmd=2693 act=2530 rpm=-2 tmp=30 stall=0 bus=5630445
+
+[19:09:57] << D
+[19:09:57] << art ref seen=0 stage=-1 rem=0 gate=0 launch=0 tgt=0 cd=0 hit=0/0 rc=1 est=0 ovr=0 try=0
+
+[19:09:58] << D
+[19:09:58] << art mode=1 fault=无故障 darts=1 home=0 latch=0
+
+[19:09:58] << Dart step=空闲
+
+[19:09:58] << Dart remote ok=78194 clr=0 bad
+[19:09:58] << =0
+
+[19:09:58] << Dart sw R=M L=D sticks 0.00 0.00 0.00 0.00 wheel 0.00
+
+[19:09:58] << Dart online=1/1/1/0/1 home=0/0/0/0/1 sl=2.98/3.39mm I=0 pi=0.04mm pI=0 yaw=0.00deg[X]
+
+[19:09:58] << Dart arm=-1.00 raw=1919 lock=0.00deg/1500 crank=1468[R] mag=1 tick 352/590us late=0
+
+[19:09:58] << Dart pitch cmd=0 act=-1 
+[19:09:58] << rpm=0
+
+[19:09:58] << Dart arm cmd=2496 act=2507 rpm=0 tmp=30 stall=0 bus=5631605
+
+[19:09:58] << Dart ref seen=0 stage=-1 rem=0 gate=0 launch=0 tgt=0 cd=0 hit=0/0 rc=1 est=0 ovr=0 try=0
+
+[19:09:59] << Dart mode=1 fault=无故障 darts=1 home=0 latch=0
+
+[19:09:59] << D
+[19:09:59] << art step=空闲
+
+[19:09:59] << Dart remote ok=78277 clr=0 
+[19:09:59] << bad=0
+
+[19:09:59] << Dart sw R=M L=D sticks 0.00 0.00 0.00 0.00 wheel 0.00
+
+[19:09:59] << D
+[19:09:59] << art online=1/1/1/0/1 home=0/0/0/0/1 sl=2.99/3.39mm I=0 pi=0.04mm pI=0 yaw=0.00deg[X]
+
+[19:09:59] << Dart arm=-0.87 raw=1922 lock=0.00deg/1500 crank=1468[R] mag=1 tick 352/489us late=0
+
+[19:09:59] << D
+[19:09:59] << art pitch cmd=0 act=
+[19:09:59] << 73 rpm=0
+Dart arm cmd=2582 act=2593 rpm=0 tmp=30 stall=0 bus=5632765
+
+[19:09:59] << D
+[19:09:59] << art ref seen=0 stage=-1 rem=0 gate=0 launch=0 tgt=0 cd=0 hit=0/0 rc=1 est=0 ovr=0 try=0
+
+[19:09:59] << 
+[19:09:59] << [36mI [5634008](./Modules/local/DartLauncher/src/hw/launcher_hw.cpp:325) 电磁铁通电满 3
+[19:09:59] << .0 s，自动断电吸持[m
+
+[19:10:00] << D
+[19:10:00] << art mode=1 fault=无故障 darts=1 home=0 latch=0
+
+[19:10:00] << Dart step=空闲
+
+[19:10:00] << D
+[19:10:00] << art remote ok=78359 clr=0 bad=0
+
+[19:10:00] << Dart sw R=M L=D sticks 0.00 0.00 0.00 0.00 wheel 0.00
+
+[19:10:00] << D
+[19:10:00] << art online=1/1/1/0/1 home=0/0/0/0/1 sl=2.99/3.39mm I=0 pi=0.04mm 
+[19:10:00] << pI=0 yaw=0.00deg[X]
+Dart arm=-0.82 raw=1923 lock=0.00deg/1500 crank=1468[R] mag=0 tick 350/631us late=0
+
+[19:10:00] << D
+[19:10:00] << art pitch cmd=0 act=-44 rpm=0
+
+[19:10:00] << Dart arm cmd=2603 act=2595 rpm=0 tmp=30 stall=0 bus=5633925
+
+[19:10:00] << Dart ref seen=0 stage=-1 rem=0 gate=0 launch=0 tgt=0 cd=
+[19:10:00] << 0 hit=0/0 rc=1 est=0 ovr=0 try=0
+
+[19:10:01] << D
+[19:10:01] << art mode=1 fault=无故障 darts=1 home=0 latch=0
+
+[19:10:01] << Dart step=空闲
+
+[19:10:01] << D
+[19:10:01] << art remote ok=78442 clr=0 bad=0
+
+[19:10:01] << Dart sw R=M L=D sticks 0.00 0.00 0.00 0.00 wheel 0.00
+
+[19:10:01] << D
+[19:10:01] << art online=1/1/1/0/1 home=0/0/0/0/1 sl=2.99/3.39mm I=0 pi=0.0
+[19:10:01] << 4mm pI=0 yaw=0.00deg[X]
+
+[19:10:01] << Dart arm=-0.82 raw=1923 lock=0.00deg/1500 crank=1468[R] mag=0 tick 349/490us late=0
+
+[19:10:01] << Dart pitch cmd=0 act=-1 rpm=0
+
+[19:10:01] << Dart arm cmd=2633 act=2642 rpm=0 tmp=30 stall=0 bus=5635085
+
+[19:10:01] << D
+[19:10:01] << art ref seen=0 stage=-1 rem=0 gate=0 launch=0 tgt=0 
+[19:10:01] << cd=0 hit=0/0 rc=1 est=0 ovr=0 try=0
+
+[19:10:02] << D
+[19:10:02] << art mode=1 fault=无故障 darts=1 home=0 latch=0
+
+[19:10:02] << Dart step=空闲
+
+[19:10:02] << Dart remote ok=78525 clr=0 bad=0
+
+[19:10:02] << D
+[19:10:02] << art sw R=M L=D sticks 0.00 0.00 0.00 0.00 wheel 0.00
+
+[19:10:02] << Dart online=1/1/1/0/1 home=0/0/0/0/1 sl=2.99/3.39mm I=0 pi=
+[19:10:02] << 0.04mm pI=0 yaw=0.00deg[X]
+
+[19:10:02] << Dart arm=-0.82 raw=1923 lock=0.00deg/1500 crank=1468[R] mag=0 tick 348/490us late=0
+
+[19:10:02] << D
+[19:10:02] << art pitch cmd=0 act=43 rpm=0
+
+[19:10:02] << Dart arm cmd=2662 act=2642 rpm=0 tmp=30 stall=0 bus=5636245
+
+[19:10:02] << D
+[19:10:02] << art ref seen=0 stage=-1 rem=0 gate=0 launch=0 tgt
+[19:10:02] << =0 cd=0 hit=0/0 rc=1 est=0 ovr=0 try=0
+
+[19:10:03] << D
+[19:10:03] << art mode=1 fault=无故障 darts=1 home=0 latch=0
+
+[19:10:04] << Dart step=空闲
+
+[19:10:04] << Dart remote ok=78608 clr=0 bad=0
+
+[19:10:04] << Dart sw R=M L=D sticks 0.00 0.00 0.00 0.00 wheel 0.00
+
+[19:10:04] << Dart online=1/1/1/0/1 home=0/0/0/0/1 sl=2.99/3.39mm I=0 
+[19:10:04] << pi=0.04mm pI=0 yaw=0.00deg[X]
+
+[19:10:04] << Dart arm=-0.82 raw=1923 lock=0.00deg/1500 crank=1468[R] mag=0 tick 348/489us late=0
+
+[19:10:04] << Dart pitch cmd=0 act=29 rpm=0
+
+[19:10:04] << Dart arm cmd=2691 act=2692 rpm=0 tmp=30 stall=0 bus=5637405
+
+[19:10:04] << D
+[19:10:04] << art ref seen=0 stage=-1 rem=0 gate=0 launch=0 
+[19:10:04] << tgt=0 cd=0 hit=0/0 rc=1 est=0 ovr=0 try=0
+
+[19:10:05] << D
+[19:10:05] << art mode=1 fault=无故障 darts=1 home=0 latch=0
+
+[19:10:05] << Dart step=空闲
+
+[19:10:05] << D
+[19:10:05] << art remote ok=78691 clr=0 bad=0
+
+[19:10:05] << Dart sw R=M L=D sticks 0.00 0.00 0.00 0.00 wheel 0.00
+
+[19:10:05] << D
+[19:10:05] << art online=1/1/1/0/1 home=0/0/0/0/1 sl=2.99/3.39mm I
+[19:10:05] << =0 pi=0.04mm pI=0 yaw=0.00deg[X]
+Dart arm=-0.66 raw=1927 lock=0.00deg/1500 crank=1468[R] mag=0 tick 348/485us late=0
+
+[19:10:05] << Dart pitch cmd=0 act=-30 rpm=0
+
+[19:10:05] << D
+[19:10:05] << art arm cmd=2676 act=2666 rpm=0 tmp=30 stall=0 bus=5638565
+
+[19:10:05] << Dart ref seen=0 stage=-1 rem=0 gate=0 launc
+[19:10:05] << h=0 tgt=0 cd=0 hit=0/0 rc=1 est=0 ovr=0 try=0
+
+[19:10:06] << D
+[19:10:06] << art mode=1 fault=无故障 darts=1 home=0 latch=0
+
+[19:10:06] << Dart step=空闲
+
+[19:10:06] << Dart remote ok=78774 clr=0 bad=0
+
+[19:10:06] << Dart sw R=M L=D sticks 0.00 0.00 0.00 0.00 wheel 0.00
+
+[19:10:06] << D
+[19:10:06] << art online=1/1/1/0/1 home=0/0/0/0/1 sl=2.99/3.39
+[19:10:06] << mm I=0 pi=0.04mm pI=0 yaw=0.00deg[X]
+Dart arm=-0.40 raw=1933 lock=0.00deg/1500 crank=1468[R] mag=0 tick 351/486us late=0
+
+[19:10:06] << D
+[19:10:06] << art pitch cmd=0 act=-74 rpm=0
+
+[19:10:06] << Dart arm cmd=2467 act=2493 rpm=0 tmp=30 stall=0 bus=5639725
+
+[19:10:06] << Dart ref seen=0 stage=-1 rem=0 gate=0 l
+[19:10:06] << aunch=0 tgt=0 cd=0 hit=0/0 rc=1 est=0 ovr=0 try=0
+
+[19:10:07] << D
+[19:10:07] << art mode=1 fault=无故障 darts=1 home=0 latch=0
+
+[19:10:07] << Dart step=空闲
+
+[19:10:07] << Dart remote ok=78857 clr=0 bad=0
+
+[19:10:07] << Dart sw R=M L=D sticks 0.00 0.00 0.00 0.00 wheel 0.00
+
+[19:10:07] << Dart online=1/1/1/0/1 home=0/0/0/0/1 sl=2.99/
+[19:10:07] << 3.39mm I=0 pi=0.04mm pI=0 yaw=0.00deg[X]
+
+[19:10:07] << Dart arm=-0.40 raw=1933 lock=0.00deg/1500 crank=1468[R] mag=0 tick 353/478us late=0
+
+[19:10:07] << Dart pitch cmd=0 act=-221 rpm=0
+
+[19:10:07] << D
+[19:10:07] << art arm cmd=2207 act=2235 rpm=0 tmp=30 stall=0 bus=5640885
+
+[19:10:07] << Dart ref seen=0 stage=-1 rem=0 gat
+[19:10:07] << e=0 launch=0 tgt=0 cd=0 hit=0/0 rc=1 est=0 ovr=0 try=0
+
+[19:10:08] << D
+[19:10:08] << art mode=1 fault=无故障 darts=1 home=0 latch=0
+
+[19:10:08] << Dart step=空闲
+
+[19:10:08] << Dart remote ok=78939 clr=0 bad=0
+
+[19:10:08] << Dart sw R=M L=D sticks 0.00 0.00 0.00 0.00 wheel 0.00
+
+[19:10:08] << Dart online=1/1/1/0/1 home=0/0/0/0/1 sl=
+[19:10:08] << 2.99/3.39mm I=0 pi=0.04mm pI=0 yaw=0.00deg[X]
+
+[19:10:08] << Dart arm=17.01 raw=2329 lock=0.00deg/1500 crank=1468[R] mag=0 tick 356/491us late=0
+
+[19:10:08] << Dart pitch cmd=0 act=-30 rpm=0
+
+[19:10:08] << Dart arm cmd=-7155 act=-7135 rpm=0 tmp=30 stall=0 bus=5642045
+
+[19:10:08] << D
+[19:10:08] << art ref seen=0 stage=-1 rem
+[19:10:08] << =0 gate=0 launch=0 tgt=0 cd=0 hit=0/0 rc=1 est=0 ovr=0 try=0
+
+[19:10:09] << D
+[19:10:09] << art mode=1 fault=无故障 darts=1 home=0 latch=0
+
+[19:10:09] << Dart step=空闲
+
+[19:10:09] << D
+[19:10:09] << art remote ok=79022 clr=0 bad=0
+
+[19:10:09] << Dart sw R=M L=D sticks 0.00 0.00 0.03 0.00 wheel 0.00
+
+[19:10:09] << Dart online=1/1/1/0/1 home=0/0/0/0
+[19:10:09] << /1 sl=2.99/3.39mm I=0 pi=0.04mm pI=0 yaw=0.00deg[X]
+
+[19:10:09] << Dart arm=7.51 raw=2113 lock=0.00deg/1500 crank=1468[R] mag=0 tick 358/494us late=0
+
+[19:10:09] << Dart pitch cmd=0 act=73 rpm=0
+
+[19:10:09] << Dart arm cmd=-10922 act=-10920 rpm=0 tmp=30 stall=0 bus=5643205
+
+[19:10:09] << Dart ref seen=0 stage=
+[19:10:09] << -1 rem=0 gate=0 launch=0 tgt=0 cd=0 hit=0/0 rc=1 est=0 ovr=0 try=0
+
+[19:10:10] << D
+[19:10:10] << art mode=1 fault=无故障 darts=1 home=0 latch=0
+
+[19:10:10] << Dart step=空闲
+
+[19:10:10] << Dart remote ok=79105 clr=0 bad=0
+
+[19:10:10] << D
+[19:10:11] << art sw R=M L=D sticks 0.00 0.00 1.00 0.00 wheel 0.00
+
+[19:10:11] << Dart online=1/1/1/0/1 home=0
+[19:10:11] << /0/0/0/1 sl=2.99/3.39mm I=0 pi=0.04mm pI=0 yaw=0.00deg[X]
+
+[19:10:11] << Dart arm=20.29 raw=2404 lock=0.00deg/1500 crank=1468[R] mag=0 tick 358/501us late=0
+
+[19:10:11] << Dart pitch cmd=0 act=43 rpm=0
+
+[19:10:11] << Dart arm cmd=773 act=783 rpm=3 tmp=31 stall=0 bus=5644365
+
+[19:10:11] << Dart ref seen=0 stage
+[19:10:11] << =-1 rem=0 gate=0 launch=0 tgt=0 cd=0 hit=0/0 rc=1 est=0 ovr=0 try=0
+
+[19:10:12] << D
+[19:10:12] << art mode=1 fault=无故障 darts=1 home=0 latch=0
+
+[19:10:12] << Dart step=空闲
+
+[19:10:12] << Dart remote ok=79188 clr=0 bad=0
+
+[19:10:12] << Dart sw R=M L=D sticks 0.00 0.00 1.00 0.00 wheel 0.00
+
+[19:10:12] << D
+[19:10:12] << art online=1/1/1/0/1 home=
+[19:10:12] << 0/0/0/0/1 sl=2.99/3.39mm I=0 pi=0.04mm pI=0 yaw=0.00deg[X]
+Dart arm=46.54 raw=3001 lock=0.00deg/1500 crank=1468[R] mag=0 tick 357/496us late=0
+
+[19:10:12] << Dart pitch cmd=0 act=-1 rpm=0
+
+[19:10:12] << Dart arm cmd=3770 act=3705 rpm=1 tmp=31 stall=0 bus=5645525
+
+[19:10:12] << Dart ref seen=0 st
+[19:10:12] << age=-1 rem=0 gate=0 launch=0 tgt=0 cd=0 hit=0/0 rc=1 est=0 ovr=0 try=0
+
+[19:10:13] << Dart mode=1 fault=无故障 darts=1 home=0 latch=0
+
+[19:10:13] << Dart step=空闲
+
+[19:10:13] << D
+[19:10:13] << art remote ok=79271 clr=0 bad=0
+
+[19:10:13] << Dart sw R=M L=D sticks 0.00 0.00 0.99 0.00 wheel 0.00
+
+[19:10:13] << Dart online=1/1/1/0/1 ho
+[19:10:13] << me=0/0/0/0/1 sl=2.99/3.39mm I=0 pi=0.04mm pI=0 yaw=0.00deg[X]
+
+[19:10:13] << Dart arm=50.88 raw=3100 lock=0.00deg/1500 crank=1468[R] mag=0 tick 357/497us late=0
+
+[19:10:13] << Dart pitch cmd=0 act=-30 rpm=0
+
+[19:10:13] << D
+[19:10:13] << art arm cmd=0 act=9 rpm=0 tmp=31 stall=0 bus=5646685
+
+[19:10:13] << Dart ref seen=0 stag
+[19:10:13] << e=-1 rem=0 gate=0 launch=0 tgt=0 cd=0 hit=0/0 rc=1 est=0 ovr=0 try=0
+
+[19:10:14] << D
+[19:10:14] << art mode=1 fault=无故障 darts=1 home=0 latch=0
+
+[19:10:14] << Dart step=空闲
+
+[19:10:14] << Dart remote ok=79354 clr=0 bad=0
+
+[19:10:14] << D
+[19:10:14] << art sw R=M L=D sticks 0.00 0.00 0.00 0.00 wheel 0.00
+
+[19:10:14] << Dart online=1/1/1/0/1 home
+[19:10:14] << =0/0/0/0/1 sl=2.99/3.39mm I=0 pi=0.04mm pI=0 yaw=0.00deg[X]
+
+[19:10:14] << Dart arm=50.75 raw=3097 lock=0.00deg/1500 crank=1468[R] mag=0 tick 355/490us late=0
+
+[19:10:14] << Dart pitch cmd=0 act=-1 rpm=0
+
+[19:10:14] << Dart arm cmd=-519 act=-540 rpm=0 tmp=31 stall=0 bus=5647844
+
+[19:10:14] << D
+[19:10:14] << art ref seen=0 s
+[19:10:14] << tage=-1 rem=0 gate=0 launch=0 tgt=0 cd=0 hit=0/0 rc=1 est=0 ovr=0 try=0
+
+[19:10:15] << D
+[19:10:15] << art mode=1 fault=无故障 darts=1 home=0 latch=0
+
+[19:10:15] << Dart step=空闲
+
+[19:10:15] << Dart remote ok=79437 clr=0 bad=0
+
+[19:10:15] << Dart sw R=M L=D sticks 0.00 0.68 0.00 0.00 wheel 0.00
+
+[19:10:15] << Dart online=1/1/1/0/1 h
+[19:10:15] << ome=0/0/0/0/1 sl=2.99/3.39mm I=0 pi=0.04mm pI=0 yaw=0.00deg[X]
+
+[19:10:15] << Dart arm=50.27 raw=3086 lock=0.00deg/1500 crank=1491[R] mag=0 tick 353/485us late=0
+
+[19:10:15] << Dart pitch cmd=0 act=-30 rpm=0
+
+[19:10:15] << Dart arm cmd=-836 act=-837 rpm=0 tmp=31 stall=0 bus=5649004
+
+[19:10:15] << Dart ref seen
+[19:10:15] << =0 stage=-1 rem=0 gate=0 launch=0 tgt=0 cd=0 hit=0/0 rc=1 est=0 ovr=0 try=0
+
+[19:10:16] << D
+[19:10:16] << art mode=1 fault=无故障 darts=1 home=0 latch=0
+
+[19:10:16] << Dart step=空闲
+
+[19:10:16] << Dart remote ok=79519 clr=0 bad=0
+
+[19:10:16] << Dart sw R=M L=D sticks 0.00 0.88 0.00 0.00 wheel 0.00
+
+[19:10:16] << Dart online=1/1/1/0
+[19:10:16] << /1 home=0/0/0/0/1 sl=2.99/3.39mm I=0 pi=0.04mm pI=0 yaw=0.00deg[X]
+
+[19:10:16] << Dart arm=49.74 raw=3074 lock=0.00deg/1500 crank=1682[R] mag=0 tick 352/503us late=0
+
+[19:10:16] << Dart pitch cmd=0 act=-30 rpm=0
+
+[19:10:16] << Dart arm cmd=-870 act=-895 rpm=0 tmp=30 stall=0 bus=5650164
+
+[19:10:16] << Dart ref 
+[19:10:16] << seen=0 stage=-1 rem=0 gate=0 launch=0 tgt=0 cd=0 hit=0/0 rc=1 est=0 ovr=0 try=0
+
+[19:10:17] << D
+[19:10:17] << art mode=1 fault=无故障 darts=1 home=0 latch=0
+
+[19:10:17] << Dart step=空闲
+
+[19:10:17] << Dart remote ok=79602 clr=0 bad=0
+
+[19:10:17] << D
+[19:10:17] << art sw R=M L=D sticks 0.00 0.82 0.00 0.00 wheel 0.00
+
+[19:10:17] << Dart online=1/1
+[19:10:18] << /1/0/1 home=0/0/0/0/1 sl=2.99/3.39mm I=0 pi=0.04mm pI=0 yaw=0.00deg[X]
+Dart arm=48.86 raw=3054 lock=0.00deg/1500 crank=1878[R] mag=0 tick 351/511us late=0
+
+[19:10:18] << Dart pitch cmd=0 act=-45 rpm=0
+
+[19:10:18] << Dart arm cmd=-169 act=-167 rpm=0 tmp=30 stall=0 bus=5651324
+
+[19:10:18] << Dart 
+[19:10:18] << ref seen=0 stage=-1 rem=0 gate=0 launch=0 tgt=0 cd=0 hit=0/0 rc=1 est=0 ovr=0 try=0
+
+[19:10:19] << D
+[19:10:19] << art mode=1 fault=无故障 darts=1 home=0 latch=0
+
+[19:10:19] << Dart step=空闲
+
+[19:10:19] << Dart remote ok=79685 clr=0 bad=0
+
+[19:10:19] << D
+[19:10:19] << art sw R=M L=D sticks 0.01 0.77 0.00 0.00 wheel 0.00
+
+[19:10:19] << Dart online
+[19:10:19] << =1/1/1/0/1 home=0/0/0/0/1 sl=2.99/3.39mm I=0 pi=0.04mm pI=0 yaw=0.00deg[X]
+
+[19:10:19] << Dart arm=47.63 raw=3026 lock=0.00deg/1500 crank=2062[R] mag=0 tick 351/517us late=0
+
+[19:10:19] << Dart pitch cmd=0 act=73 rpm=0
+
+[19:10:19] << Dart arm cmd=1314 act=1303 rpm=0 tmp=30 stall=0 bus=5652484
+
+[19:10:19] << Da
+[19:10:19] << rt ref seen=0 stage=-1 rem=0 gate=0 launch=0 tgt=0 cd=0 hit=0/0 rc=1 est=0 ovr=0 try=0
+
+[19:10:20] << D
+[19:10:20] << art mode=1 fault=无故障 darts=1 home=0 latch=0
+
+[19:10:20] << Dart step=空闲
+
+[19:10:20] << Dart remote ok=79768 clr=0 bad=0
+
+[19:10:20] << Dart sw R=M L=D sticks 0.00 0.55 0.00 0.00 wheel 0.00
+
+[19:10:20] << Dart onl
+[19:10:20] << ine=1/1/1/0/1 home=0/0/0/0/1 sl=2.99/3.39mm I=0 pi=0.04mm pI=0 yaw=0.00deg[X]
+Dart arm=47.50 raw=3023 lock=0.00deg/1500 crank=2164[R] mag=0 tick 351/508us late=0
+
+[19:10:20] << Dart pitch cmd=0 act=-1 rpm=0
+
+[19:10:20] << Dart arm cmd=3017 act=3004 rpm=0 tmp=30 stall=0 bus=5653644
+
+[19:10:20] << 
+
+[19:10:20] << Dart ref seen=0 stage=-1 rem=0 gate=0 launch=0 tgt=0 cd=0 hit=0/0 rc=1 est=0 ovr=0 try=0
+
+[19:10:21] << D
+[19:10:21] << art mode=1 fault=无故障 darts=1 home=0 latch=0
+
+[19:10:21] << Dart step=空闲
+
+[19:10:21] << Dart remote ok=79851 clr=0 bad=0
+
+[19:10:21] << D
+[19:10:21] << art sw R=M L=D sticks 0.00 0.43 0.00 0.00 wheel 0.00
+
+[19:10:21] << Dart 
+[19:10:21] << online=1/1/1/0/1 home=0/0/0/0/1 sl=2.99/3.39mm I=0 pi=0.04mm pI=0 yaw=0.00deg[X]
+Dart arm=47.11 raw=3014 lock=0.00deg/1500 crank=2270[R] mag=0 tick 350/515us late=0
+
+[19:10:21] << Dart pitch cmd=0 act=-1 rpm=0
+
+[19:10:21] << Dart arm cmd=4884 act=4877 rpm=0 tmp=30 stall=0 bus=56548
+[19:10:21] << 04
+
+[19:10:21] << Dart ref seen=0 stage=-1 rem=0 gate=0 launch=0 tgt=0 cd=0 hit=0/0 rc=1 est=0 ovr=0 try=0
+
+[19:10:22] << Dart mode=1 fault=无故障 darts=1 home=0 latch=0
+
+[19:10:22] << D
+[19:10:22] << art step=空闲
+
+[19:10:22] << Dart remote ok=79934 clr=0 bad=0
+
+[19:10:22] << Dart sw R=M L=D sticks 0.00 0.00 0.00 0.00 wheel 0.00
+
+[19:10:22] << Da
+[19:10:22] << rt online=1/1/1/0/1 home=0/0/0/0/1 sl=2.99/3.39mm I=0 pi=0.04mm pI=0 yaw=0.00deg[X]
+
+[19:10:22] << Dart arm=48.34 raw=3042 lock=0.00deg/1500 crank=2310[R] mag=0 tick 351/517us late=0
+
+[19:10:22] << Dart pitch cmd=0 act=-1 rpm=0
+
+[19:10:22] << Dart arm cmd=6214 act=6187 rpm=0 tmp=30 stall=0 bus=56
+[19:10:22] << 55964
+
+[19:10:22] << Dart ref seen=0 stage=-1 rem=0 gate=0 launch=0 tgt=0 cd=0 hit=0/0 rc=1 est=0 ovr=0 try=0
+
+[19:10:23] << 
+[19:10:23] << [33mW [5657697](./Modules/local/DartLauncher/src/hw/launcher_hw.cpp:307) 摆臂堵转，电流限到 0.85 A[m
+
+[19:10:23] << D
+[19:10:23] << art mode=1 fault=无故障 darts=1 home=0 la
+[19:10:23] << tch=0
+Dart step=空闲
+
+[19:10:23] << Dart remote ok=80017 clr=0 bad=0
+
+[19:10:23] << Dart sw R=M L=D sticks 0.00 -1.00 0.00 0.00 wheel 0.00
+
+[19:10:23] << Dart online=1/1/1/0/1 home=0/0/0/0/1 sl=2.99/3.39mm I=0 pi=0.04mm pI=0 yaw=0.00deg[X]
+
+[19:10:23] << Dart arm=47.81 raw=3030 lock=0.00deg/1500 crank=2215[
+[19:10:23] << R] mag=0 tick 350/508us late=0
+
+[19:10:23] << Dart pitch cmd=0 act=-104 rpm=0
+
+[19:10:23] << Dart arm cmd=4642 act=4634 rpm=0 tmp=30 stall=1 bus=5657124
+
+[19:10:23] << Dart ref seen=0 stage=-1 rem=0 gate=0 launch=0 tgt=0 cd=0 hit=0/0 rc=1 est=0 ovr=0 try=0
+
+[19:10:24] << D
+[19:10:24] << art mode=1 fault=无故障 darts=1 hom
+[19:10:24] << e=0 latch=0
+Dart step=空闲
+
+[19:10:24] << Dart remote ok=80099 clr=0 bad=0
+
+[19:10:24] << Dart sw R=M L=D sticks 0.00 -1.00 0.00 0.00 wheel 0.00
+
+[19:10:24] << Dart online=1/1/1/0/1 home=0/0/0/0/1 sl=2.99/3.39mm I=0 pi=0.04mm pI=0 yaw=0.00deg[X]
+
+[19:10:24] << Dart arm=47.77 raw=3029 lock=0.00deg/1500 crank
+[19:10:24] << =1983[R] mag=0 tick 350/509us late=0
+
+[19:10:24] << Dart pitch cmd=0 act=-104 rpm=0
+
+[19:10:24] << Dart arm cmd=4642 act=4630 rpm=0 tmp=30 stall=1 bus=5658284
+
+[19:10:25] << Dart ref seen=0 stage=-1 rem=0 gate=0 launch=0 tgt=0 cd=0 hit=0/0 rc=1 est=0 ovr=0 try=0
+
+[19:10:26] << D
+[19:10:26] << art mode=1 fault=无故障 darts
+[19:10:26] << =1 home=0 latch=0
+Dart step=空闲
+
+[19:10:26] << Dart remote ok=80182 clr=0 bad=0
+
+[19:10:26] << Dart sw R=M L=D sticks 0.00 -1.00 0.00 0.00 wheel 0.00
+
+[19:10:26] << Dart online=1/1/1/0/1 home=0/0/0/0/1 sl=2.99/3.39mm I=0 pi=0.04mm pI=0 yaw=0.00deg[X]
+
+[19:10:26] << Dart arm=47.81 raw=3030 lock=0.00deg/1500
+[19:10:26] <<  crank=1751[R] mag=0 tick 350/503us late=0
+
+[19:10:26] << Dart pitch cmd=0 act=-1 rpm=0
+
+[19:10:26] << Dart arm cmd=4642 act=4656 rpm=0 tmp=31 stall=1 bus=5659444
+
+[19:10:26] << Dart ref seen=0 stage=-1 rem=0 gate=0 launch=0 tgt=0 cd=0 hit=0/0 rc=1 est=0 ovr=0 try=0
+
+[19:10:27] << D
+[19:10:27] << art mode=1 fault=无故障 d
+[19:10:27] << arts=1 home=0 latch=0
+Dart step=空闲
+
+[19:10:27] << Dart remote ok=80265 clr=0 bad=0
+
+[19:10:27] << Dart sw R=M L=D sticks 0.00 -1.00 0.00 0.00 wheel 0.00
+
+[19:10:27] << Dart online=1/1/1/0/1 home=0/0/0/0/1 sl=2.99/3.39mm I=0 pi=0.04mm pI=0 yaw=0.00deg[X]
+
+[19:10:27] << Dart arm=47.77 raw=3029 lock=0.00deg/
+[19:10:27] << 1500 crank=1519[R] mag=0 tick 350/494us late=0
+Dart pitch cmd=0 act=-1 rpm=0
+
+[19:10:27] << Dart arm cmd=4642 act=4634 rpm=0 tmp=31 stall=1 bus=5660604
+
+[19:10:27] << Dart ref seen=0 stage=-1 rem=0 gate=0 launch=0 tgt=0 cd=0 hit=0/0 rc=1 est=0 ovr=0 try=0
+
+[19:10:28] << Dart mode=1 fault=无故�
+[19:10:28] << �� darts=1 home=0 latch=0
+
+[19:10:28] << Dart step=空闲
+
+[19:10:28] << Dart remote ok=80348 clr=0 bad=0
+
+[19:10:28] << D
+[19:10:28] << art sw R=M L=D sticks 0.00 -1.00 0.00 0.00 wheel 0.00
+
+[19:10:28] << Dart online=1/1/1/0/1 home=0/0/0/0/1 sl=2.99/3.39mm I=0 pi=0.04mm pI=0 yaw=0.00deg[X]
+
+[19:10:28] << Dart arm=47.81 raw=3030 lock=0.00
+[19:10:28] << deg/1500 crank=1300[R] mag=0 tick 350/502us late=0
+Dart pitch cmd=0 act=-30 rpm=0
+
+[19:10:28] << Dart arm cmd=4642 act=4656 rpm=0 tmp=31 stall=1 bus=5661764
+
+[19:10:28] << Dart ref seen=0 stage=-1 rem=0 gate=0 launch=0 tgt=0 cd=0 hit=0/0 rc=1 est=0 ovr=0 try=0
+
+[19:10:29] << D
+[19:10:29] << art mode=1 fault=�
+[19:10:29] << �故障 darts=1 home=0 latch=0
+Dart step=空闲
+
+[19:10:29] << Dart remote ok=80431 clr=0 bad=0
+
+[19:10:29] << Dart sw R=M L=D sticks 0.00 0.00 -0.40 0.00 wheel 0.00
+
+[19:10:29] << Dart online=1/1/1/0/1 home=0/0/0/0/1 sl=2.99/3.39mm I=0 pi=0.04mm pI=0 yaw=0.00deg[X]
+
+[19:10:29] << Dart arm=47.81 raw=3030 lock
+[19:10:29] << =0.00deg/1500 crank=1300[R] mag=0 tick 349/505us late=0
+
+[19:10:29] << Dart pitch cmd=0 act=43 rpm=0
+
+[19:10:29] << Dart arm cmd=4642 act=4648 rpm=0 tmp=31 stall=1 bus=5662924
+Dart ref seen=0 stage=-1 rem=0 gate=0 launch=0 tgt=0 cd=0 hit=0/0 rc=1 est=0 ovr=0 try=0
+
+[19:10:29] << 
+[19:10:29] << [36mI [5664331]
+[19:10:29] << (./Modules/local/DartLauncher/src/hw/launcher_hw.cpp:309) 摆臂电流限制解除[m
+
+[19:10:30] << Dart mode=1 fault=无故障 darts=1 home=0 latch=0
+
+[19:10:30] << Dart step=空闲
+
+[19:10:30] << Dart remote ok=80514 clr=0 bad=0
+
+[19:10:30] << Dart sw R=M L=D sticks 0.46 -0.36 0.00 0.00 wheel 0.00
+
+[19:10:30] << Dart onl
+[19:10:30] << ine=1/1/1/0/1 home=0/0/0/0/1 sl=2.99/3.39mm I=0 pi=0.04mm pI=0 yaw=0.00deg[X]
+
+[19:10:30] << Dart arm=42.45 raw=2908 lock=0.00deg/1500 crank=1300[R] mag=0 tick 351/497us late=0
+
+[19:10:30] << Dart pitch cmd=0 act=-1 rpm=0
+
+[19:10:30] << Dart arm cmd=2547 act=2537 rpm=0 tmp=31 stall=0 bus=5664084
+
+[19:10:30] << 
+Dart ref seen=0 stage=-1 rem=0 gate=0 launch=0 tgt=0 cd=0 hit=0/0 rc=1 est=0 ovr=0 try=0
+
+[19:10:31] << D
+[19:10:31] << art mode=1 fault=无故障 darts=1 home=0 latch=0
+
+[19:10:31] << Dart step=空闲
+
+[19:10:31] << Dart remote ok=80596 clr=0 bad=0
+
+[19:10:31] << Dart sw R=M L=D sticks 0.00 0.58 0.00 0.00 wheel 0.00
+
+[19:10:31] << Dart 
+[19:10:31] << online=1/1/1/0/1 home=0/0/0/0/1 sl=2.99/3.39mm I=0 pi=0.04mm pI=0 yaw=0.00deg[X]
+
+[19:10:31] << Dart arm=44.43 raw=2953 lock=0.00deg/1500 crank=1330[R] mag=0 tick 350/500us late=0
+
+[19:10:31] << Dart pitch cmd=0 act=-1 rpm=0
+
+[19:10:31] << Dart arm cmd=5342 act=5339 rpm=0 tmp=31 stall=0 bus=56652
+[19:10:31] << 44
+Dart ref seen=0 stage=-1 rem=0 gate=0 launch=0 tgt=0 cd=0 hit=0/0 rc=1 est=0 ovr=0 try=0
+
+[19:10:32] << D
+[19:10:32] << art mode=1 fault=无故障 darts=1 home=0 latch=0
+
+[19:10:33] << Dart step=空闲
+
+[19:10:33] << Dart remote ok=80679 clr=0 bad=0
+
+[19:10:33] << Dart sw R=M L=D sticks 0.01 -1.00 0.00 0.00 wheel 0.00
+
+[19:10:33] << D
+[19:10:33] << art online=1/1/1/0/1 home=0/0/0/0/1 sl=2.99/3.39mm I=0 pi=0.04mm pI=0 yaw=0.00deg[X]
+Dart arm=45.40 raw=2975 lock=0.00deg/1500 crank=1300[R] mag=0 tick 353/511us late=0
+
+[19:10:33] << Dart pitch cmd=0 act=-30 rpm=0
+
+[19:10:33] << Dart arm cmd=7094 act=7101 rpm=0 tmp=31 stall=0 bus=
+[19:10:33] << 5666404
+
+[19:10:33] << Dart ref seen=0 stage=-1 rem=0 gate=0 launch=0 tgt=0 cd=0 hit=0/0 rc=1 est=0 ovr=0 try=0
+
+[19:10:33] << 
+[19:10:33] << [33mW [5667884](./Modules/local/DartLauncher/src/hw/launcher_hw.cpp:307) 摆臂堵转，电流限到 0.85 A[m
+
+[19:10:34] << D
+[19:10:34] << art mode=1 fault=无故障 darts=1 home=0 
+[19:10:34] << latch=0
+Dart step=空闲
+Dart remote ok=80762 clr=0 bad=0
+
+[19:10:34] << Dart sw R=M L=D sticks 0.00 1.00 0.00 0.00 wheel 0.00
+
+[19:10:34] << Dart online=1/1/1/0/1 home=0/0/0/0/1 sl=2.99/3.39mm I=0 pi=0.04mm pI=0 yaw=0.00deg[X]
+
+[19:10:34] << Dart arm=45.18 raw=2970 lock=0.00deg/1500 crank=1405
+[19:10:34] << [R] mag=0 tick 352/493us late=0
+
+[19:10:34] << Dart pitch cmd=0 act=-74 rpm=0
+
+[19:10:34] << Dart arm cmd=4642 act=4648 rpm=0 tmp=31 stall=1 bus=5667564
+
+[19:10:34] << Dart ref seen=0 stage=-1 rem=0 gate=0 launch=0 tgt=0 cd=0 hit=0/0 rc=1 est=0 ovr=0 try=0
+
+[19:10:35] << D
+[19:10:35] << art mode=1 fault=无故障 darts=1 hom
+[19:10:35] << e=0 latch=0
+Dart step=空闲
+
+[19:10:35] << Dart remote ok=80845 clr=0 bad=0
+
+[19:10:35] << Dart sw R=M L=D sticks 0.00 0.04 0.00 0.00 wheel 0.00
+
+[19:10:35] << Dart online=1/1/1/0/1 home=0/0/0/0/1 sl=2.99/3.39mm I=0 pi=0.04mm pI=0 yaw=0.00deg[X]
+
+[19:10:35] << Dart arm=45.18 raw=2970 lock=0.00deg/1500 crank=
+[19:10:35] << 1619[R] mag=0 tick 353/506us late=0
+
+[19:10:35] << Dart pitch cmd=0 act=-1 rpm=0
+
+[19:10:35] << Dart arm cmd=4642 act=4639 rpm=0 tmp=32 stall=1 bus=5668724
+
+[19:10:35] << Dart ref seen=0 stage=-1 rem=0 gate=0 launch=0 tgt=0 cd=0 hit=0/0 rc=1 est=0 ovr=0 try=0
+
+[19:10:35] << 
+[19:10:35] << [36mI [5670353](./Modules/local/Dar
+[19:10:35] << tLauncher/src/hw/launcher_hw.cpp:309) 摆臂电流限制解除[m
+
+[19:10:36] << D
+[19:10:36] << art mode=1 fault=无故障 darts=1 home=0 latch=0
+
+[19:10:36] << Dart step=空闲
+
+[19:10:36] << Dart remote ok=80928 clr=0 bad=0
+
+[19:10:36] << Dart sw R=M L=D sticks 0.00 0.00 -1.00 0.00 wheel 0.00
+Dart online=1/1/1/0/1 home=0
+[19:10:36] << /0/0/0/1 sl=2.99/3.39mm I=0 pi=0.04mm pI=0 yaw=0.00deg[X]
+
+[19:10:36] << Dart arm=40.68 raw=2868 lock=0.00deg/1500 crank=1619[R] mag=0 tick 356/492us late=0
+
+[19:10:36] << Dart pitch cmd=0 act=-1 rpm=0
+
+[19:10:36] << Dart arm cmd=114 act=273 rpm=-3 tmp=32 stall=0 bus=5669884
+
+[19:10:36] << Dart ref seen=0 stag
+[19:10:36] << e=-1 rem=0 gate=0 launch=0 tgt=0 cd=0 hit=0/0 rc=1 est=0 ovr=0 try=0
+
+[19:10:37] << D
+[19:10:37] << art mode=1 fault=无故障 darts=1 home=0 latch=0
+
+[19:10:37] << Dart step=空闲
+
+[19:10:37] << Dart remote ok=81011 clr=0 bad=0
+
+[19:10:37] << Dart sw R=M L=D sticks 0.00 0.00 0.00 0.00 wheel 0.00
+Dart online=1/1/1/0/1 home
+[19:10:37] << =0/0/0/0/1 sl=2.99/3.39mm I=0 pi=0.04mm pI=0 yaw=0.00deg[X]
+
+[19:10:37] << Dart arm=-0.87 raw=1922 lock=0.00deg/1500 crank=1619[R] mag=0 tick 358/493us late=0
+
+[19:10:37] << Dart pitch cmd=0 act=73 rpm=0
+
+[19:10:37] << Dart arm cmd=-858 act=-1003 rpm=3 tmp=32 stall=0 bus=5671044
+
+[19:10:37] << Dart ref seen=0 
+[19:10:37] << stage=-1 rem=0 gate=0 launch=0 tgt=0 cd=0 hit=0/0 rc=1 est=0 ovr=0 try=0
+
+[19:10:38] << D
+[19:10:38] << art mode=1 fault=无故障 darts=1 home=0 latch=0
+
+[19:10:38] << Dart step=空闲
+
+[19:10:38] << Dart remote ok=81094 clr=0 bad=0
+Dart sw R=M L=D sticks 0.00 0.00 0.00 0.00 wheel 0.00
+
+[19:10:38] << Dart online=1/1/1/0/1 
+[19:10:38] << home=0/0/0/0/1 sl=2.99/3.39mm I=0 pi=0.04mm pI=0 yaw=0.00deg[X]
+
+[19:10:38] << Dart arm=-1.13 raw=1916 lock=0.00deg/1500 crank=1619[R] mag=0 tick 357/497us late=0
+
+[19:10:38] << Dart pitch cmd=0 act=-30 rpm=0
+
+[19:10:38] << Dart arm cmd=-592 act=-583 rpm=0 tmp=32 stall=0 bus=5672204
+
+[19:10:38] << Dart ref see
+[19:10:38] << n=0 stage=-1 rem=0 gate=0 launch=0 tgt=0 cd=0 hit=0/0 rc=1 est=0 ovr=0 try=0
+
+[19:10:39] << D
+[19:10:39] << art mode=1 fault=无故障 darts=1 home=0 latch=0
+
+[19:10:39] << Dart step=空闲
+
+[19:10:39] << Dart remote ok=81176 clr=0 bad=0
+
+[19:10:40] << Dart sw R=M L=D sticks 0.00 0.00 0.00 0.00 wheel 0.00
+
+[19:10:40] << Dart online=1/1/1/
+[19:10:40] << 0/1 home=0/0/0/0/1 sl=2.99/3.39mm I=0 pi=0.04mm pI=0 yaw=0.00deg[X]
+Dart arm=-0.92 raw=1921 lock=0.00deg/1500 crank=1619[R] mag=0 tick 357/488us late=0
+
+[19:10:40] << Dart pitch cmd=0 act=-30 rpm=0
+
+[19:10:40] << Dart arm cmd=-1375 act=-1353 rpm=0 tmp=31 stall=0 bus=5673364
+
+[19:10:40] << Dart r
+[19:10:40] << ef seen=0 stage=-1 rem=0 gate=0 launch=0 tgt=0 cd=0 hit=0/0 rc=1 est=0 ovr=0 try=0
+
+[19:10:41] << D
+[19:10:41] << art mode=1 fault=无故障 darts=1 home=0 latch=0
+
+[19:10:41] << Dart step=空闲
+
+[19:10:41] << Dart remote ok=81259 clr=0 bad=0
+
+[19:10:41] << Dart sw R=M L=D sticks 0.00 0.00 0.00 0.00 wheel 0.00
+
+[19:10:41] << Dart online=
+[19:10:41] << 1/1/1/0/1 home=0/0/0/0/1 sl=2.99/3.39mm I=0 pi=0.04mm pI=0 yaw=0.00deg[X]
+Dart arm=-1.40 raw=1910 lock=0.00deg/1500 crank=1619[R] mag=0 tick 356/496us late=0
+
+[19:10:41] << Dart pitch cmd=0 act=-74 rpm=0
+
+[19:10:41] << Dart arm cmd=-1912 act=-1904 rpm=0 tmp=31 stall=0 bus=5674524
+
+[19:10:41] << Dart ref seen=0 stage=-1 rem=0 gate=0 launch=0 tgt=0 cd=0 hit=0/0 rc=1 est=0 ovr=0 try=0
+
+[19:10:42] << D
+[19:10:42] << art mode=1 fault=无故障 darts=1 home=0 latch=0
+
+[19:10:42] << Dart step=空闲
+
+[19:10:42] << Dart remote ok=81342 clr=0 bad=0
+
+[19:10:42] << Dart sw R=M L=D sticks 0.00 0.00 0.00 0.00 wheel -1.00
+
+[19:10:42] << Dart 
+[19:10:42] << online=1/1/1/0/1 home=0/0/0/0/1 sl=2.99/3.39mm I=0 pi=0.04mm pI=0 yaw=0.00deg[X]
+
+[19:10:42] << Dart arm=-1.53 raw=1907 lock=0.00deg/1500 crank=1619[R] mag=0 tick 356/498us late=0
+
+[19:10:42] << Dart pitch cmd=0 act=-30 rpm=0
+
+[19:10:42] << Dart arm cmd=-2423 act=-2432 rpm=0 tmp=31 stall=0 bus=56
+[19:10:42] << 75684
+Dart ref seen=0 stage=-1 rem=0 gate=0 launch=0 tgt=0 cd=0 hit=0/0 rc=1 est=0 ovr=0 try=0
+
+[19:10:43] << D
+[19:10:43] << art mode=1 fault=无故障 darts=1 home=0 latch=0
+
+[19:10:43] << Dart step=空闲
+
+[19:10:43] << Dart remote ok=81425 clr=0 bad=0
+
+[19:10:43] << Dart sw R=M L=D sticks 0.00 0.00 0.00 0.00 wheel -1.00
+[19:10:43] << 
+Dart online=1/1/1/0/1 home=0/0/0/0/1 sl=2.99/3.39mm I=0 pi=0.04mm pI=0 yaw=0.00deg[X]
+
+[19:10:43] << Dart arm=-1.66 raw=1904 lock=0.00deg/1500 crank=1619[R] mag=0 tick 355/499us late=0
+Dart pitch cmd=0 act=-45 rpm=0
+
+[19:10:43] << Dart arm cmd=-2851 act=-2833 rpm=0 tmp=31 stall=0
+[19:10:43] <<  bus=5676844
+Dart ref seen=0 stage=-1 rem=0 gate=0 launch=0 tgt=0 cd=0 hit=0/0 rc=1 est=0 ovr=0 try=0
+
+[19:10:43] << 
+[19:10:43] << [36mI [5678118](./Modules/local/DartLauncher/src/hw/launcher_hw.cpp:257) 电磁铁通电消磁命令[m
+
+[19:10:44] << D
+[19:10:44] << art mode=1 fault=无故障 darts=1 home=0 la
+[19:10:44] << tch=0
+Dart step=空闲
+
+[19:10:44] << Dart remote ok=81508 clr=0 bad=0
+
+[19:10:44] << Dart sw R=M L=D sticks 0.00 0.00 0.00 0.00 wheel 0.00
+
+[19:10:44] << Dart online=1/1/1/0/1 home=0/0/0/0/1 sl=2.98/3.39mm I=232 pi=0.05mm pI=-124 yaw=0.00deg[X]
+
+[19:10:44] << Dart arm=-2.72 raw=1880 lock=0.00deg/1500 crank=1
+[19:10:44] << 619[R] mag=1 tick 359/634us late=0
+
+[19:10:44] << Dart pitch cmd=-124 act=45 rpm=8
+Dart arm cmd=-2673 act=-2690 rpm=0 tmp=31 stall=0 bus=5678003
+
+[19:10:44] << Dart ref seen=0 stage=-1 rem=0 gate=0 launch=0 tgt=0 cd=0 hit=0/0 rc=1 est=0 ovr=0 try=0
+
+[19:10:45] << 
+[19:10:45] << [36mI [5679808](./Modules/local
+[19:10:45] << /DartLauncher/src/hw/launcher_hw.cpp:328) 无力或故障，电磁铁断电吸持[m
+
+[19:10:45] << D
+[19:10:45] << art mode=0 fault=无故障 darts=1 home=0 latch=0
+
+[19:10:45] << Dart step=空闲
+
+[19:10:45] << Dart remote ok=81591 clr=0 bad=0
+
+[19:10:45] << Dart sw R=D L=D sticks 0.00 0.00 0.00 0.00 wheel 0.00
+
+[19:10:45] << Dart onlin
+[19:10:45] << e=1/1/1/0/1 home=0/0/0/0/1 sl=2.99/3.39mm I=0 pi=0.04mm pI=0 yaw=0.00deg[X]
+Dart arm=-1.58 raw=1906 lock=0.00deg/1500 crank=1619[R] mag=0 tick 359/580us late=0
+
+[19:10:45] << Dart pitch cmd=0 act=-1 rpm=0
+
+[19:10:45] << Dart arm cmd=0 act=25 rpm=0 tmp=31 stall=0 bus=5679163
+
+[19:10:45] << Dart r
+[19:10:45] << ef seen=0 stage=-1 rem=0 gate=0 launch=0 tgt=0 cd=0 hit=0/0 rc=1 est=0 ovr=0 try=0
+
+[19:10:46] << D
+[19:10:46] << art mode=0 fault=无故障 darts=1 home=0 latch=0
+
+[19:10:46] << Dart step=空闲
+
+[19:10:46] << Dart remote ok=81674 clr=0 bad=0
+
+[19:10:46] << Dart sw R=D L=D sticks 0.00 0.00 0.00 0.00 wheel 0.00
+
+[19:10:46] << Dart online=
+[19:10:47] << 1/1/1/0/1 home=0/0/0/0/1 sl=2.99/3.39mm I=0 pi=0.04mm pI=0 yaw=0.00deg[X]
+Dart arm=-1.53 raw=1907 lock=0.00deg/1500 crank=1619[R] mag=0 tick 260/383us late=0
+
+[19:10:47] << Dart pitch cmd=0 act=73 rpm=0
+
+[19:10:47] << Dart arm cmd=0 act=-6 rpm=0 tmp=31 stall=0 bus=5680323
+
+[19:10:47] << Dart ref
+[19:10:47] <<  seen=0 stage=-1 rem=0 gate=0 launch=0 tgt=0 cd=0 hit=0/0 rc=1 est=0 ovr=0 try=0

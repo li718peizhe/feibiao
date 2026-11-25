@@ -1,0 +1,281 @@
+cmake_minimum_required(VERSION 3.12)
+
+project(xr LANGUAGES C CXX ASM)
+
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+option(LIBXR_DEV_ASSERT_BUILD "Enable LibXR maintainer-only development assertions" OFF)
+
+# LIBXR_DEBUG_BUILD 默认跟随构建类型：用户未显式设置时，每次配置都按当前构建类型重新计算
+# （Debug 开启、其余关闭），作为普通变量不写入缓存，因此同一构建目录里切换构建类型后立即
+# 生效；用 -DLIBXR_DEBUG_BUILD=ON/OFF 显式设置后该值进入缓存，此后始终按用户的值。它与维护
+# 者专用的 LIBXR_DEV_ASSERT_BUILD 相互独立。
+# LIBXR_DEBUG_BUILD defaults to the build type: when the user has not set it, it is
+# recomputed on every configure from the current build type (on for Debug, off otherwise)
+# as a normal variable that is not written to the cache, so switching the build type in an
+# existing build directory takes effect immediately; once set explicitly with
+# -DLIBXR_DEBUG_BUILD=ON/OFF it becomes a cache entry and the user's value is kept on later
+# reconfigures. It is independent of the maintainer-only LIBXR_DEV_ASSERT_BUILD.
+if(NOT DEFINED LIBXR_DEBUG_BUILD)
+  if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+    set(LIBXR_DEBUG_BUILD ON)
+  else()
+    set(LIBXR_DEBUG_BUILD OFF)
+  endif()
+endif()
+
+if(LIBXR_SHARED_BUILD)
+  add_library(${PROJECT_NAME} SHARED)
+elseif(LIBXR_STATIC_BUILD)
+  add_library(${PROJECT_NAME} STATIC)
+elseif(LIBXR_OBJECT_BUILD)
+  add_library(${PROJECT_NAME} OBJECT)
+else()
+  add_library(${PROJECT_NAME} STATIC)
+endif()
+
+# 需要 C++20。编译器特性探测被跳过时（HPM SDK 的 find_package 强制指定编译器，探测结果
+# 拿不到），直接加 C++20 编译选项，工程因此不必再恢复探测。选项按 CMAKE_CXX_EXTENSIONS
+# 选择，与探测路径得到的 -std=gnu++20 一致；该变量默认开启，强制编译器下探测不给它赋值，
+# 未定义时按默认（开启）处理。
+# C++20 is required. When the compiler feature detection was skipped (HPM SDK's
+# find_package forces the compiler, so the detection results are unavailable), the C++20
+# option is added directly and projects do not have to restore the detection. The option
+# follows CMAKE_CXX_EXTENSIONS, matching the -std=gnu++20 that the detection path produces;
+# the variable is on by default and stays unset under a forced compiler, where the default
+# (on) applies.
+if("cxx_std_20" IN_LIST CMAKE_CXX_COMPILE_FEATURES)
+  target_compile_features(${PROJECT_NAME} PUBLIC cxx_std_20)
+elseif(MSVC)
+  target_compile_options(${PROJECT_NAME} PUBLIC $<$<COMPILE_LANGUAGE:CXX>:/std:c++20>)
+elseif(DEFINED CMAKE_CXX_EXTENSIONS AND NOT CMAKE_CXX_EXTENSIONS)
+  target_compile_options(${PROJECT_NAME} PUBLIC $<$<COMPILE_LANGUAGE:CXX>:-std=c++20>)
+else()
+  target_compile_options(${PROJECT_NAME} PUBLIC $<$<COMPILE_LANGUAGE:CXX>:-std=gnu++20>)
+endif()
+
+target_compile_options(
+  ${PROJECT_NAME}
+  PUBLIC -Wno-psabi
+  PUBLIC -fmacro-prefix-map=${CMAKE_SOURCE_DIR}=.
+)
+
+include(cmake/config.cmake)
+
+if(LIBXR_DEBUG_BUILD)
+  target_compile_definitions(${PROJECT_NAME} PUBLIC LIBXR_DEBUG_BUILD)
+endif()
+
+if(LIBXR_DEV_ASSERT_BUILD)
+  target_compile_definitions(${PROJECT_NAME} PUBLIC LIBXR_DEV_ASSERT_BUILD)
+endif()
+
+target_compile_definitions(${PROJECT_NAME} PUBLIC LIBXR_SINGLE_CORE=$<BOOL:${LIBXR_SINGLE_CORE}>)
+
+file(GLOB ${PROJECT_NAME}_SOURCES CONFIGURE_DEPENDS
+     "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp"
+)
+list(SORT ${PROJECT_NAME}_SOURCES)
+
+file(GLOB ${PROJECT_NAME}_CORE_SOURCES CONFIGURE_DEPENDS
+     "${CMAKE_CURRENT_SOURCE_DIR}/src/core/*.cpp"
+)
+list(SORT ${PROJECT_NAME}_CORE_SOURCES)
+
+file(GLOB ${PROJECT_NAME}_SYSTEM_SOURCES CONFIGURE_DEPENDS
+     "${CMAKE_CURRENT_SOURCE_DIR}/src/system/*.cpp"
+)
+list(SORT ${PROJECT_NAME}_SYSTEM_SOURCES)
+
+file(GLOB ${PROJECT_NAME}_DRIVER_SOURCES CONFIGURE_DEPENDS
+     "${CMAKE_CURRENT_SOURCE_DIR}/src/driver/*.cpp"
+)
+list(SORT ${PROJECT_NAME}_DRIVER_SOURCES)
+
+file(GLOB ${PROJECT_NAME}_UTILS_SOURCES CONFIGURE_DEPENDS
+     "${CMAKE_CURRENT_SOURCE_DIR}/src/utils/*.cpp"
+)
+list(SORT ${PROJECT_NAME}_UTILS_SOURCES)
+
+file(GLOB ${PROJECT_NAME}_STRUCTURE_SOURCES CONFIGURE_DEPENDS
+     "${CMAKE_CURRENT_SOURCE_DIR}/src/structure/*.cpp"
+)
+list(SORT ${PROJECT_NAME}_STRUCTURE_SOURCES)
+
+file(GLOB ${PROJECT_NAME}_STRUCTURE_SUBDIR_SOURCES CONFIGURE_DEPENDS
+     "${CMAKE_CURRENT_SOURCE_DIR}/src/structure/*/*.cpp"
+)
+list(SORT ${PROJECT_NAME}_STRUCTURE_SUBDIR_SOURCES)
+
+file(GLOB ${PROJECT_NAME}_MIDDLEWARE_SOURCES CONFIGURE_DEPENDS
+     "${CMAKE_CURRENT_SOURCE_DIR}/src/middleware/*.cpp"
+)
+list(SORT ${PROJECT_NAME}_MIDDLEWARE_SOURCES)
+
+file(GLOB ${PROJECT_NAME}_MIDDLEWARE_SUBDIR_SOURCES CONFIGURE_DEPENDS
+     "${CMAKE_CURRENT_SOURCE_DIR}/src/middleware/*/*.cpp"
+)
+list(SORT ${PROJECT_NAME}_MIDDLEWARE_SUBDIR_SOURCES)
+
+file(GLOB ${PROJECT_NAME}_MIDDLEWARE_NESTED_SUBDIR_SOURCES CONFIGURE_DEPENDS
+     "${CMAKE_CURRENT_SOURCE_DIR}/src/middleware/*/*/*.cpp"
+)
+list(SORT ${PROJECT_NAME}_MIDDLEWARE_NESTED_SUBDIR_SOURCES)
+
+target_sources(
+  ${PROJECT_NAME}
+  PRIVATE ${${PROJECT_NAME}_SOURCES}
+  PRIVATE ${${PROJECT_NAME}_CORE_SOURCES}
+  PRIVATE ${${PROJECT_NAME}_SYSTEM_SOURCES}
+  PRIVATE ${${PROJECT_NAME}_DRIVER_SOURCES}
+  PRIVATE ${${PROJECT_NAME}_SYSTEM_EXT_SOURCES}
+  PRIVATE ${${PROJECT_NAME}_UTILS_SOURCES}
+  PRIVATE ${${PROJECT_NAME}_STRUCTURE_SOURCES}
+  PRIVATE ${${PROJECT_NAME}_STRUCTURE_SUBDIR_SOURCES}
+  PRIVATE ${${PROJECT_NAME}_MIDDLEWARE_SOURCES}
+  PRIVATE ${${PROJECT_NAME}_MIDDLEWARE_SUBDIR_SOURCES}
+  PRIVATE ${${PROJECT_NAME}_MIDDLEWARE_NESTED_SUBDIR_SOURCES}
+)
+
+file(GLOB_RECURSE _xr_force_o3_sources CONFIGURE_DEPENDS
+     "${CMAKE_CURRENT_SOURCE_DIR}/src/*_o3.cpp"
+)
+list(SORT _xr_force_o3_sources)
+
+file(GLOB_RECURSE _xr_force_os_sources CONFIGURE_DEPENDS
+     "${CMAKE_CURRENT_SOURCE_DIR}/src/*_os.cpp"
+)
+list(SORT _xr_force_os_sources)
+
+if(_xr_force_o3_sources)
+  if(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
+    set_property(SOURCE ${_xr_force_o3_sources} APPEND PROPERTY COMPILE_OPTIONS "/O2")
+  elseif(CMAKE_CXX_COMPILER_ID STREQUAL "GNU" OR
+         CMAKE_CXX_COMPILER_ID STREQUAL "Clang" OR
+         CMAKE_CXX_COMPILER_ID STREQUAL "AppleClang")
+    set_property(SOURCE ${_xr_force_o3_sources} APPEND PROPERTY COMPILE_OPTIONS "-O3")
+  else()
+    message(WARNING
+            "LibXR file-level optimized sources are not configured for compiler: "
+            "${CMAKE_CXX_COMPILER_ID}")
+  endif()
+endif()
+
+if(_xr_force_os_sources)
+  if(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
+    set_property(SOURCE ${_xr_force_os_sources} APPEND PROPERTY COMPILE_OPTIONS "/O1")
+  elseif(CMAKE_CXX_COMPILER_ID STREQUAL "GNU" OR
+         CMAKE_CXX_COMPILER_ID STREQUAL "Clang" OR
+         CMAKE_CXX_COMPILER_ID STREQUAL "AppleClang")
+    set_property(SOURCE ${_xr_force_os_sources} APPEND PROPERTY COMPILE_OPTIONS "-Os")
+  else()
+    message(WARNING
+            "LibXR file-level size-optimized sources are not configured for compiler: "
+            "${CMAKE_CXX_COMPILER_ID}")
+  endif()
+endif()
+
+include(${CMAKE_CURRENT_SOURCE_DIR}/src/core/CMakeLists.txt)
+
+# The current tree still relies on basename and short subtree includes across major layers.
+# Keep the exported roots explicit here until the include-style migration lands.
+set(_xr_public_include_dirs
+    ${CMAKE_CURRENT_SOURCE_DIR}/src
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/core
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/system
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/utils
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/structure
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/middleware
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/driver
+    ${CMAKE_CURRENT_SOURCE_DIR}/system/${_xr_system}
+)
+
+file(GLOB _xr_core_SUBDIRS CONFIGURE_DEPENDS LIST_DIRECTORIES true
+     "${CMAKE_CURRENT_SOURCE_DIR}/src/core/*"
+)
+foreach(_xr_core_SUBDIR IN LISTS _xr_core_SUBDIRS)
+  if(IS_DIRECTORY "${_xr_core_SUBDIR}")
+    get_filename_component(_xr_core_NAME "${_xr_core_SUBDIR}" NAME)
+    if(EXISTS "${_xr_core_SUBDIR}/${_xr_core_NAME}.hpp" OR
+       EXISTS "${_xr_core_SUBDIR}/libxr_${_xr_core_NAME}.hpp")
+      list(APPEND _xr_public_include_dirs "${_xr_core_SUBDIR}")
+    endif()
+  endif()
+endforeach()
+
+file(GLOB _xr_middleware_SUBDIRS CONFIGURE_DEPENDS LIST_DIRECTORIES true
+     "${CMAKE_CURRENT_SOURCE_DIR}/src/middleware/*"
+)
+file(GLOB _xr_structure_SUBDIRS CONFIGURE_DEPENDS LIST_DIRECTORIES true
+     "${CMAKE_CURRENT_SOURCE_DIR}/src/structure/*"
+)
+foreach(_xr_structure_SUBDIR IN LISTS _xr_structure_SUBDIRS)
+  if(IS_DIRECTORY "${_xr_structure_SUBDIR}")
+    get_filename_component(_xr_structure_NAME "${_xr_structure_SUBDIR}" NAME)
+    if(EXISTS "${_xr_structure_SUBDIR}/${_xr_structure_NAME}.hpp")
+      list(APPEND _xr_public_include_dirs "${_xr_structure_SUBDIR}")
+    endif()
+  endif()
+endforeach()
+
+foreach(_xr_middleware_SUBDIR IN LISTS _xr_middleware_SUBDIRS)
+  if(IS_DIRECTORY "${_xr_middleware_SUBDIR}")
+    get_filename_component(_xr_middleware_NAME "${_xr_middleware_SUBDIR}" NAME)
+    if(EXISTS "${_xr_middleware_SUBDIR}/${_xr_middleware_NAME}.hpp")
+      list(APPEND _xr_public_include_dirs "${_xr_middleware_SUBDIR}")
+    endif()
+  endif()
+endforeach()
+
+target_include_directories(${PROJECT_NAME} PUBLIC ${_xr_public_include_dirs})
+
+if(_xr_driver)
+  target_sources(${PROJECT_NAME} PRIVATE ${${PROJECT_NAME}_DRIVER_C_SOURCES})
+
+  target_include_directories(
+    ${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/driver/${_xr_driver}
+  )
+endif()
+
+# XRUSB
+if(_xr_driver)
+  include(${CMAKE_CURRENT_SOURCE_DIR}/src/driver/usb/CMakeLists.txt)
+endif()
+
+if(_xr_system MATCHES "webots")
+  target_link_directories(${PROJECT_NAME} PUBLIC ${WEBOTS_HOME}/lib/controller)
+
+  target_link_libraries(
+    ${PROJECT_NAME}
+    PUBLIC ${LIBRARIES}
+    PUBLIC ${CMAKE_SHARED_LIBRARY_PREFIX}Controller${CMAKE_SHARED_LIBRARY_SUFFIX}
+    PUBLIC ${CMAKE_SHARED_LIBRARY_PREFIX}CppController${CMAKE_SHARED_LIBRARY_SUFFIX}
+  )
+
+  target_include_directories(
+    ${PROJECT_NAME}
+    PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}
+    PUBLIC ${WEBOTS_HOME}/include/controller/c
+    PUBLIC ${WEBOTS_HOME}/include/controller/cpp
+    PUBLIC ${WEBOTS_HOME}/lib/controller
+  )
+endif()
+
+if(LIBXR_NO_EIGEN)
+  target_compile_definitions(${PROJECT_NAME} PUBLIC LIBXR_NO_EIGEN)
+else()
+  add_subdirectory(lib/Eigen)
+
+  target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/lib/Eigen)
+
+  target_compile_definitions(${PROJECT_NAME} PUBLIC EIGEN_NO_IO)
+endif()
+
+# XRobot integration. A BSP enables it by setting XROBOT_MODULES_DIR to <BSP root>/Modules.
+include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/XRobot.cmake)
+
+if(LIBXR_TEST_BUILD)
+  enable_testing()
+  add_subdirectory(test)
+endif()

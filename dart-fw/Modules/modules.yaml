@@ -1,0 +1,7 @@
+xrobot: 1.0.1
+modules:
+- QDU-Robomaster/RMMotor@same-or-dev
+- QDU-Robomaster/Referee@same-or-dev
+- xrobot-org/BlinkLED@same-or-dev
+- xrobot-org/BuzzerAlarm@same-or-dev
+- local/DartLauncher@e17b490e8ffbefedc08c96d8d74396ba257487de

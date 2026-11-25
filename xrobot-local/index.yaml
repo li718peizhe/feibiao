@@ -1,0 +1,6 @@
+namespace: local
+modules:
+  - id: local/ATSRuntime
+    repo: https://github.com/li718peizhe/ATSRuntime.git
+  - id: local/DartLauncher
+    repo: ./DartLauncher

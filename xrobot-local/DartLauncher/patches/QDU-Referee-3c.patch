@@ -1,0 +1,153 @@
+diff --git a/Referee.hpp b/Referee.hpp
+index 015fbe0..8343b0d 100644
+--- a/Referee.hpp
++++ b/Referee.hpp
+@@ -443,15 +443,7 @@ class Referee
+    * @brief 0x0105 飞镖发射相关数据，固定以 1 Hz 发送。
+    *        0x0105 dart launch data, sent at a fixed 1 Hz.
+    */
+-  struct [[gnu::packed]] DartCountdown
+-  {
+-    uint8_t countdown; /*己方飞镖发射剩余时间，单位：秒*/
+-
+-    uint16_t dart_last_target : 3; /*bit0-2最近一次己方飞镖击中的目标*/
+-    uint16_t attack_count : 3;     /*bit3-5对方最近被击中的目标累计被击中次数*/
+-    uint16_t dart_target : 2;      /*bit6-7飞镖此时选定的击打目标*/
+-    uint16_t res : 8;              /* bit8-15保留位 */
+-  };
++  using DartCountdown = RefereeTypes::DartCountdown;
+ 
+   /**
+    * @brief 0x0201 机器人性能体系数据，10 Hz。
+@@ -950,6 +942,12 @@ class Referee
+     LauncherData ld; /* 射速 */
+     DartClient dc;   /* 飞镖发射 */
+     PowerHeat ph;
++    /* 以下为 2027 年飞镖发射架加在末尾的字段，前面的布局不变。 */
++    GameStatus gs;      /* 0x0001 比赛阶段和剩余时间 */
++    DartCountdown dart; /* 0x0105 飞镖发射相关数据 */
++    uint8_t gs_seq;     /* 0x0001 每收到一帧加 1（回绕），开机以来没收到过为 0 */
++    uint8_t dart_seq;   /* 0x0105 同上 */
++    uint8_t dc_seq;     /* 0x020A 同上，用来区分“还没收到”和“收到的内容全是 0” */
+   };
+ 
+   /**
+@@ -2035,6 +2033,7 @@ class Referee
+         {
+           return false;
+         }
++        ++this->gs_seq_;
+         break;
+       }
+ 
+@@ -2085,6 +2084,7 @@ class Referee
+         {
+           return false;
+         }
++        ++this->dart_seq_;
+         break;
+       }
+ 
+@@ -2183,6 +2183,7 @@ class Referee
+         {
+           return false;
+         }
++        ++this->dc_seq_;
+         break;
+       }
+ 
+@@ -2498,6 +2499,11 @@ class Referee
+     this->lp_.ld = this->data_.launcher_data;
+     this->lp_.dc = this->data_.dart_client;
+     this->lp_.ph = this->data_.power_heat;
++    this->lp_.gs = this->data_.game_status;
++    this->lp_.dart = this->data_.dart_countdown;
++    this->lp_.gs_seq = this->gs_seq_;
++    this->lp_.dart_seq = this->dart_seq_;
++    this->lp_.dc_seq = this->dc_seq_;
+     this->launcherpack_topic_.Publish(this->lp_);
+     this->robot_game_referee_pack_.robot_status = this->data_.robot_status;
+     this->robot_game_referee_pack_.game_status = this->data_.game_status;
+@@ -2559,6 +2565,9 @@ class Referee
+   RobotGameRefereePack robot_game_referee_pack_; /* 裁判系统摘要包缓冲 */
+   uint16_t shot_seq_ = 0;                        /* 已收到的 0x0207 帧数 */
+   uint8_t hurt_seq_ = 0;                         /* 已收到的 0x0206 帧数 */
++  uint8_t gs_seq_ = 0;                           /* 已收到的 0x0001 帧数，回绕 */
++  uint8_t dart_seq_ = 0;                         /* 已收到的 0x0105 帧数，回绕 */
++  uint8_t dc_seq_ = 0;                           /* 已收到的 0x020A 帧数，回绕 */
+   LibXR::Topic radar_pack_topic_;
+   RadarPack radar_pack_;
+ 
+diff --git a/RefereeTypes.hpp b/RefereeTypes.hpp
+index 87e4c6c..ac11a6b 100644
+--- a/RefereeTypes.hpp
++++ b/RefereeTypes.hpp
+@@ -20,6 +20,24 @@ struct [[gnu::packed]] GameStatus
+   uint64_t sync_time_stamp;   /* 时间戳 */
+ };
+ 
++/**
++ * @brief 0x0105 飞镖发射相关数据，固定以 1 Hz 发送。
++ *        0x0105 dart launch data, sent at a fixed 1 Hz.
++ *
++ * 2027 通信协议 V1.0.0（20261029）：选中的目标是 bit 6-8 共 3 位（旧版只有 2 位，末端移动目标 4 会被读成 0）。
++ * Per the 2027 protocol V1.0.0 the selected target is the 3 bits 6-8; it used to be 2 bits,
++ * which read the terminal moving target (4) as 0.
++ */
++struct [[gnu::packed]] DartCountdown
++{
++  uint8_t countdown; /*己方飞镖发射剩余时间，单位：秒*/
++
++  uint16_t dart_last_target : 3; /*bit0-2最近一次己方飞镖击中的目标：1 R 前哨，2 基地固定，3 随机固定，4 随机移动，5 末端移动，6 B 前哨*/
++  uint16_t attack_count : 3;     /*bit3-5对方最近被击中的目标累计被击中次数，至多 4*/
++  uint16_t dart_target : 3;      /*bit6-8飞镖此时选定的击打目标：0 前哨站或未选，1 基地固定，2 随机固定，3 随机移动，4 末端移动*/
++  uint16_t res : 7;              /* bit9-15保留位 */
++};
++
+ /**
+  * @brief 0x0201 机器人性能体系数据。
+  *        0x0201 robot performance data.
+diff --git a/tests/types_test.cpp b/tests/types_test.cpp
+index 7165615..578f850 100644
+--- a/tests/types_test.cpp
++++ b/tests/types_test.cpp
+@@ -1,4 +1,5 @@
+ #include <cstddef>
++#include <cstring>
+ #include <type_traits>
+ 
+ #include "RefereeTypes.hpp"
+@@ -39,4 +40,32 @@ static_assert(offsetof(Packet, radar_mark) == 113);
+ static_assert(offsetof(Packet, robot_damage) == 115);
+ static_assert(offsetof(Packet, hurt_seq) == 116);
+ 
+-int main() { return 0; }
++static_assert(sizeof(RefereeTypes::DartCountdown) == 3);
++static_assert(offsetof(RefereeTypes::DartCountdown, countdown) == 0);
++
++int main()
++{
++  // 2027 通信协议 0x0105：发射剩余 30 s，最近命中 6（B 前哨），对方累计被命中 4 次，选中 4（末端移动）。
++  // 选中的目标占 bit 6-8，旧的 2 位定义会把 4 读成 0。
++  const unsigned char bytes[3] = {30, 0x26, 0x01};
++  RefereeTypes::DartCountdown dart;
++  std::memcpy(&dart, bytes, sizeof(dart));
++  if (dart.countdown != 30 || dart.dart_last_target != 6 || dart.attack_count != 4 ||
++      dart.dart_target != 4 || dart.res != 0)
++  {
++    return 1;
++  }
++  // 选中 1~3 和默认 0。
++  for (unsigned target = 0; target <= 4; ++target)
++  {
++    const unsigned value = target << 6;
++    const unsigned char encoded[3] = {0, static_cast<unsigned char>(value & 0xFF),
++                                      static_cast<unsigned char>(value >> 8)};
++    std::memcpy(&dart, encoded, sizeof(dart));
++    if (dart.dart_target != target || dart.dart_last_target != 0 || dart.attack_count != 0)
++    {
++      return 2;
++    }
++  }
++  return 0;
++}

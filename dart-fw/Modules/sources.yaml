@@ -1,0 +1,7 @@
+sources:
+- url: https://xrobot.work/xrobot-modules/index.yaml
+  priority: 0
+- url: https://qdu-robomaster.github.io/qdu-future-modules/index.yaml
+  priority: 0
+- url: C:/Users/Lenovo/Desktop/xrobot/xrobot-local/index.yaml
+  priority: 1

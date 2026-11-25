@@ -1,0 +1,5 @@
+# 统一按 LF 入库，避免不同机器 checkout 造成整文件行尾翻动
+* text=auto eol=lf
+
+# 补丁文件要保持原样的换行，不能被 autocrlf 改写（放在最后，优先级最高）
+patches/*.patch -text

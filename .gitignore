@@ -25,3 +25,4 @@ build-*.log
 graphify-out/
 **/.settings/
 **/.vscode/
+dart-fw/Middlewares/Third_Party/LibXR/lib/doxygen-awesome-css/docs/

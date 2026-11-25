@@ -8,13 +8,20 @@
 import math
 
 from .motors import Cascade, clamp
+from .params import MOTORS
 
 # (位置环 kp, ki, kd, 最大输出 rpm, 积分限幅), (速度环 kp, ki, kd, 最大电流指令, 积分限幅)
 GAINS = {
     "slider": ((0.08, 0.0, 0.0, 6000, 0), (15.0, 0.5, 0.0, 16384, 16000)),
     "yaw": ((0.2, 0.0, 0.0, 15000, 0), (3.0, 0.05, 0.0, 10000, 5000)),
-    "pitch": ((0.2, 0.0, 0.0, 15000, 0), (3.0, 0.05, 0.0, 10000, 6000)),
+    "pitch": ((0.2, 0.0, 0.0, 15000, 0), (15.0, 0.5, 0.0, 16384, 16384)),  # 3508 以转子惯量为主，速度环先照搬滑块的
 }
+
+
+def current_cap(spec, force, lever):
+    """机构允许的力 → 电流指令上限。lever 是输出轴每弧度的直线位移（带轮半径，或 导程/2π）。
+    按传动效率 100% 算，实际的力只会更小。"""
+    return int(force * lever / spec.kt * spec.cmd_max / spec.i_max)
 
 
 class Axis:
@@ -40,11 +47,22 @@ class Controller:
         self.pin_radius = pl.meta["yaw_pin_radius_mm"] * 1e-3
         lo, hi = p.yaw_slide_range
         self.yaw_range = tuple(sorted((-math.asin(lo / self.pin_radius), -math.asin(hi / self.pin_radius))))
-        self.slider_r = Axis(pl, "motor_r", "motor_r", lambda s: s / r, GAINS["slider"])
-        self.slider_l = Axis(pl, "motor_l", "motor_l", lambda s: -s / r, GAINS["slider"])
+        yaw_limit = math.radians(p.yaw_max_deg)
+        self.yaw_range = (max(self.yaw_range[0], -yaw_limit), min(self.yaw_range[1], yaw_limit))
+        slider_cap = current_cap(MOTORS["M3508"], p.belt_force_max * p.load_margin, r)
+        yaw_cap = current_cap(MOTORS[p.yaw_motor], p.screw_force_max * p.load_margin, p.yaw_lead / (2 * math.pi))
+        pitch_cap = current_cap(MOTORS[p.pitch_motor], p.screw_force_max * p.load_margin, p.pitch_lead / (2 * math.pi))
+        slider_gains = (GAINS["slider"][0], (GAINS["slider"][1][0], GAINS["slider"][1][1], GAINS["slider"][1][2],
+                                                min(GAINS["slider"][1][3], slider_cap), min(GAINS["slider"][1][4], slider_cap)))
+        yaw_gains = (GAINS["yaw"][0], (GAINS["yaw"][1][0], GAINS["yaw"][1][1], GAINS["yaw"][1][2],
+                                         min(GAINS["yaw"][1][3], yaw_cap), min(GAINS["yaw"][1][4], yaw_cap)))
+        pitch_gains = (GAINS["pitch"][0], (GAINS["pitch"][1][0], GAINS["pitch"][1][1], GAINS["pitch"][1][2],
+                                             min(GAINS["pitch"][1][3], pitch_cap), min(GAINS["pitch"][1][4], pitch_cap)))
+        self.slider_r = Axis(pl, "motor_r", "motor_r", lambda s: s / r, slider_gains)
+        self.slider_l = Axis(pl, "motor_l", "motor_l", lambda s: -s / r, slider_gains)
         self.yaw = Axis(pl, "yaw", "yaw_screw",
-                        lambda psi: clamp(-self.pin_radius * math.sin(psi), lo, hi) / k_yaw, GAINS["yaw"])
-        self.pitch = Axis(pl, "pitch", "pitch_screw", lambda s: clamp(s, *p.pitch_range) / k_pitch, GAINS["pitch"])
+                        lambda psi: clamp(-self.pin_radius * math.sin(psi), lo, hi) / k_yaw, yaw_gains)
+        self.pitch = Axis(pl, "pitch", "pitch_screw", lambda s: clamp(s, *p.pitch_range) / k_pitch, pitch_gains)
         self.axes = (self.slider_r, self.slider_l, self.yaw, self.pitch)
         self._ramp = None                    # (终点, 速度 m/s)：滑块目标按限定速度走
 

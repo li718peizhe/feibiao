@@ -109,7 +109,7 @@
         </body>
         <body name="pitch_screw" pos="0 0.336544 0.3355129">
           <inertial pos="-0.0001081203 -0.08357403 -0.0629927" mass="0.190205" fullinertia="0.00433547 0.001587159 0.002775469 1.779162e-06 1.305441e-06 -0.002071335"/>
-          <joint name="pitch_screw" type="hinge" axis="0 -0.7986355 -0.601815" armature="0.0007776" damping="0.0002" frictionloss="0.005"/>
+          <joint name="pitch_screw" type="hinge" axis="0 -0.7986355 -0.601815" armature="0.00368763" damping="0.0002" frictionloss="0.005"/>
           <geom name="pitch_screw" type="mesh" mesh="pitch_screw" rgba="0.3 0.3 0.33 1" group="1"/>
         </body>
         <body name="pitch_slider" pos="0 -0.08625361 0.01691203">
@@ -226,7 +226,7 @@
     </fixed>
     <fixed name="t_pitch_screw">
       <joint joint="pitch_slider" coef="1"/>
-      <joint joint="pitch_screw" coef="-0.0006366197724"/>
+      <joint joint="pitch_screw" coef="-0.0003183098862"/>
     </fixed>
     <fixed name="t_belt_r">
       <joint joint="slider" coef="1"/>
@@ -253,7 +253,7 @@
     <motor name="motor_r" joint="motor_r" ctrlrange="-6 6"/>
     <motor name="motor_l" joint="motor_l" ctrlrange="-6 6"/>
     <motor name="yaw" joint="yaw_screw" ctrlrange="-1.8 1.8"/>
-    <motor name="pitch" joint="pitch_screw" ctrlrange="-1.8 1.8"/>
+    <motor name="pitch" joint="pitch_screw" ctrlrange="-6 6"/>
     <position name="lock" joint="lock" kp="2" kv="0.03" ctrlrange="0 0.78540" forcerange="-0.6 0.6"/>
     <position name="arm" joint="arm" kp="40" kv="2" ctrlrange="-1.65806 1.65806" forcerange="-5 5"/>
     <position name="crank" joint="crank" kp="6" kv="0.12" ctrlrange="0 3.14159" forcerange="-1.2 1.2"/>

@@ -66,10 +66,39 @@ class TestMechanism(unittest.TestCase):
         r = pl.meta["yaw_pin_radius_mm"] * 1e-3
         self.assertAlmostEqual(pl.q("yaw_slide"), -r * math.sin(pl.q("frame")), delta=5e-5)
 
+    def test_model_matches_params(self):
+        pl = self.sim.plant
+        for joint, motor in (("pitch_screw", pl.p.pitch_motor), ("yaw_screw", pl.p.yaw_motor), ("motor_r", "M3508")):
+            jid = pl.m.joint(joint).id
+            self.assertAlmostEqual(pl.m.dof_armature[pl.m.jnt_dofadr[jid]], MOTORS[motor].rotor_inertia * MOTORS[motor].ratio ** 2, delta=1e-7)
+        for actuator, motor in (("pitch", pl.p.pitch_motor), ("yaw", pl.p.yaw_motor), ("motor_r", "M3508")):
+            aid = pl.m.actuator(actuator).id
+            self.assertAlmostEqual(pl.m.actuator_ctrlrange[aid, 1], MOTORS[motor].kt * MOTORS[motor].i_max, places=4)
+        self.assertAlmostEqual(abs(pl.coef("c_pitch_screw")[1]), pl.p.pitch_lead / (2 * math.pi), delta=1e-9)
+        self.assertAlmostEqual(abs(pl.coef("c_yaw_screw")[1]), pl.p.yaw_lead / (2 * math.pi), delta=1e-9)
+        self.assertAlmostEqual(abs(pl.coef("c_belt_r")[1]), pl.p.belt_radius, delta=1e-6)
+
+    def test_current_caps_respect_ratings(self):
+        pl, ctrl = self.sim.plant, self.sim.ctrl
+        axes = ((ctrl.slider_r, pl.p.belt_force_max, pl.p.belt_radius),
+                (ctrl.slider_l, pl.p.belt_force_max, pl.p.belt_radius),
+                (ctrl.yaw, pl.p.screw_force_max, pl.p.yaw_lead / (2 * math.pi)),
+                (ctrl.pitch, pl.p.screw_force_max, pl.p.pitch_lead / (2 * math.pi)))
+        for axis, force, lever in axes:
+            motor = axis.mot.spec
+            actual = axis.loop.spd.max_out * motor.i_max / motor.cmd_max * motor.kt / lever
+            self.assertLessEqual(actual, force * pl.p.load_margin + 1e-9)
+
+    def test_yaw_range_within_mech_limit(self):
+        limit = math.radians(self.sim.plant.p.yaw_max_deg)
+        self.assertLessEqual(abs(self.sim.ctrl.yaw_range[0]), limit)
+        self.assertLessEqual(abs(self.sim.ctrl.yaw_range[1]), limit)
+
     def test_pitch_step(self):
         s, pl = self.sim, self.sim.plant
         s.ctrl.set_pitch(0.05)
-        self.assertTrue(s.run(4.0, until=lambda: abs(pl.q("pitch_slider") - 0.05) < 5e-4))
+        # 2 mm 导程加 3508，空载约 16 mm/s，走 50 mm 要 3 s 以上
+        self.assertTrue(s.run(8.0, until=lambda: abs(pl.q("pitch_slider") - 0.05) < 5e-4))
 
     def test_crank_stroke_and_claws(self):
         s, pl = self.sim, self.sim.plant

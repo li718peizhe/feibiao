@@ -8,3 +8,20 @@
 __pycache__/
 *.py[cod]
 .pytest_cache/
+
+# 固件与主机测试构建产物 / 日志
+dart-fw/build/
+**/build-host/
+build-*.log
+*.elf
+*.bin
+*.hex
+*.map
+*.a
+*.o
+
+# 本地环境 / IDE / 知识图谱缓存
+.venv/
+graphify-out/
+**/.settings/
+**/.vscode/
